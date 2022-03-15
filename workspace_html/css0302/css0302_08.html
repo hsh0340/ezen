@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가상 클래스 4번 - 그 외</title>
+  <style>
+    /* p태그 중에서 아이디가 ibk가 아닌 요소에 스타일 지정 */
+    p:not(#ibk) {
+      color: red;
+    }
+
+    #t1::first-line {
+      background-color: yellow;
+    }
+
+    #t1::first-letter {
+      font-size: 3em;
+    }
+
+    ul li {
+      margin: 20px;
+    }
+
+    li .s1::after {
+      content: "최고의 클래식 작곡가";
+      background-color: red;
+      color: #fff;
+      margin: 0 10px;
+      padding: 2px 4px;
+      border-radius: 2px ;
+    }
+
+
+  </style>
+  <!--
+    < 가상 클래스 4번 - 그 외 >
+    1. not: 특정 요소가 아닐 때 스탕리을 지정
+
+    < 가상 요소 >
+    - 가상 클래스는 여러 태그 중에서 원하는 태그를 선택하여 스타일을 지정하는 것이고,
+    가상 요소는 내용의 일부만 선택하여 스타일을 지정하는 것
+    - 가상 클래스는 콜론 1개 사용(:), 가상 요소는 콜론 2개(::)를 사용
+    1.first-line: 내용 중에서 첫번째 줄에 스타일 지정
+    2.first-letter : 내용 중에서 첫번째 글자에 스타일 지정
+    3.before : 특정 요소의 내용 뒤에 원하는 내용을 추가할 때 사용
+    4.after : 특정 요소의 내용 전에
+  -->
+</head>
+
+<body>
+  <h2>IBK 여자배구 선수단</h2>
+  <div>
+    <p id="ibk">김수지</p>
+    <p id="ibk">표승주</p>
+    <p id="ibk">신연경</p>
+    <p id="ibk">김하경</p>
+    <p id="ibk">김주향</p>
+    <p id="ibk">최정민</p>
+    <p id="h">양효진</p>
+    <p id="k">정대영</p>
+  </div>
+  <hr>
+  <!-- 로렘 입숨(lorem ipsum) : 웹에서 내용을 채워서 다루어야 할 때 사용하는 문장-->
+  <p id="t1">
+    국가는 전통문화의 계승·발전과 민족문화의 창달에 노력하여야 한다.<br>
+
+    국가는 국민 모두의 생산 및 생활의 기반이 되는 국토의 효율적이고 균형있는 이용·개발과 보전을 위하여 법률이 정하는 바에 의하여 그에 관한 필요한 제한과 의무를 과할 수 있다.<br>
+
+    연소자의 근로는 특별한 보호를 받는다. 헌법재판소에서 법률의 위헌결정, 탄핵의 결정, 정당해산의 결정 또는 헌법소원에 관한 인용결정을 할 때에는 재판관 6인 이상의 찬성이 있어야 한다.<br>
+
+    대통령의 임기가 만료되는 때에는 임기만료 70일 내지 40일전에 후임자를 선거한다.<br>
+
+    국회나 그 위원회의 요구가 있을 때에는 국무총리·국무위원 또는 정부위원은 출석·답변하여야 하며, 국무총리 또는 국무위원이 출석요구를 받은 때에는 국무위원 또는 정부위원으로 하여금 출석·답변하게 할 수 있다.<br>
+  </p>
+  <hr>
+  <ul>
+    <li>하이든</li>
+    <li>모차르트</li>
+    <li class="s1">베토벤</li>
+    <li>쇼팽</li>
+    <li class="s2">슈베르트</li>
+    <li class="s1">슈만</li>
+    <li>브람스</li>
+  </ul>
+</body>
+
+</html>

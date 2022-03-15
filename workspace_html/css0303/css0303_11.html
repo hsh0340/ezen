@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>텍스트 속성</title>
+  <style>
+    h1 {
+      color: purple;
+    }
+
+    .c-line {
+      text-decoration: overline;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    p:nth-of-type(3) {
+      white-space: pre;
+    }
+
+    h3:nth-of-type(1) {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+    }
+
+    h3:nth-of-type(2) {
+      text-transform: lowercase;
+      word-spacing: 1em;
+    }
+
+    h3:nth-of-type(3) {
+      text-transform: capitalize;
+    }
+
+    h3:nth-of-type(4) {
+      font-size: 3em;
+      text-shadow: 3px 3px 3px gray;
+    }
+
+    h3:nth-of-type(5) {
+      font-size: 3em;
+      text-shadow: 5px 5px 3px red;
+    }
+
+    h3:nth-of-type(6) {
+      color: white;
+      font-size: 3em;
+      text-shadow: 7px -7px 5px black;
+    }
+
+    h3:nth-of-type(7) {
+      background-color: black;
+      padding: 20px;
+      color: white;
+      font-size: 3em;
+      text-shadow: 0 0 4px #ccc, 0 -5px 4px #ff3, 2px -10px 6px #fd3, -2px -15px 11px #f80, 2px -19px 18px #f20;
+    }
+  </style>
+  <!--
+    < 텍스트 속성 >
+    1. color : 글자 색 지정
+    2. text-decoration : 텍스트에 줄(윗줄, 밑줄, 가운데줄) 표시
+    -- none : 줄 제거, underline: 밑줄 표시, overline: 윗줄, 가운데줄(취소선) : line-through
+    3. text-transform : 텍스트의 대소문자 변환
+    -- none: 변환하지 않음, uppercase: 대문자로 변환, lowercase: 소문자로 변환,
+    -- capitalize: 첫문자만 대문자로 변환
+    4. text-shadow : 텍스트에 그림자 효과적용
+    ex) text-shadow : 가로거리 세로거리 번짐정도 색상
+    - 가로거리: 양수: 오른쪽, 음수: 왼쪽
+    - 세로거리: 양수: 아래쪽, 음수: 위쪽
+    5. letter-spacing : 자간, 글자 사이의 간격 조절
+    6. word-spacing : 단어와 단어 사이의 간격 조절
+    7. white-space : 공백 처리
+    - normal: 기본값, 여러 개의 공백을 하나로 표시
+    - pre : 여러 개의 공백을 그대로 표시
+    
+    참고) 태그 안에서 여러개의 공백을 인식
+    - &nbsp; 공백 한칸
+    - &ensp; 공백 두칸
+    - &ensp; 공백 세칸
+  -->
+</head>
+
+<body>
+  <h1>HTML5</h1>
+  <p>다양한 기기로 인터넷에 접속할 수 있는 요즘, <br>
+    <span class="c-line">HTML4</span> HTML5를 공부해야 할 때입니다.
+  </p>
+  <p>
+    <a href="https://html.spec.whatwg.org">HTML5 표준규약 알아보기</a>
+  </p>
+  <hr>
+  <p>
+    JAVA   HTML5     CSS3
+  </p>
+  <p>
+    오라클&nbsp;자바&ensp;스프링&ensp;자바스크립트
+  </p>
+  <hr>
+  <h3>hollys coffee</h3>
+  <h3>HOLLYS COFFEE</h3>
+  <h3>hollys coffee</h3>
+  <h3>hollys coffee</h3>
+  <h3>Hollys coffee</h3>
+  <h3>Hollys coffee</h3>
+  <h3>Hollys coffee</h3>
+
+</body>
+
+</html>

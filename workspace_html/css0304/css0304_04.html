@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마진과 패딩</title>
+  <style>
+    h3 {
+      background-color: gray;
+      color: white;
+    }
+
+    div {
+      width: 150px;
+      height: 50px;
+      border: 20px solid gray;
+    }
+
+    #b1 {
+      background-color: red;
+      /* 1. 4 방향 똑같은 마진 적용 */
+      /* margin: 30px; top, bottom, right, left에 모두 적용 */
+
+      /* 2. 4방향 각각 다른 마진 적용 - 각각 따로 기술 */
+      margin-top: 30px;
+      margin-bottom: 40px;
+      margin-left: 50px;
+      margin-right: 30px;
+
+      /* padding: 20px; 4방향 똑같은 패딩 적용 */
+      /* 4방향 각각 다른 패딩 적용 - 각각 따로 기술 */
+      padding: 20px;
+    }
+
+    #b2 {
+      background-color: blue;
+      /* 3. 4방향 각각 다른 마진 적용 - 한꺼번에 기술 */
+      /* margin: 50px 30px 30px 80px; top right bottom left, top부터 시계 방향으로 적용 */
+      /* 상하와 좌우에 다른 마진 적용 */
+      margin: 30px 50px;
+      /* margin: 상하 좌우; */
+
+      /* padding: 20px 30px 40px 20px; 4방향 각각 다른 패딩 적용 */
+      padding: 20px 30px;
+      /* 상하와 좌우에 각각 다른 패딩 적용 */
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Previous Line</h3>
+  <div id="b1">박스1</div>
+  <div id="b2">박스2</div>
+  <h3>Next Line</h3>
+</body>
+
+</html>

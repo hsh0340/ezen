@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문 연습 3</title>
+  <!-- 
+    < 조건문 > - if문, switch ~ case문
+    1. if문의 활용
+    2. switch ~ case 문
+    - 조건에는 반드시 정수, 문자열만 가능, 실수는 불가능.
+    - 기능의 제약으로 보는 것이 아니라, 정수와 문자열을 사용할 때 특화되어있음.
+    - 정수나 문자열일때는 코드의 가독성이 If문보다 훨씬 좋아짐.
+    - 조건문의 경우의 수가 정수로 딱 떨어질 때는 if문 보다 switch~case문을 사용할 것을 권장
+    형식 
+    switch(조건) {
+    case 값 :
+      실행문;
+      break;
+    case 값 :
+      실행문;
+      break;
+    case 값 :
+      실행문;
+      break;
+      ...
+    default:
+      실행문;
+      break;
+    }
+   -->
+</head>
+
+<body>
+  <h3>switch ~ case 문 활용</h3>
+  <script>
+    // let num = 1;
+
+    // switch (num) {
+    //   case 1:
+    //     console.log("1번 선택");
+    //     break;
+    //   case 2:
+    //     console.log("2번 선택");
+    //     break;
+    //   case 3:
+    //     console.log("3번 선택");
+    //     break;
+    //   case 4:
+    //     console.log("4번 선택")
+    //     break;
+    //   default:
+    //     console.log("다시 선택");
+    //     break;
+    // }
+
+    function func1() {
+      // 월에 대한 계절을 출력하는 문제를 switch~case 문으로 해결하시오.
+      let month = Number(prompt("몇 월인지 입력하세요."));
+
+      switch (month) {
+        case 3 || 4 || 5:
+          document.write(month + "월은 봄입니다.");
+          break;
+        case 6 || 7 || 8:
+          document.write(month + "월은 여름입니다.");
+          break;
+        case 9 || 10 || 11:
+          document.write(month + "월은 가을입니다.");
+          break;
+        case 12 || 1 || 2:
+          document.write(month + "월은 겨울입니다.");
+          break;
+        default:
+          document.write("다시 입력하세요.");
+          break;
+      }
+    }
+
+    // 퀴즈2번
+    // 이름, 국어점수, 영어점수, 수학점수를 입력하여 평균과 학점을 출력하는 문제를 
+    // switch~case 문을 사용하여 알림창으로 출력하시오.
+
+    function func2() {
+      let name = prompt("이름을 입력하세요.");
+      const kor = prompt("국어점수를 입력하세요.");
+      const eng = prompt("영어점수를 입력하세요.");
+      const mat = prompt("수학점수를 입력하세요.");
+      const avr = (Number(kor) + Number(eng) + Number(mat)) / 3;
+      let avrToInt = Math.floor(avr / 10); // 평균을 10으로 나누고 소수점 이하는 버림
+      let grade;
+      switch (avrToInt) {
+        case 9:
+          grade = "A학점";
+          break;
+        case 8:
+          grade = "B학점";
+          break;
+        case 7:
+          grade = "C학점";
+          break;
+        case 6:
+          grade = "D학점";
+          break;
+        default:
+          grade = "F학점"
+          break;
+      }
+
+      alert(`이름 : ${name}
+국어점수 : ${kor}
+영어점수 : ${eng}
+수학점수 : ${mat}
+평균점수 : ${avr}
+학점 : ${grade}`);
+    }
+
+    // 퀴즈3번
+    // 입력창으로 월을 입력하여 월에 해당하는 탄생화를 출력하시오.
+    // < 출력화면 설계>
+    // ex) 당신이 태어난 월은 6월이고, 탄생화는 백합입니다.
+    // 1월 - 수선화
+    // 2월 - 제비꽃
+    // 3월 - 수선화
+
+    // 4월 - 스위트피 
+    // 5월 - 은방울꽃 
+    // 6월 - 백합 
+
+    // 7월 - 미나리아재비
+    // 8월 - 글라디올러스  
+    // 9월 - 물망초
+
+    // 10월 - 금잔화 
+    // 11월 - 국화
+    // 12월 - 포인세티아 
+
+    function func3() {
+      let month = Number(prompt("당신은 몇월에 태어났나요?"));
+      switch (month) {
+        case 1 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 수선화입니다.`);
+          break;
+        case 2 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 제비꽃입니다.`);
+          break;
+        case 3 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 수선화입니다.`);
+          break;
+        case 4 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 스위트피입니다.`);
+          break;
+        case 5 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 은방울꽃입니다.`);
+          break;
+        case 6 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 백합입니다.`);
+          break;
+        case 7 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 미나리아재비입니다.`);
+          break;
+        case 8 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 글라디올러스입니다.`);
+          break;
+        case 9 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 물망초입니다.`);
+          break;
+        case 10 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 금잔화입니다.`);
+          break;
+        case 11 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 국화입니다.`);
+          break;
+        case 12 :
+          alert(`당신이 태어난 월은 ${month}월이고, 탄생화는 포인세티아입니다.`);
+          break;
+        default :
+          alert("다시입력하세요");
+          break;
+      }
+    }
+
+    // 퀴즈 4번 - if문
+    // - 정수를 입력하여 홀수, 짝수를 출력하시오. 문자열의 활용 사용하시오.
+
+    function func4() {
+      let usrNum = prompt("정수를 입력하세요.");
+      let num = usrNum[usrNum.length - 1];
+      if (num == 0 || num == 2 || num == 4 || num == 6 || num == 8) {
+        alert(`${usrNum}은 짝수입니다.`);
+      } else {
+        alert(`${usrNum}은 홀수입니다.`);
+      }
+    }
+
+    // 퀴즈 5번 - if문
+    // 현재 시간에 맞는 문자를 알림창으로 출력하시오.
+    // 11시 이전이라면, 아침 운동하세요.
+    // 15시 이전이라면, 점심을 드세요.
+    // 18시 이전이라면, 업무를 정리하고 퇴근하세요.
+    // 23시 이전이라면, 잠자리에 들 시간이에요.
+    // const date = new Date();
+    // const hour = date.getHours(); -> 시스템의 시간을 획득
+
+    function func5() {
+      const date = new Date();
+      const hour = date.getHours();
+
+      if (hour < 11) {
+        alert("아침 운동하세요.");
+      } else if (hour < 15) {
+        alert("점심을 드세요.");
+      } else if (hour < 18) {
+        alert("업무를 정리하고 퇴근하세요.");
+      } else if (hour < 23) {
+        alert("잠자리에 들 시간이에요.");
+      } else {
+        alert("안자고 뭐하시나요.");
+      }
+    }
+  </script>
+  <h3>퀴즈 입력</h3>
+  <p>월을 입력하여 월에 해당하는 계절을 출력하시오.</p>
+  <button onclick="func1()">계절 출력</button>
+  <hr>
+  <p>이름, 국어점수, 영어점수, 수학점수를 입력하여 평균과 학점을 출력</p>
+  <button onclick="func2()">너의 학점은</button>
+  <hr>
+  <p>입력창으로 월을 입력하여 월에 해당하는 탄생화를 출력</p>
+  <button onclick="func3()">너의 탄생화는</button>
+  <hr>
+  <p>정수를 입력하여 홀수, 짝수를 출력</p>
+  <button onclick="func4()">홀짝 판별기</button>
+  <hr>
+  <p>현재 시간에 맞는 문자를 알림창으로 출력</p>
+  <button onclick="func5()">지금 시간에 맞는 문자는?</button>
+</body>
+
+</html>

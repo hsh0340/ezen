@@ -1,0 +1,92 @@
+body {
+  font: 14px 맑은 고딕;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #e7e7e7;
+}
+
+header {
+  height: 280px;
+  background: url("/css0308/images/bg.png") no-repeat;
+  background-size: contain;
+  /* 자식인 h1과 h2를 absolute 를 사용하기 위해서
+     부모인 header는 relative를 설정해야 한다  */
+  position: relative;
+}
+
+header h1 {
+  position: absolute;
+  right: 20px;
+  top: 50px;
+  font-size: 3em;
+  color: rgb(253, 252, 210);
+  text-shadow: 2px 2px 2px lightgray;
+}
+
+header h2 {
+  position: absolute;
+  right: 20px;
+  top: 130px;
+  font-size: 1.8em;
+  color: yellow;
+}
+
+/* 상단 - 메뉴 */
+nav {}
+
+nav ul {
+  list-style: none;
+  height: 40px;
+  margin: 0;
+  background-color: #271717;
+
+}
+
+nav ul li {
+  display: inline-block;
+  width: 100px;
+
+  padding: 10px 20px;
+  margin: 10px 20px;
+  text-align: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: beige;
+}
+
+nav ul li:hover a {
+  color: blue;
+  font-weight: bold;
+}
+
+/* 본문, 사이드바 */
+section {
+  width: 68%;
+  float: left;
+}
+
+aside {
+  width: 28%;
+  float: right;
+  padding: 1%;
+  background-color: #ddffdd;
+}
+
+aside .imgs {
+  text-align: center;
+}
+
+aside img {
+  margin-bottom: 10px;
+  opacity: 0.5;
+  transition: 1s;
+}
+
+aside img:hover {
+  opacity: 1;
+}

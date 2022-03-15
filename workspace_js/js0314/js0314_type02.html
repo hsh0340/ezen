@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--
+    1. 데이터타입 리뷰
+    - string(문자열) : 쌍따옴표(""), 홀따옴표('')로 감싼 문자열.
+    - number(숫자)
+    - boolean(논리)
+    - undefined
+    - null(널)
+    -->
+</head>
+
+<body>
+  <h3>데이터타입 심화</h3>
+  <script>
+    console.log("--- 1. string(문자열) ---");
+    let s1 = "Web Programming";
+    let s2 = "서울대학교 '컴퓨터공학' 전공";
+    let s3 = 'Javascript "Web" Programming';
+
+    console.log(s1);
+    console.log(s2);
+    console.log(s3);
+    console.log("s1의 길이 : " + s1.length);
+    console.log("s1의 마지막 문자 : " + s1[14]);
+    console.log("s1의 첫번째 문자 : " + s1[0]);
+
+    console.log("--- 2. number(숫자) ---");
+    // 지수승 표현
+    let x = 314e-2; // 10의 -2승, 3.14
+    let y = 12345e10; // 10의 10승, 100000000000;
+    let n1 = 999999999999999; // 15개
+    let n2 = 99999999999999999999; // 20개
+
+    console.log("x = " + x);
+    console.log("y = " + y);
+    console.log("n1 = " + n1); // 15자리의 정수까지는 정확하게 표현 가능
+    console.log("n2 = " + n2); // 16자리 이상의 정수는 사용 불가
+
+    // 불린값을 다루는 방법
+    // Boolean() 함수 : 모든 데이터를 논리값(불린값)으로 다루도록 하는 함수
+    // 숫자를 논리값으로 판별 : 0:false, 0이외의 모든 숫자:true
+    // 문자열을 논리값으로 판별 : 빈 문자열 : 0, 내용이 있으면 : true
+    // undefined : false, null : false, 객체 : true
+
+    console.log("--- 3. boolean ---");
+    let num1 = 0, num2 = 23, num3 = -55; // 0, 양수, 음수
+    var str1 = "Javascript", str2 = "";  // 내용 있는 문자열, 빈 문자열
+    var obj1, obj2 = null, obj3 = new Object(); // undefined, null, 객체
+
+    console.log(num1);
+    console.log(typeof num1);
+    console.log(Boolean(num1)); // 0 : false
+    console.log(Boolean(num2)); // 23(양수) : true
+    console.log(Boolean(num3)); // -55(음수) : true
+
+    console.log(str1);
+    console.log(typeof str1);
+    console.log(Boolean(str1)); // 문자열의 내용이 있을 때 : true
+    console.log(Boolean(str2)); // 문자열의 내용이 없을 때(빈 문자열) : false
+
+    console.log(obj1);
+    console.log(typeof obj1);
+    console.log(Boolean(obj1)); // undefined : false
+    console.log(obj2);
+    console.log(typeof obj2); // object
+    console.log(Boolean(obj2));  // null : false
+    console.log(obj3);
+    console.log(typeof obj3);
+    console.log(Boolean(obj3));
+  </script>
+</body>
+
+</html>

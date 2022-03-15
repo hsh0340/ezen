@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 종합 테스트 02</title>
+  <style>
+    /* 전체 부분 */
+    body {
+      font-family: "바탕체";
+      font-size: 14px;
+    }
+
+    .container {
+      width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 상단 타이틀 */
+    #top_title {
+      text-align: right;
+      font-size: 0.9em;
+    }
+
+    #sub_title,
+    #main_title {
+      text-align: center;
+      font-family: "궁서체";
+    }
+
+    #sub_title {
+      margin-bottom: 0;
+      font-size: 0.9em;
+    }
+
+    #main_title {
+      margin-top: 0;
+      margin-bottom: 40px;
+    }
+
+    /* 중단 본문 */
+    mark {
+      font-size: 2.3em;
+      padding: 3px;
+      margin-top: 10px;
+      margin-right: 10px;
+      float: left;
+    }
+
+    .img1 {
+      float: right;
+      margin-left: 10px;
+    }
+
+    #content1,
+    #content2 {
+      text-align: justify;
+      line-height: 1.5em;
+
+    }
+
+    #content1 {
+      margin-bottom: 0;
+    }
+
+    #content2 {
+      text-indent: 20px;
+      margin-top: 0;
+    }
+
+    /* 중단 리스트, 테이블 */
+    #mid_title1,
+    #mid_title2 {
+      font-family: "굴림";
+      font-weight: 100;
+      font-size: 1.2em;
+    }
+
+    #mid_title1 {
+      background-color: #f00;
+      color: #fff;
+    }
+
+    #mid_title2 {
+      font-style: italic;
+    }
+
+    .sub_list {
+      padding-left: 15px;
+    }
+
+    table {
+      border: 1px solid black;
+      border-collapse: collapse;
+      width: 100%;
+      border-top: 3px double #000;
+      border-left: hidden;
+      border-right: hidden;
+    }
+
+    tr {
+      height: 20px;
+    }
+
+    td {
+      border: 1px solid black;
+      text-align: center;
+    }
+
+    table tr:first-child {
+      border-bottom: 3px double #000;
+      background: linear-gradient(to bottom, #fff, #ff0);
+    }
+
+    /* 하단 */
+    #bottom_title {
+      text-align: right;
+      margin-top: 30px;
+      font-family: "궁서체";
+      font-size: 2em;
+    }
+    hr {
+      width: 18%;
+
+    }
+    #content {
+      font-size: .8em;
+      margin-top: 0px;
+    }
+  </style>
+
+  <!-- 
+    < 숙제 >
+    -- 점심시간, 수업 마치고 천천히 
+   -->
+</head>
+
+<body>
+  <div class="container">
+    <p id="top_title">아름다운 가게</p>
+    <p id="sub_title">불평등 해소</p>
+    <h2 id="main_title">세계의 농부들 공정무역과 손잡다</h2>
+    <img src="images/image02.png" alt="img1" class="img1">
+    <p id="content1">
+      <mark>매</mark>년 5월 둘째 주 토요일은 공정무역을 널리 알리기 위해 전 세계적으로 동시에 진행되는 공정무역 캠페인의 날로 세계의 생산품들이 모두 공정한 대가를 받고 판매되기를 기원하는 날이다.
+      공정무역은 경제발전의 혜택(惠澤)으로부터 소외된 저개발국가㉠ 에서 생산자와 노동자들에게 더 나은 거래 조건을 제공하고 그들의 권리를 보호함으로써 지속 가능한 발전에 이바지한다. 공정무역은 대화와 투명성,
+      존중에 기초하여 국제 무역에서 더욱 공평하고 정의로운 관계를
+      추구하는 거래 기반의 동반자 관계이다. 또한 공정무역은 가격을 고정하기보다는 최저 가격을 두어서 시장가격이 이 수준 이하로 떨어질 때도 농민들이 지속 가능한 생산을 위한 비용을 지불받을 수 있도록
+      보장해준다.
+    </p>
+    <p id="content2">
+      유럽과 북미의 경우 1950년대에 공정무역 운동을 시작하였으며 우리나라는 ‘아름다운 가게’가 2003년에 아시아의 수공예품을 수입(輸入)하여 판매하기 시작하고 2006년에 네팔의 커피를 수입, 판매하며
+      공정무역 커피 브랜드 ‘히말라야의 선물’을 런칭하였다. 아름다운 가게뿐 아니라 2008년부터 공정무역단체들을 중심으로 세계 공정무역의 날 한국페스티벌을 개최하고 있다.
+    </p>
+    <h3>🇰🇷 <span id="mid_title1">공정 무역 키워드</span></h3>
+    <ol type="i">
+      <li>공정한 가격</li>
+      <ol type="a" class="sub_list">
+        <li>생산비용, 생활비용 등 공정무역 기준을 충족시키는 비용 포함</li>
+        <li>최종 가격은 시장가격과 공정가격 중에 높은 쪽으로 결정</li>
+      </ol>
+      <li>공정한 임금</li>
+      <ol type="a" class="sub_list">
+        <li>노동자가 자유롭게 협상에 참여하여 상호 합의하여 결정</li>
+        <li>공정한 임금을 위한 지역 생활 임금 고려</li>
+      </ol>
+    </ol>
+    <h3>🇰🇷 <span id="mid_title2"><ruby><rb>공</rb><rt>✓</rt><rb>정</rb><rt>✓</rt><rb>무</rb><rt>✓</rt><rb>역</rb><rt>✓</rt></ruby>
+      
+      다큐멘터리 
+      <ruby><rb>영</rb><rt>✓</rt><rb>상</rb>&nbsp;<rt>✓</rt><rb>자</rb><rt>✓</rt><rb>료</rb><rt>✓</rt></ruby></span></h3>
+    <table>
+      <tr>
+        <td>국가</td>
+        <td>작품명</td>
+        <td>제작 단체</td>
+        <td>연도</td>
+      </tr>
+      <tr>
+        <td rowspan="3">일본</td>
+        <td>패션이 빈곤을 구한다</td>
+        <td>동경TV</td>
+        <td>2004년</td>
+      </tr>
+      <tr>
+        <td>아이에게 공정무역을 알리다</td>
+        <td>NHK</td>
+        <td>2004년</td>
+      </tr>
+      <tr>
+        <td>종이의 천으로 희망을 허락한다</td>
+        <td>네팔리 바자로</td>
+        <td>2006년</td>
+      </tr>
+      <tr>
+        <td rowspan="2">한국</td>
+        <td>웃는 얼굴로 거래하다</td>
+        <td>울림기획</td>
+        <td>2006년</td>
+      </tr>
+      <tr>
+        <td>이영돈 PD의 소비자 고발 37회</td>
+        <td>KBS</td>
+        <td>2008년</td>
+      </tr>
+    </table>
+    <p id="bottom_title">한국공정무역협의회</p>
+    <hr align="left">
+    <p id="content">㉠ 산업 발달이 거의 이루어지지 않은, 농업과 같은 1차 산업이 주요 산업인 국가</p>
+  </div>
+</body>
+
+</html>

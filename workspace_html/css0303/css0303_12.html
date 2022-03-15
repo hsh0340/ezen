@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문단 속성</title>
+  <style>
+    p:nth-of-type(1) {
+      direction: ltr;
+    }
+
+    p:nth-of-type(2) {
+      direction: right;
+    }
+
+    p:nth-of-type(3) {
+      text-align: left;
+    }
+
+    p:nth-of-type(4) {
+      text-align: center;
+    }
+
+    p:nth-of-type(5) {
+      text-align: justify;
+    }
+
+    p:nth-of-type(6) {
+      text-indent: 16px;
+    }
+
+    p:nth-of-type(7) {
+      text-indent: 20%;
+      /* 전체 너비의 20% */
+    }
+
+    p:nth-of-type(8) {
+      line-height: 2;
+    }
+
+    .content {
+      width: 300px;
+      border: 1px solid #ccc;
+      white-space: nowrap;
+      /* 영역을 벗어나도 줄바꿈을 하지 않음. */
+      overflow: hidden;
+      /* 영역에서 넘치는 부분을 감춤. */
+      text-overflow: ellipsis;
+      /* 넘치는 부분을 말 줄임표(...)로 표시함 */
+    }
+
+    .content:hover {
+      overflow: visible;
+      /* 마우스를 갖다 대었을 때 내용을 보여줌 */
+    }
+  </style>
+  <!--
+    < 문단 속성 >
+    1. direction: 글자 쓰기 방향
+    -- ltr : left to right, 왼쪽에서 오른쪽으로, 기본값
+    -- rtl : right to left, 오른쪽에서 왼쪽으로
+    2. text-align : 텍스트 정렬, 아주 많이 사용
+    -- left(왼쪽 맞춤), right(오른쪽 맞춤), center(가운데 맞춤),
+    -- justify(양쪽에 맞추어 균등하게 분할)
+    3. text-indent : 문단의 텍스트 들여쓰기
+    4. line-height : 줄간격 조절
+    5. text-overflow : 영역에서 넘치는 부분을 표기
+    -- clip : 생략, 기본값, elipsis : 말줄임표(...)로 표시
+  -->
+</head>
+
+<body>
+  <p>자바스크립트</p>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, ducimus omnis. Debitis quisquam at quam
+    reiciendis aspernatur enim, blanditiis reprehenderit cum minus magnam impedit atque, natus placeat temporibus error
+    non.
+  </p>
+  <hr>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, ducimus omnis. Debitis quisquam at quam
+    reiciendis aspernatur enim, blanditiis reprehenderit cum minus magnam impedit atque, natus placeat temporibus error
+    non.
+  </p>
+  <hr>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, ducimus omnis. Debitis quisquam at quam
+    reiciendis aspernatur enim, blanditiis reprehenderit cum minus magnam impedit atque, natus placeat temporibus error
+    non.
+  </p>
+  <hr>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, ducimus omnis. Debitis quisquam at quam
+    reiciendis aspernatur enim, blanditiis reprehenderit cum minus magnam impedit atque, natus placeat temporibus error
+    non.
+  </p>
+  <hr>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, ducimus omnis. Debitis quisquam at quam
+    reiciendis aspernatur enim, blanditiis reprehenderit cum minus magnam impedit atque, natus placeat temporibus error
+    non.
+  </p>
+  <hr>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, ducimus omnis. Debitis quisquam at quam
+    reiciendis aspernatur enim, blanditiis reprehenderit cum minus magnam impedit atque, natus placeat temporibus error
+    non.
+  </p>
+  <hr>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, ducimus omnis. Debitis quisquam at quam
+    reiciendis aspernatur enim, blanditiis reprehenderit cum minus magnam impedit atque, natus placeat temporibus error
+    non.
+  </p>
+  <hr>
+  <h1>귀리(Oat)</h1>
+  <p class="content">
+    귀리는 베티글루칸(항암 및 면역증강작용을 가지고 있는 불소화성 다당류) 성분을 포함하고 있다.
+  </p>
+</body>
+
+</html>

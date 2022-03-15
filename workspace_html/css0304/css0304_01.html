@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문단 속성 - 다단</title>
+  <style>
+    .multi {
+      column-count: 3;
+      column-gap: 30px;
+      /*
+      column-rule-width: 1px;
+      column-rule-color: black;
+      column-rule-style: solid;
+      */
+      column-rule: 5px double red;
+      text-align: justify;
+    }
+
+    .multi h3 {
+      break-before: column;
+    }
+
+    .no-col {
+      column-span: all;
+    }
+  </style>
+  <!--
+    < 문단 속성 - 다단 >
+    1. column-count : 단의 개수를 지정
+    2. column-gap : 단 사이의 여백을 지정
+    - normal : 기본값, 1em, 절대크기 또는 상대크기 지정
+    3. column-rule : 구분선의 색상, 스타일, 너비 지정
+    4. break-after, break-before, break-inside : 다단의 위치를 지정
+    -- break-after : 특정 요소 앞, 가장 많이 사용함
+    -- break-before : 특정 요소 뒤
+    -- break-inside : 특정 요소 안
+    5. column-span : 다단을 합치기
+
+  -->
+</head>
+
+<body>
+  <h1>건강에 좋은 식품 - Super Food</h1>
+  <div class="multi">
+    <h3>Coconut oil</h3>
+    <p>
+      <b>코코넛 오일 :</b>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Voluptatibus officiis labore omnis minus nostrum accusantium veniam unde nulla itaque aut temporibus corporis
+      praesentium, modi facilis incidunt aliquam ducimus alias dolores?
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Nisi in unde magnam nihil rem quasi quia reprehenderit nulla, provident cumque sequi quisquam doloremque quaerat,
+      velit dignissimos quas voluptates voluptatibus beatae?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+    <h3>Blueberry</h3>
+    <p>
+      <b>블루베리 :</b>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Voluptatibus officiis labore omnis minus nostrum accusantium veniam unde nulla itaque aut temporibus corporis
+      praesentium, modi facilis incidunt aliquam ducimus alias dolores?
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Nisi in unde magnam nihil rem quasi quia reprehenderit nulla, provident cumque sequi quisquam doloremque quaerat,
+      velit dignissimos quas voluptates voluptatibus beatae?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Quisquam nam inventore suscipit consequatur minus ex mollitia? Nostrum est sapiente saepe blanditiis. Deleniti,
+      possimus ullam hic veritatis pariatur voluptate repudiandae ipsam?
+    </p>
+    <h3>Almond</h3>
+    <p>
+      <b>아몬드 :</b>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Voluptatibus officiis labore omnis minus nostrum accusantium veniam unde nulla itaque aut temporibus corporis
+      praesentium, modi facilis incidunt aliquam ducimus alias dolores?
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Nisi in unde magnam nihil rem quasi quia reprehenderit nulla, provident cumque sequi quisquam doloremque quaerat,
+      velit dignissimos quas voluptates voluptatibus beatae?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+  </div>
+  <div class="no-col">
+    <h3>Almond</h3>
+    <p>
+      <b>아몬드 :</b>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Voluptatibus officiis labore omnis minus nostrum accusantium veniam unde nulla itaque aut temporibus corporis
+      praesentium, modi facilis incidunt aliquam ducimus alias dolores?
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Nisi in unde magnam nihil rem quasi quia reprehenderit nulla, provident cumque sequi quisquam doloremque quaerat,
+      velit dignissimos quas voluptates voluptatibus beatae?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+  </div>
+</body>
+
+</html>

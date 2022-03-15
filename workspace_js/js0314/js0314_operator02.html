@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트의 연산자</title>
+  <!-- 
+    < 연산자(operator) >
+    1. 산술 연산자: +, -, *(곱셈), /(나눗셈), %(나머지)
+    ★ /(나누기) 연산자 : 자바스크립트의 나누기 연산자는 나눈 결과 전체를 출력(소숫점까지 출력)
+    ex) 10 / 3 -> 결과는 3.3333333...
+    ex) 자바의 / 연산자 : 나눈 몫을 출력, 10 / 3 -> 자바에서는 3(몫)
+
+    2. 증감 연산자 ++, --
+    - 자신의 값을 1증가 또는 1감소하는 연사자
+
+    3. 비교 연산자 : >, >=, <, <=, ==, !=, instanceof
+    - ==, != : 값만 비교, 타입은 비교하지 않음.
+    ★ ===, !== : 값과 타입을 모두 비교함.
+    instanceof : 객체의 비교에 사용.
+    ★ 비교 연산자의 연산결과는 항상 논리값(불린값, 참과 거짓)을 가짐.
+
+    4. 논리 연산자 : &&(논리 AND, 논리곱), ||(논리 OR, 논리합), !(논리 NOT, 논리부정)
+    &&(논리 AND) : 양쪽 항의 결과가 모두 참일 때 전체 결과가 참이 됨.
+    ||(논리 OR) : 양쪽 항의 결과 중에서 하나라도 참이라면 전체 결과가 참이 됨.
+    !(논리 NOT) : 참을 거짓으로, 거짓을 참으로 바꾸는 연산자
+    - 논리 연산자의 연산결과는 항상 논리값(불린값, 참과 거짓)을 가짐.
+
+    5. 조건선택 연산자 : 조건식 ? 참 : 거짓
+    - 항의 개수가 3개인 유일한 연산자이므로 삼항연산자라고 불리기도 함.
+    - 조건식의 결과가 참이면 참의 값을 가지고, 조건식의 결과가 거짓이면 거짓의 결과를 가짐.
+    - if~else문의 대용으로 자주 사용됨.
+
+    6. 복합대입 연산자 : 
+   -->
+</head>
+
+<body>
+  <h3>산술 연산자</h3>
+  <script>
+    let n1 = 15,
+      n2 = 4;
+    let grade1 = 3.8,
+      grade2 = 4.5,
+      grade3 = 15.0;
+    let s1 = "Javascript",
+      s2 = "Programming",
+      s3 = "80";
+
+    console.log("--- 1. 산술 연산자 ---");
+    console.log(n1 + n2);
+    console.log(n1 - n2);
+    console.log(n1 * n2);
+    console.log(n1 / n2); // 3.75, 소숫점을 포함한 연산 결과
+    console.log(n1 & n2); // 3, 나머지
+
+    console.log("--- 2. 증감 연산자 ---");
+    // 후위 연산자는 먼저 값을 출력(참조)하고, 그 이후에 값이 증가 또는 감소됨.
+    console.log(n1++ + 30); // 15 + 30 -> 45
+    console.log(n1);
+    // 전위 연산자는 먼저 값을 증가 또는 감소하고, 그 값을 출력(참조)함.
+    console.log(++n2 + 30); // 5 + 30 -> 35
+    console.log(n2); // 5
+
+    console.log("--- 3. 비교 연산자 ---");
+    let num1 = 15,
+      num2 = 4,
+      num3 = 15;
+    let g1 = 15.0;
+    let str1 = "15";
+    console.log(num1 > num2); // true
+    console.log(num1 >= num2); // true
+    console.log(num1 < num2); // false
+    console.log(num1 <= num2); // false
+    console.log(num1 == num2); // false
+    console.log(num1 != num2); // true
+    console.log(typeof num1); // number
+    console.log(typeof str1); // string
+    // 논리형의 연산에서는 타입이 일치하지 않아도 연산은 진행됨.
+    // ==, != : 값을 비교 (타입은 비교하지 않음)
+    console.log(num1 == str1); // true, 숫자형 == 문자형, 문자형이 숫자로 바뀔 수 있으면 숫자로 비교
+    console.log(num1 == str1); // false
+    console.log(num1 === str1); // false, 값과 타입을 모두 비교하여 값만 일치, 타입은 불일치
+    console.log(num1 === num3); // true, 값과 타입을 모두 비교하여 값과 타입 모두 일치
+
+    console.log("--- 4. 논리 연산자 ---")
+    console.log(num1 > num2 && num3 > num2); // true && true -> true
+    console.log(num1 > num2 && num3 < num2); // true && false -> false
+    console.log(num1 > num2 || num3 > num2); // true || true -> true
+    console.log(num1 > num2 || num3 < num2); // true || false -> true
+    console.log(num1 < num2);    // 15 < 4 -> false
+    console.log(!(num1 < num2)); // !(15 < 4) -> !false -> true
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS의 기본 속성 - 크기</title>
+  <style>
+    /*
+    em : 중첩된 부모의 영향을 받음.
+    rem : 최상위 부모의 영향만 받음.
+    */
+    /*
+    #wrapper {
+      font-size: 12px;
+    }
+
+    .h-text {
+      font-size: 2em;
+      24px
+    }
+
+    .v-text {
+      font-size: 1.5em;
+      36px
+    }
+    */
+
+    #wrapper {
+      font-size: 12px;
+    }
+
+    .h-text {
+      font-size: 2rem;
+    }
+
+    .v-text {
+      font-size: 1.5rem;
+    }
+
+
+  </style>
+  <!--
+    3. 상대 크기에서 em과 rem의 차이
+    - em : 부모요소의 크기를 기준으로 함. 중첩된 부모요소의 영향을 받음.
+    - rem : 최상위부모의 크기의 영향만 받음.
+  -->
+</head>
+
+<body>
+  <div id="wrapper">
+    <header class="h-text">
+      <p>가변적인 레이아웃</p>
+      <p class="v-text">가변 폰트</p>
+    </header>
+  </div>
+</body>
+
+</html>
