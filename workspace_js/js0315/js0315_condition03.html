@@ -61,22 +61,47 @@
       let month = Number(prompt("몇 월인지 입력하세요."));
 
       switch (month) {
-        case 3 || 4 || 5:
-          document.write(month + "월은 봄입니다.");
+        // case 3 || 4 || 5:
+        //   document.write(month + "월은 봄입니다.");
+        //   break;
+        // case 6 || 7 || 8:
+        //   document.write(month + "월은 여름입니다.");
+        //   break;
+        // case 9 || 10 || 11:
+        //   document.write(month + "월은 가을입니다.");
+        //   break;
+        // case 12 || 1 || 2:
+        //   document.write(month + "월은 겨울입니다.");
+        //   break;
+        // default:
+        //   document.write("다시 입력하세요.");
+        //   break;
+        // 입력값 많이 대입해보기,,case 3:
+        case 4:
+        case 5:
+          season = "봄";
           break;
-        case 6 || 7 || 8:
-          document.write(month + "월은 여름입니다.");
+        case 6:
+        case 7:
+        case 8:
+          season = "여름";
           break;
-        case 9 || 10 || 11:
-          document.write(month + "월은 가을입니다.");
+        case 9:
+        case 10:
+        case 11:
+          season = "가을";
           break;
-        case 12 || 1 || 2:
-          document.write(month + "월은 겨울입니다.");
+        case 12:
+        case 1:
+        case 2:
+          season = "겨울";
           break;
         default:
-          document.write("다시 입력하세요.");
+          alert("틀렷어요");
           break;
       }
+      alert(`${month}월은 ${season}입니다.`);
+      
     }
 
     // 퀴즈2번
@@ -92,7 +117,7 @@
       let avrToInt = Math.floor(avr / 10); // 평균을 10으로 나누고 소수점 이하는 버림
       let grade;
       switch (avrToInt) {
-        case 9:
+        case 10: case 9:
           grade = "A학점";
           break;
         case 8:
@@ -187,8 +212,10 @@
 
     function func4() {
       let usrNum = prompt("정수를 입력하세요.");
-      let num = usrNum[usrNum.length - 1];
-      if (num == 0 || num == 2 || num == 4 || num == 6 || num == 8) {
+      console.log(typeof usrNum);
+      let lastNum = usrNum[usrNum.length - 1];
+      console.log(typeof lastNum)
+      if (lastNum == 0 || lastNum == 2 || lastNum == 4 || lastNum == 6 || lastNum == 8) {
         alert(`${usrNum}은 짝수입니다.`);
       } else {
         alert(`${usrNum}은 홀수입니다.`);

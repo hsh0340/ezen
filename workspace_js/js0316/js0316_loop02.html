@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반복문 연습2</title>
+  <!-- 
+    2. do~while문
+    - 기본 형식
+    초깃값;
+    do {
+      실행문;
+      증감값;
+    } while (조건); 
+   -->
+</head>
+
+<body>
+  <h3>2. do~while문 연습</h3>
+  <script>
+    // 문제1) 1부터 100까지 1씩 증가하는 수를 출력하시오.
+    // 초깃값 : 1, 조건 : 100까지, 증감값 : 1씩 증가, 10회 회전
+    // let i = 1;
+    // do {
+    //   console.log(i);
+    //   i++;
+    // } while (i <= 10);
+
+    // 문제2) 10부터 1까지 1씩 감소하는 수를 출력하시오.
+    // let i = 10;
+    // do {
+    //   console.log(i);
+    //   i--;
+    // } while (i >= 1);
+
+    // 문제3) 1부터 10까지 2씩 증가하는 수를 출력하시오.
+    let i = 1;
+    do {
+      console.log(i);
+      i += 2;
+    } while (i <= 10);
+
+    // 문제4) 1부터 100까지 홀수를 출력하고, 그 합과 갯수를 출력하시오.
+    let j = 1;
+    let sumj = 0;
+    let cntj = 0;
+    do {
+      if (j % 2 == 1) {
+        console.log(j);
+        sumj += j;
+        cntj++;
+      }
+      j++;
+    } while (j <= 100);
+    console.log(`홀수의합 : ${sumj}, 홀수의 갯수 : ${cntj}`)
+
+    // 문제5) 1부터 100까지 3의 배수이면서, 4의 배수인 수를 출력하고
+    // 그 합과 갯수를 출력하시오.
+    let k = 1;
+    let sumk = 0;
+    let cntk = 0;
+    do {
+      if (k % 3 == 0 && k % 4 == 0) {
+        console.log(k);
+        sumk += k;
+        cntk++;
+      }
+      k++;
+    } while (k <= 100);
+    console.log(`3의 배수이면서 4의 배수인 수의 합 : ${sumj}, 갯수 : ${cntj}`)
+  </script>
+</body>
+
+</html>
