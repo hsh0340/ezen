@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제 5번</title>
+</head>
+
+<body>
+  <!-- 
+    과제5) 입력창을 통해 정수를 입력하여 1부터 입력한 수까지의 
+    n, n의제곱, n의 세제곱을 웹화면에 테이블로 출력하시오.
+  -->
+  <script>
+    let usrNum = Number(prompt("정수를 입력하세요."));
+    let table = "<table border='1'>";
+    table += `<tr>
+      <th>n</th>
+      <th>n의 제곱</th>
+      <th>n의 세제곱</th>
+      </tr>`;
+
+    for (let i = 1; i <= usrNum; i++) {
+      table += `<tr>
+        <td>${i}</td>
+        <td>${i * i}</td>
+        <td>${i * i * i}</td>
+        </tr>`;
+    }
+    table += "</table>";
+    document.write(table);
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제 2번</title>
+</head>
+
+<body>
+  <!-- 
+    과제2) 입력창을 통해 정수를 입력하여 1부터 입력한 정수까지의 완전수를 출력하고, 그 합과 갯수를 출력하시오.
+    완전수(perfect number) : 자신을 제외한 자신의 약수를 더해서 자신과 같아지는 수, 
+    ex) 6의 약수 : 1, 2, 3, 6 -> 6 === 1 + 2 + 3
+  -->
+  <script>
+    let usrNum = Number(prompt("정수를 입력하세요."));
+    let sum = 0;
+    let cnt = 0;
+    function isPerfectNum(num) { // 완전수인지 판별하는 함수
+      let sum = 0 // 자신을 제외할 약수의 합을 저장할 변수 초기화
+      for (let i = 1; i <= num-1; i++) { // 자기자신으로 나누면 자기자신까지 약수에 포함되기 때문에 -1까지 나눔
+        if (num % i == 0) {// 약수이면
+          sum += i; // 자신 제외 더함
+        }
+      }
+      if (num == sum) { 
+        return true;
+      }
+    }
+
+    for (let i = 1; i <= usrNum; i++) {
+      if (isPerfectNum(i)) { // 완전수면 출력
+        console.log(i);
+        sum += usrNum;
+        cnt++;
+      }
+    }
+
+    console.log(`완전수의 합 : ${sum}, 완전수의 갯수 : ${cnt}`)
+  </script>
+</body>
+
+</html>

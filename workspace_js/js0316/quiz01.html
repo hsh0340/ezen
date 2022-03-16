@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제 1번</title>
+</head>
+
+<body>
+  <!-- 뭐가틀린거야 ㅣㅏㄴㅇㅁ럼;ㅣ나 ㅓ리;ㄷㅈ -->
+</body>
+  <!-- 과제1) 입력창을 통해 정수를 입력하여 1부터 입력한 정수까지의 소수를 출력하고, 그 합과 갯수를 출력하시오.
+    소수(prime number) : 1을 제외하고, 1과 자기자신으로만 나누어지는 수 ex) 2, 3, 5, 7, 11, 13, 17 -->
+  <script>
+    // 함수 사용 
+    let usrNum = Number(prompt("정수를 입력하세요."));
+    let sum = 2; // 합을 저장할 변수, 2는 무조건 포함이기 때문에 2로 초기화
+    let cnt = 1; // 갯수를 저장할 변수, 2는 무조건 포함이기 때문에 1로 초기화
+
+    function isPrimeNumber(num) { // 소수인지 판별하는 함수
+        return false;
+      for (let i = 2; i <= num; i++) {
+        if (num % i == 0) { // usrNum을 2부터 판별하는 수로 나눴을 때 나누어 떨어지면 소수가 아님.
+          return false;
+        }
+        return true;
+      }
+    }
+
+    console.log(2); // 2는 무조건 소수이기 때문에 출력
+    for (let i = 3; i <= usrNum; i++) { // 3부터 입력한 정수까지 소수인지 판별 (2는 무조건 소수니까 3부터)
+      if (isPrimeNumber(i)) {
+        // i가 소수일 때
+        console.log(i);
+        sum += i;
+        cnt++;
+      }
+    }
+    console.log(`소수의 총 합 : ${sum}\n소수의 개수 : ${cnt}`);
+
+    // 이중 for문 사용
+    let usrNum2 = Number(prompt("정수를 입력하세요."));
+    let sum2 = 0;
+    let cnt2 = 0;
+    let primeArr = ['2']; // 소수를 저장할 배열, 2는 무조건 포함이기 때문에 2만 넣어놓음
+
+    for (let i = 3; i <= usrNum2; i++) { // 3부터 입력한 정수까지 소수인지 판별 (2는 무조건 소수니까 3부터)
+      for (let j = 2; j <= i; j++) { // 2부터 자기자신까지 나눔
+        if (i % j == 0) { // 나누어 떨어지면 소수가 아님
+          break; // 소수가 아니므로 반복문 탈출. 다음 수 판별
+        } 
+        // 소수일 때 (나누어 떨어지지 않을 때 마다 실행됨)
+        primeArr.push(i); // 소수 배열에 원소로 추가(중복 되는 원소 생김)
+      }
+    }
+    
+    let newArr = Array.from(new Set(primeArr)); // set 객체 이용해서 중복되는 원소 제거한 새로운 배열 생성
+    for (let i = 0; i <= newArr.length-1; i++) {
+      console.log(newArr[i]); // 소수 배열 원소들 출력
+      sum2 += Number(newArr[i]); // 소수 배열 원소들의 합
+    }
+    console.log(`소수의 총 합 : ${sum2}\n소수의 개수 : ${newArr.length}`);
+    
+  </script>
+</body>
+
+</html>

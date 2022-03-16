@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제 3번</title>
+</head>
+
+<body>
+  <!-- 
+    과제3) 입력창을 통해 정수를 입력하여 그 약수를 출력하고, 그 합과 갯수를 출력하시오.
+    ex) 10의 약수 : 1, 2, 5, 10, 합: 18, 갯수 :4
+   -->
+  <script>
+    let usrNum = Number(prompt("정수를 입력하세요."));
+    let sum = 0;
+    let cnt = 0;
+    for (let i = 1; i <= usrNum; i++) {
+      if (usrNum % i == 0) {
+        console.log(i);
+        sum += i;
+        cnt++;
+      }
+    }
+    console.log(`합 : ${sum}, 갯수 : ${cnt}`);
+  </script>
+</body>
+
+</html>
