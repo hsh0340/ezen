@@ -18,6 +18,7 @@
     let usrNum = Number(prompt("정수를 입력하세요."));
     let sum = 0;
     let cnt = 0;
+    
     function isPerfectNum(num) { // 완전수인지 판별하는 함수
       let sum = 0 // 자신을 제외할 약수의 합을 저장할 변수 초기화
       for (let i = 1; i <= num-1; i++) { // 자기자신으로 나누면 자기자신까지 약수에 포함되기 때문에 -1까지 나눔

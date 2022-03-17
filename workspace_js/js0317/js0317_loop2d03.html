@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중첩 반복문 3</title>
+  <!-- 
+    
+   -->
+</head>
+<body>
+  <script>
+    // 퀴즈 1번 - 좌하변
+    function quiz01() {
+      let n = Number(prompt("정수를 입력하세요"));
+      let output = "";
+      for (let i= 1; i <= n; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (i >= j) {
+            output += "* ";
+          } else {
+            output += "  ";
+          }
+        }
+        output += "\n";
+      }
+      console.log(output);
+    }
+
+    // 퀴즈 2번 - 좌상변
+    function quiz02() {
+      let n = Number(prompt("정수를 입력하세요"));
+      let output = "";
+      for (let i= 1; i <= n; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (i + j <= n+1) {
+            output += "* ";
+          } else {
+            output += "  ";
+          }
+        }
+        output += "\n";
+      }
+      console.log(output);
+    }
+
+    // 퀴즈 3번 - 우하변
+    function quiz03() {
+      let n = Number(prompt("정수를 입력하세요"));
+      let output = "";
+      for (let i= 1; i <= n; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (i + j >= n+1) {
+            output += "* ";
+          } else {
+            output += "  ";
+          }
+        }
+        output += "\n";
+      }
+      console.log(output);
+    }
+
+    // 퀴즈 4번 - 우상변
+    function quiz04() {
+      let n = Number(prompt("정수를 입력하세요"));
+      let output = "";
+      for (let i= 1; i <= n; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (i <= j) {
+            output += "* ";
+          } else {
+            output += "  ";
+          }
+        }
+        output += "\n";
+      }
+      console.log(output);
+    }
+  </script>
+  <h3>직각삼각형 출력</h3>
+  <button onclick="quiz01()">좌하변 직각삼각형</button>
+  <button onclick="quiz02()">좌상변 직각삼각형</button>
+  <button onclick="quiz03()">우하변 직각삼각형</button>
+  <button onclick="quiz04()">우상변 직각삼각형</button>
+</body>
+</html>

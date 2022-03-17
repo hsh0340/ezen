@@ -6,6 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>과제 4번</title>
+  <style>
+    table {
+      width: 200px;
+      height: 600px;
+      text-align: center;
+    }
+    th {
+      font-size: 20px;
+    }
+  </style>
 </head>
 
 <body>
@@ -15,7 +25,7 @@
   <script>
     let dan = Number(prompt("단을 입력하세요."));
     let table = "<table border = '1'>";
-    table += `<tr><th>**** ${dan}단 ****</th></tr>`;
+    table += `<tr><th>${dan}단</th></tr>`;
     for (let i = 1; i <= 9; i ++) {
       table += `<tr><td>${dan} X ${i} = ${dan * i}</td></tr>`;
     }

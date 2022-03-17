@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중첩 반복문 2</title>
+</head>
+
+<body>
+  <h3>2차원 반복문 연습</h3>
+  <script>
+    // 퀴즈1번) 입력창으로 정수를 입력하여 정수만큼 *을 가로, 세로로 콘솔로 출력하사ㅣ오. 정사각형을 출력.
+    // let num = Number(prompt("정수 입력"));
+    // let output ="";
+    // for (i = 1; i <= num; i++) {
+    //   for (j = 1; j <= num; j++) {
+    //     output += "* ";
+    //   }
+    //   document.write(output);
+    // }
+
+    // 퀴즈2번) 입력창으로 정수를 입력하여 정수만큼 직각삼각형 출력
+    // let num = Number(prompt("정수 입력"));
+    // for (i = 1; i <= num; i++) {
+    //   for (j = 1; j <= i; j++) {
+    //     document.write("* ");
+    //   }
+    //   document.write("<br>");
+    // }
+
+    // 퀴즈3번) 좌상변이 직각인 직각삼각형을 출력
+    let num = Number(prompt("정수 입력"));
+    let output = "";
+    for (let i = 1; i <= num; i++) {
+      // for (let j = n; j >= i; j--) {
+      // for (let j = i; j <= n; j++) {
+      for (let j = 1; i <= n+1-i; j++) {
+        output += "* ";
+      }
+      output += "\n";
+    }
+    console.log(output);
+
+
+    // 퀴즈4번) 우하변이 직각인 직각삼각형을 출력.
+
+    // 퀴즈5번) 우상변이 직각인 직각삼각형을 출력.
+  </script>
+</body>
+
+</html>

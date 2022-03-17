@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중첩 반복분</title>
+  <!-- 
+    1. 다중(중첩) 반복문 - 반복문 안에 반복문이 존재하는 경우
+    - 2차원 반복문 - 실제로 많이 활용
+
+   -->
+</head>
+
+<body>
+  <h3>중첩 반복문</h3>
+  <p>문제1) 구구단을 2단 ~ 9단까지를 출력하시오. 2차원 반복문 활용</p>
+  <script>
+    // 1번 - for문 사용
+    // for (let i = 2; i <= 9; i++) {
+    //   console.log(`--- ${i}단 ---`);
+    //   for (let j = 1; j <= 9; j++) {
+    //     console.log(`${i} * ${j} = ${i*j}`);
+    //   }
+    // }
+
+    // 2번 - while문 사용
+    // let i = 2; // 바깥쪽 초기값
+
+    // while (i <= 9) { // 바깥쪽 조건
+    //   console.log(`--- ${i}단 ---`);
+    //   // j값 10 -> j값에 초기화
+    //   let j = 1; // 안쪽 초기값 
+    //   while (j <= 9) { // 안쪽 조건
+    //     console.log(`${i} * ${j} = ${i*j}`);
+    //     j++; // 안쪽 증감값
+    //   }
+    //   i++; // 바깥쪽 증감값
+    // }
+
+    // 3번 - do~while문 사용
+    let i = 2;
+    let j = 1;
+    do {
+      console.log(`--- ${i}단 ---`);
+      let j = 1;
+      do {
+        console.log(`${i} * ${j} = ${i*j}`);
+      } while (j >= 9);
+      i++;
+    }
+    while (i <= 9);
+  </script>
+</body>
+
+</html>
