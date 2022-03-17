@@ -1,0 +1,25 @@
+body {
+  font-family: 'Noto Sans Kr', sans-serif;
+}
+
+.container {
+  max-width: 1400px;
+  background-color: orange;
+}
+
+.container .shows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.container .shows .show {
+  width: 18%;
+  background-color: blue;
+  border: 1px solid black;
+}
+
+img {
+  width: 80%;
+}
