@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제</title>
+</head>
+<body>
+  <script>
+    // 과제1
+    function func1() {
+      let usrStr = prompt("문자열을 입력하세요.");
+      let newStr = [];
+      for (let i = usrStr.length - 1; i >= 0; i--) {
+        newStr.push(usrStr[i]);
+      }
+      console.log(`입력한 문자열 : ${usrStr}\n역순으로 바뀐 문자열 : ${newStr.join('')}`);
+    }
+
+    // 과제2
+    function func2() {
+      let usrNum = prompt("정수를 입력하세요.");
+      let sum = 0;
+      for (let i = 0; i <= usrNum.length - 1; i++) {
+        sum += usrNum[i] * Math.pow(10, i);
+      }
+      console.log(`입력한 정수 : ${usrNum}\n역순으로 바뀐 정수 : ${sum}`);
+    }
+
+    // 과제3
+    function func3() {
+      let usrStr = prompt("영어단어를 입력하세요.");
+      let newStr = [];
+      for (let i = usrStr.length - 1; i >= 0; i--) {
+        newStr.push(usrStr[i]);
+      }
+      newStr = newStr.join('');
+      if (usrStr == newStr) {
+        console.log(`${usrStr}은 회문입니다.`);
+      } else {
+        console.log(`${usrStr}은 회문이 아닙니다.`);
+      }
+    }
+
+    // 과제4
+    function func4() {
+      let usrNum = prompt("정수를 입력하세요.");
+      let result = 1;
+      let printStr = "1";
+      for (let i = 2; i <= usrNum; i++) {
+        result *= i;
+        printStr += ` * ${i}`;
+      }
+      console.log(`${usrNum}! = ${printStr} = ${result}`);
+    }
+
+    // 과제5
+    function func5() {
+      let usrNum = prompt("정수를 입력하세요.");
+      let fibonacci = [1, 1];
+      for (let i = 2; i <= usrNum - 1; i++) {
+        fibonacci[i] = fibonacci[i-2] + fibonacci[i-1];
+      }
+      console.log(fibonacci.join(' '));
+    }
+  </script>
+
+  <h3>과제1) 입력창을 통해서 문자열을 입력했을 때 역순으로 출력하시오.</h3>
+  <button onclick="func1()">실행</button>
+  <hr>
+  <h3>과제2) 입력창을 통해서 정수를 입력했을 때 역순으로 출력하시오.</h3>
+  <button onclick="func2()">실행</button>
+  <hr>
+  <h3>과제3) 입력창을 통해서 영어단어를 입력했을 때 회문인지의 여부를 출력하시오.</h3>
+  <button onclick="func3()">실행</button>
+  <hr>
+  <h3>과제4) 입력창을 통해서 입력한 정수의 팩토리얼을 출력하시오.</h3>
+  <button onclick="func4()">실행</button>
+  <hr>
+  <h3>과제5) 입력창을 통해서 입력한 정수 개수의 피보나치 수열을 출력하시오.</h3>
+  <button onclick="func5()">실행</button>
+</body>
+</html>
