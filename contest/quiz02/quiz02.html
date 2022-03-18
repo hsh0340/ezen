@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 영어 단어의 점수를 파악하시오.
+    // a:1점, b:2점, ...
+    // love -> l=12, o=15, v=22, e=5 => 54점
+    // 선생님이 좋아하는! 100점짜리 영어단어를 찾아오시오.
+
+    let word = prompt("점수를 알고싶은 단어를 입력하세요!");
+    let score = 0;
+
+    word = word.toUpperCase(); // 대문자 소문자 섞일 경우를 대비해서 대문자로 통일
+
+    for (let i = 0; i <= word.length-1; i++) {
+      score += (word.charCodeAt(i)) - 64 // 영어 대문자 아스키코드값이 65부터 시작하기 때문에 64를 빼줌
+    }
+    console.log(score);
+  </script>
+</body>
+
+</html>
