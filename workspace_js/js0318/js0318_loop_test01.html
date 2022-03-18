@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반복문 응용 과제 풀이 1</title>
+  <!-- 
+
+   -->
+</head>
+
+<body>
+  <script>
+    // 과제 1번
+    // letters
+    function quiz01() {
+      let n = prompt("문자열을 입력하시오. 역순으로 출력합니다.");
+      let t = ""; // 임시변수
+      n = n.split(""); // 문자열을 특정문자(구분자)로 구분하여 문자열의 배열을 저장
+      for (let i = 0; i < parseInt(n.length / 2); i++) {
+        t = n[i];
+        n[i] = n[n.length - 1 - i];
+        n[n.length - 1 - i] = t;
+      }
+      console.log(`reverse 후 문자열 : ${n}`);
+    }
+
+    // 과제 2번
+    function quiz02() {
+      let n = Number(prompt("정수를 입력하시오. 역순으로 출력합니다."));
+
+      let n2 = "";
+      console.log(`reverse 전 정수 : ${n}`);
+      while (n > 0) {
+        n2 += (n % 10); // 10으로 나눈 나머지 출력
+        n = parseInt(n / 10); // 10으로 나눈 문자열
+      }
+      console.log(`reverse 후 정수 : ${n2}`);
+    }
+
+    // 과제 3번
+    function quiz03() {
+      let str = prompt("문자열을 입력하시오. 회문인지를 판별합니다.");
+      let flag = true; // 플래그 기법, 표식 기법
+
+      for (let i = 0; i < parseInt(str.length / 2); i++) {
+        if (str[i] != str[str.length - 1 - i]) {
+          flag = false; // 회문이 아님
+          break;
+        }
+      }
+
+      // 조건 선택 연산자 사용
+      flag ? console.log(`${str}은 회문입니다.`) : console.log(`${str}은 회문이 아닙니다.`);
+      // if문 사용
+      // if (flag) {
+      //   console.log(`${str}은 회문입니다.`);
+      // } else {
+      //   console.log(`${str}은 회문이 아닙니다.`);
+      // }
+    }
+
+    // 과제 4번
+    function quiz04() {
+      let n = Number(prompt("정수를 입력하시오. 팩토리얼을 구합니다."));
+      let fact = 1;
+      let str = "";
+
+      str += n + "! = ";
+      for (let i = 1; i <= n; i++) {
+        //   if문 사용
+        //   if (i < n) {
+        //     str += i + " * ";
+        //   } else {
+        //     str += i + " = ";
+        //   }
+        //   fact *= i;
+        //
+        str += (i < n ? i + " * " : i + " = ");
+      }
+      str += fact;
+      console.log(`${str}`);
+    }
+
+    // 과제 5번
+    function quiz05() {
+      let n = Number(prompt("피보나치 수열의 개수를 입력하시오."));
+      let n1 = 1;
+      n2 = 1;
+      n3;
+
+      console.log(`${n1}\n${n2}`);
+      for (let i = 1; i <= n - 2; i++) {
+        n3 = n1 + n2;
+        n1 = n2;
+        n2 = n3;
+      }
+    }
+
+    // 과제 6번
+    function quiz06() {
+      let n = Number(prompt("정수를 입력하시오. 정수까지의 완전수를 출력합니다."));
+
+      for (let i = 2; i <= n; i++) {
+        let sum = 0;
+        for (let j = 1; j <= parseInt(i / 2); j++) {
+          if (i % j == 0) // 약수 구하기
+            sum += j;
+        }
+        if (i == sum) { // 자신과 약수의 합(자신을 제외한)을 비교
+          console.log(i);
+        }
+      }
+    }
+  </script>
+  <h3>과제 1번</h3>
+  <p>입력창을 통해서 문자열을 입력했을 때 역순으로 출력하시오. 문자열의 특성 활용</p>
+  <button onclick="quiz01()">실행</button>
+  <hr>
+  <h3>과제 2번</h3>
+  <p>입력창을 통해서 문자열을 입력했을 때 역순으로 출력하시오. 숫자의 특성 활용</p>
+  <button onclick="quiz02()">실행</button>
+  <hr>
+  <h3>과제 3번</h3>
+  <p>입력창을 통해서 영어단어를 입력했을 때 회문(pailndrome)인지의 여부를 출력하시오.</p>
+  <button onclick="quiz03()">실행</button>
+  <hr>
+  <h3>과제 4번</h3>
+  <p>입력창을 통해서 입력한 정수의 팩토리얼(factorial)을 출력하시오.</p>
+  <button onclick="quiz04()">실행</button>
+  <hr>
+  <h3>과제 5번</h3>
+  <p>입력창을 통해서 입력한 정수 개수의 피보나치(fibonacci) 수열을 출력하시오.</p>
+  <button onclick="quiz05()">실행</button>
+  <hr>
+  <h3>과제 6번</h3>
+  <p>입력창을 통해서 정수를 입력하고</p>
+  <button onclick="quiz06()">실행</button>
+</body>
+
+</html>
