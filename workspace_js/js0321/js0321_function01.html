@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수의 생성</title>
+  <!-- 
+    < 함수를 만들어 사용할 때 필요한 두 가지 >
+    함수의 기본 형식
+    function 함수명(매개변수) {
+      실행문;
+      리턴값
+    }
+    1. 매개변수 : 파라미터(parameter), 인수(인자, argument)
+    - 함수를 호출할 때 전달되는 값
+    - 값을 전달받지 못한 매개변수는 undefined로 정의
+    - 값을 전달받지 못한 매개변수의 연산은 NaN으로 처리
+    - 매개변수보다 많이 전달되는 값은 버려짐
+
+    # 전개 매개변수(...) : 배열이 매개변수로 전달될 때 그 배열의 값을 펼쳐서 사용하도록 하는 매개변수
+    # 기본 매개변수 : 매개변수 자리에 값을 설정하여 함수 호출새에 매개변수의 값을 주지 않았을 때 사용하도록 하는 매개변수
+    2. 리턴값
+    - 리턴값은 1개 또는 0개여야한다.
+    - 리턴값의 여러개의 값을 전달하면, 마지막에 쓴 값이 리턴함.
+    - return은 생략할 수 있으며, 생략하면 리턴되는 값은 undefined로 처리됨.
+   -->
+</head>
+<body>
+  <h3>함수의 생성 1</h3>
+  <script>
+    // 함수의 생성(정의)
+    function add(a, b) {
+      return a + b;
+    }
+
+    // 함수의 사용(호출)
+    console.log(add(10, 20)); // 10 + 20 -> 30
+    console.log(add(15)); // a = 15; b = undefined, undefined+undefined -> NaN
+    console.log(add()); // a = undefined, b = undefined -> NaN
+    console.log(add(10, 20, 40)); // a = 10, b = 20, 10 + 20 -> 30, 40은 값을 받는 파라미터가 없음
+
+    // 퀴즈1번) 밑변과 높이를 입력창으로 입력하여 이등변삼각형의 면적을 구하시오.
+  
+    // 이등변삼각형의 면적 구하기
+    function triangle(width, height) {
+      return width * height / 2;
+    }
+    let width = Number(prompt("밑변을 입력하세요."));
+    let height = Number(prompt("높이를 입력하세요."));
+    console.log(triangle(width, height));
+
+    // 퀴즈2번) 학생들의 점수를 저장한 scores 배열의 값을 매개변수로하여 평균을 계산하는
+    // showAve()함수를 만들어 사용하시오.
+    let scores = [95, 87, 72, 68, 77];
+
+    // 1번 방법
+    function showAve1(s1, s2, s3, s4, s5) {
+      return (s1 + s2 + s3 + s4 + s5) / 5;
+    } 
+    console.log(`평균: ${showAve1(scores[0], scores[1], scores[2], scores[3], scores[4])}`);
+
+    // 2번 방법 - 효율적인 배열처리 방법
+    function showAve2(s) {
+      let sum = 0;
+      for (let i of s) {
+        sum += i;
+      }
+      return sum / s.length;
+    }
+    console.log(`평균: ${showAve2(scores)}`);
+
+    // 퀴즈3번) 함수에 배열을 매개변수로 전달하여 배열의 내용을 확인하시오.
+    function showArray1(a) {
+      console.log(a);
+      document.write(a + "<br>");
+    }
+    showArray(scores);
+
+    function showArray2(...a) {
+      console.log(a);
+      document.write(a + "<br>");
+    }
+  
+    showArray(scores);
+    showArray2(...scores);
+
+    // 퀴즈4번) 이름, 시급, 시간을 매개변수로 전달하여 한달 급여를 계산하는 showPay() 함수를
+    // 생성하여 사용하시오.
+    // 기본 매개변수(default parameter) : 매개변수를 전달받지 못했을 때 사용하는 매개변수의 값
+    function showPay(name, pay, hours) {
+      console.log(`사원명 : ${name}`);
+      console.log(`시급 : ${pay}`);
+      console.log(`근무시간 : ${hours}`);
+      console.log(`급여 : ${pay * hours}`);
+      console.log("--------------");
+    }
+    showPay("최여진", 25000, 45);
+    showPay("정혜인", 24000); // hours에 undefined
+    showPay("장진희");
+    
+  </script>
+</body>
+</html>

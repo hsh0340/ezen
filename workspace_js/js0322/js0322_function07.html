@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수의 응용 3</title>
+  <!-- 
+    퀴즈 1번) 두 개의 정수를 입력받아서 그 사이의 값을 누적하는 함수를 만들어 사용하시오.
+    ex) a = 10, b = 20 -> 10부터 20사이의 값을 누적
+
+    퀴즈 2번) 년도를 입력받아서 년도가 윤년인지를 판별하는 함수를 만들어 사용하시오.
+    윤년: 4로 나누어 떨어지고, 100으로 나누어 떨어지지 않고, 400으로  나누어 떨어지는 수
+    퀴즈 3번) 1부터 100까지의 난수 10개를 만들어 배열에 저장하고, 그 10개의 정수를 홀수와 짝수로 구분하여,
+    합계와 개수를 구하는 함수를 만들어 사용하시오.
+   -->
+</head>
+
+<body>
+  <h3>함수의 응용</h3>
+  <h4>퀴즈 1번</h4>
+  <script>
+    let n1 = Number(prompt("첫 번째 정수를 입력하시오."));
+    let n2 = Number(prompt("두 번째 정수를 입력하시오."));
+
+    // 함수 정의 - 두 정수 사이의 합
+    function accumulate(n1, n2) {
+      let result = 0;
+
+      for (let i = n1; i <= n2; i++) {
+        result += i;
+      }
+      return result;
+    }
+
+    // 함수 호출
+    console.log(`${n1}과 ${n2}사이의 합 : ${accumulate(n1, n2)}`);
+  </script>
+  <button onclick="accumulate(n1, n2)">실행</button>
+  <hr>
+  <h4>퀴즈 2번</h4>
+  <script>
+    let year = Number(prompt("년도를 입력하시오."));
+
+    function isLeapYear() {
+      return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+    }
+    console.log(`${year}은 윤년${isLeapYear(year)? "입니다" : "이 아닙니다"}`);
+  </script>
+  <hr>
+  <h4>퀴즈 3번</h4>
+  <script>
+    let arr = [];
+
+    for (let i = 0; i <= 9; i++) {
+      arr[i] = parseInt(Math.random() * 100) + 1;
+    }
+
+    function oddAndEven(arr) {
+      let oddSum = 0,
+        evenSum = 0,
+        oddCnt = 0,
+        evenCnt = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 == 1) {
+          oddSum += arr[i];
+          oddCnt++;
+        } else {
+          evenSum += arr[i];
+          evenCnt++;
+        }
+      }
+      console.log(`난수 10개 : ${arr}\n짝수 합 : ${evenSum}\n짝수의 갯수 : ${evenCnt}
+      \n홀수 합 : ${oddSum}\n홀수의 갯수 : ${oddCnt}`);
+    }
+    oddAndEven(arr);
+  </script>
+
+  <hr>
+</body>
+
+</html>

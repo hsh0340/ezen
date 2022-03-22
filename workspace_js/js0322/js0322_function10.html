@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수의 활용 5</title>
+  <!-- 
+    < 익명 함수, 화살표 함수, 콜백 함수
+    과제 1) 1 ~ 100 사이의 난수를 10개 생성하여 배열에 저장하고, 
+    3의 배수를 구하여 그 합과 개수를 출력하시오.
+
+    과제 2) 50 ~ 100 사이의 난수(학생들의 점수)를 10개 생성하여 배열에 저장하시오.
+    - 80점 이상의 테스트 합격자의 총점과 평균을 구하시오.
+    - 80점 미만의 테스트 불합격자의 리스트를 출력하시오.
+    - 학생의 최고값과 최저값을 구하시오
+    - 80점 이상의 테스트 합격자의 성적을 오름차순으로 정렬하여 출력하시오.
+    - 80점 미만의 테스트 불합격자의 배열을 내림차순으로 정렬하여 출력하시오.
+    - 60점 미만인 학생에게는 학생점수의 10%를 가산점으로 추가하여 전체 오름차순으로 정렬하여 출력하시오.
+    - 각 학생의 학점을 계산하여 출력하시오.
+   -->
+</head>
+
+<body>
+  <h3>함수의 활용 5</h3>
+  <script>
+    // 1. 콜백 함수
+    function callThreeTimes(call) {
+      for (let i = 0; i < 3; i++) {
+        callback(i);
+      }
+    }
+
+    // 기본 함수 - 선언적 함수
+    function print(i) {
+      console.log(`${i}번째 함수 호출 (1)`);
+    }
+
+    // (1) 콜백 함수 호출 - 매개변수로 기본함수를 사용
+    callThreeTimes(print);
+    console.log("-------------");
+
+    // 익명 함수
+    // let print2 = function(i) {
+    //   console.log(`${i}번째 함수 호출 (2)`);
+    // }
+
+    // 화살표 함수
+    let print2 = (i) => console.log(`${i}번째 함수 호출 (2)`);
+
+    // (2) 콜백 함수 호출 - 매개변수로 익명함수를 사용
+    callThreeTimes(print2);
+    console.log("-------------");
+
+    // (3) 콜백 함수 호출 - 익명 
+    // callThreeTimes(function(i)) {
+    //   console.log(`${i}번째 함수 호출 (3)`);
+    // }
+    callThreeTimes((i) => console.log(`${i}번째 함수 호출 (3)`));
+
+    // 2. 콜백 함수를 이용한 메서드
+    // forEach() : 배열의 요소를 차례대로 접근하는 메서드
+    // map() : 콜백함수에서 리턴한 값을 기반으로 새로운 배열을 생성하는 메서드
+    // filter() : 콜백함수에서 리턴한 값 중에서 true인 값을 모아 새로운 배열을 생성하는 메서드
+
+    let scores = [95, 78, 66, 87, 55];
+    let numbers = [];
+
+    // 퀴즈1) scores 배열의 인덱스와 값을 출력하시오.
+    // scores.forEach(function(v, i, a) { // 값, 인덱스, 배열명 순으로 씀
+    //   console.log(`${i}번째 요소의 값 : ${v}`);
+    // }); 
+    // console.log("-------------");
+    scores.forEach((v, i, a) => console.log(`${i}번째 요소의 값 : ${v}`));
+    console.log("-------------");
+
+    // 퀴즈2) scores 배열의 모든 값을 제곱하여 numbers 라는 배열에 저장하시오.
+    // numbers = scores.map(function(value, index, array) {
+    //   return value * value;
+    // });
+    numbers = scores.map((value, index, array) => value * value);
+
+    numbers.forEach(console.log);
+    console.log("-------------");
+    // console.log(scores);
+
+    // 퀴즈3) scores 배열 중에서 80점 이상인 점수만 pass라는 배열에 저장하시오.
+    // let pass = scores.filter(function() {
+    //   return value >= 80;
+    // })
+    let pass = scores.filter(value => value >= 80)
+    console.log(pass);
+    console.log("-------------");
+
+    // 3. 콜백함수의 종합 응용 문제
+    // 퀴즈4) arr 배열에서 짝수만 구하여, 그 값에 제곱을 하여 arr 배열에 다시 저장하고, 출력하시오.
+    let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    // 메서드 체이닝(chaining) : 메서드의 리턴값을 받아서 다시 사용하는 방법
+    let arr2 = arr.filter((value)) => value%2==0)
+    .map((value, index, array) => value * value)
+    .forEach((value, index, array) => console.log(value));
+  </script>
+</body>
+
+</html>
