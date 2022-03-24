@@ -112,6 +112,45 @@
     document.write("naver".link("http://www.naver.com")); // <a href="http://www.naver.com">naver</a>
     document.write("상한가" + "10%".sup() + "<br>");
     document.write("하한가" + "25%".sub() + "<br>");
+
+    // 19. padStart() : 문자열 앞에 지정한 문자를 지정한 길이만큼 채움.
+    // padEnd() : 문자열 뒤에 지정한 문자를 지정한 길이만큼 채움
+    let s1 = "5";
+    console.log(s1.padStart(4, 0)); // 0005 -> 전체 4자리, 채울 문자
+    let s2 = "78";
+    console.log(s2.padEnd(4, "0")); // 7800 -> 전체 4자리, 채울 문자
+
+    // 20. startsWith() : 문자열이 특정 문자열로 시작하는지의 여부를 알려줌(불린값)
+    // endsWith() : 문자열이 특정 문자열로 끝나지의 여부를 알려줌(불린값)
+    let url = "http://www.naver.com";
+    if(url.startsWith("http://") || url.startsWith("https://")) {
+      console.log("올바른 웹사이트입니다.");
+    } else {
+      console.log("올바른 웹사이트가 아닙니다.");
+    }
+
+    let file = "homework01.jpg";
+    if(file.endsWith(".jpg") || file.endsWith(".png")) {
+      console.log("올바른 이미지 형식의 파일입니다. 업로드가 가능합니다.");
+    } else {
+      console.log("올바른 이미지 형식의 파일이 아닙니다. 업로드가 불가합니다.");
+    }
+
+    // 21. replace() 응용 - 6번 참고
+    // replace()는 처음에 찾은 문자열만 변경
+    // replace()에서 정규식을 사용하면 다양한 방식으로 문자열의 변경이 가능
+    // ex) 대소문자 구분없이 찾기, 모든 문자열을 찾기...
+    let s3 = "Please visit Seoul and Seoul!";
+    let s4 = s3.replace("Seoul", "Jeju"); // 처음 찾은 문자열만 변경
+    console.log(s4);
+    let s5 = s3.replace(/Seoul/g, "Jeju"); // 정규식, g(global) : 모든 문자열을 찾음
+    console.log(s5);
+    // let s6 = s3.replace("seoul", "Jeju"); // 대소문자를 엄격하게 구분
+    // let s6 = s3.replace("SEOUL", "Jeju"); // 대소문자를 엄격하게 구분
+    let s6 = s3.replace(/SEOUL/i, "Jeju"); // 정규식, i(insensitive) : 대소문자 구분 없이 찾음.
+    console.log(s6);
+    let s7 = s3.replace(/SEOUL/gi, "Jeju"); // 정규식, 대소문자 구분없이 모든 문자열을 찾음.
+    console.log(s7);
   </script>
 </body>
 </html>

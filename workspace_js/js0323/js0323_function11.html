@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 과제 1번
+    let a = [];
+    for (let i = 0; i < 10; i++) {
+      a[i] = parseInt(Math.random() * 100) + 1; // 1~100 까지의 난수 10개
+    }
+
+    let sum = 0,
+      cnt = 0;
+    let a2 = a.filter((value) => (value % 3 == 0));
+    console.log(a);
+    console.log(a2);
+
+    a2.forEach((value, index, array) => (sum += value, ++cnt));
+    console.log(`합계 : ${sum}, 개수 : ${cnt}`);
+    console.log("----------------");
+
+    // 과제 2번
+    let scores = [];
+    for (let i = 0; i < 10; i++) {
+      scores[i] = parseInt(Math.random() * 51) + 50;
+    }
+    console.log(`scores : ${scores}`);
+
+    let tot = 0,
+      ave = 0;
+    // scores.filter((value) => value >= 80)
+    // .forEach((value, index, array) => (console.log(value), tot += value));
+    // console.log(`총점 : ${tot}, 평균 : ${(tot / 3).toFixed(2)}`);
+    let s1 = scores.filter((value) => (value >= 80));
+    s1.forEach((value, index, array) => (tot += value));
+    console.log(`80점이상 점수 : ${s1}`);
+    console.log(`총점 : ${tot}, 평균 : ${(tot/s1.length).toFixed(2)}`);
+    console.log("----------------");
+
+    // 2-2 번 - 80 점미만의 테스트 불합격자의 배열을 출력하시오.
+    tot = 0;
+    let s2 = scores.filter((value) => (value < 80));
+    s1.forEach((value, index, array) => (tot += value));
+    console.log(`80점이상 점수 : ${s2}`);
+    console.log(`총점 : ${tot}, 평균 : ${(tot/s2.length).toFixed(2)}`);
+    console.log("----------------");
+
+    // 2-3 - 학생의 최고값과 최저값을 구하시오.
+    let max = scores[0],
+      min = scores[0];
+    scores.forEach((value, index, array) => {
+      if (value > max) {
+        max = value;
+      }
+      if (value > min) {
+        min = value;
+      }
+    });
+    console.log(`최고값 : ${max}, 최저값 : ${min}`);
+    let s3 = scores.sort();
+    console.log(s3);
+    console.log(`최고값 : ${s3[s3.length-1]}, 최저값 : ${s3[0]}`);
+    let s4 = scores.sort((a, b) => (b - a))
+    console.log(s4);
+    console.log(`최고값 : ${s3[0]}, 최저값 : ${s3[s3.legnth-1]}`);
+
+    // 2-4 : 80점 이상의 테스트 합격자의 성적을 오름차순으로 정렬하여 출력하시오.
+    scores.filter((value) = value >= 80).sort((a, b) => (a - b))
+    .forEach((value, index, array) => console.log(value));
+
+    // 2-5 : 80점 미만의 테스트 불합격자의 성적을 내림차순으로 정렬하여 출력하시오.
+    scores.filter(value => value < 80).sort((a, b) => b - a)
+    .forEach((value, index, array) => console.log(value));
+
+    // 2-6 : 60점 미만인 학생들에게 학생점수의 10%를 가산점으로 추가하여 그 학생들을 오름차순으로 정렬하여 출력하시오.
+    let s6 = scores.filter(value => value < 60).sort((a, b) => a - b);
+    console.log(s6);
+    //
+    scores.filter(value => value < 60)
+    .map((value, index, array) => (value = value * 1.1 ))
+    .sort((a, b) => a - b)
+    .forEach((value, index, array) => console.log(value.toFixed(2)));
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

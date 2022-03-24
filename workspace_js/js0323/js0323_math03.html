@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과제</title>
+  <!-- 
+    Math 객체 - 수학과 관련된 다양한 프로퍼티와 메서드를 정의해놓은 클래스(객체)
+    1. Math.random() : 0부터 1사이(1은 포함하지 않음)의 난수(무작위수)를 발생함.
+    - 0 ~ 0.9999... 까지의 난수를 발생
+    2. Math.round() : 소수점 첫째자리에서 반올림하여 정수(1의자리)로 만듦.
+    3. Math.ceil() : 소수점 첫째자리에서 무조건 올림하여 정수로 만듦.
+    4. Math.floor() : 소수점 첫째자리에서 무조건 내림하여 정수로 만듦.
+    5. Math.trunc() : 소수점 이하자리를 무조건 버려서 정수로 만듦.
+    6. Math.sign
+    7. Math.pow
+    8. Math.sqrt
+    9. Math.abs
+    10. Math.min
+    11. Math.PI
+    
+   -->
+</head>
+<body>
+  <h3>Math 객체</h3>
+  <script>
+    // 1. Math.random();
+    let n1 = Math.random();
+    console.log(n1);
+    console.log("-----------");
+
+    // 2. Math.round() : 반올림 메서드
+    console.log(Math.round(4.9)); // 5
+    console.log(Math.round(4.5)); // 5
+    console.log(Math.round(4.4)); // 4
+    console.log(Math.round(4.1)); // 4
+    console.log(Math.round(-4.2)); // -4
+    console.log(Math.round(-4.7)); // -5
+    console.log("-----------");
+
+    // 3. Math.ceil() : 무조건 올림 메서드
+    console.log(Math.ceil(4.8)); // 5
+    console.log(Math.ceil(4.5)); // 5
+    console.log(Math.ceil(4.1)); // 5
+    console.log(Math.ceil(4.0)); // 4
+
+    // 4. Math.floor() : 무조건 내림 메서드
+    console.log(Math.floor(4.8)); // 4
+    console.log(Math.floor(4.5)); // 4
+    console.log(Math.floor(4.1)); // 4
+    console.log(Math.floor(4.0)); // 4
+    console.log(Math.floor(-4.2)); // -5
+    console.log(Math.floor(-4.7)); // -5
+    console.log("-----------");
+
+    // 5. Math.trunc() : 무조건 버림 메서드
+    console.log(Math.trunc(4.8)); // 4
+    console.log(Math.trunc(4.5)); // 4
+    console.log(Math.trunc(4.1)); // 4
+    console.log(Math.trunc(4.0)); // 4
+    console.log(Math.trunc(-4.2)); // -4
+    console.log(Math.trunc(-4.7)); // -4
+    console.log("-----------");
+
+    // 6. Math.sign() : 숫자의 양수, 음수 여부를 판정 
+    console.log(Math.sign(-4)); // -1
+    console.log(Math.sign(4)); // 1
+    console.log(Math.sign(0)); // 0
+    console.log("-----------");
+
+
+    // 7. Math.pow() : 숫자의 승수값
+    console.log(Math.pow(4, 3)); // 4의 3승
+    console.log(Math.pow(3.5, 4)); // 3.5의 4승
+    console.log(Math.pow(3, 3.3)); // 3의 3.3승
+    console.log(Math.pow(-3, 3)); // -3의 3승 -> -27
+    console.log(Math.pow(-3, -3)); // -3의 -3승
+    console.log(Math.pow(0, 5)); // 0
+    console.log(Math.pow(5, 0)); // 1
+    console.log("-----------");
+
+
+    // 8. Math.sqrt() : 숫자의 루트값
+    console.log(Math.sqrt(9)); // 3
+    console.log(Math.sqrt(16)); // 4
+    console.log(Math.sqrt(5)); // 루트 5
+    console.log("-----------");
+
+
+    // 9. Math.abs() : 숫자의 절대값
+    console.log(Math.abs(5)); // 5
+    console.log(Math.abs(-5)); // 5
+    console.log("-----------");
+
+    // 10. Math.min(), Math.max()
+    console.log(Math.min(84, 97, 55, 73, 68));
+    let a = [84, 97, 55, 73, 68];
+    console.log(Math.min(a)); //NaN
+    console.log(Math.min(...a)); // 55 -> 배열일 때 전개연산자 사용
+    console.log(Math.max(84, 97, 55, 73, 68));
+    console.log(Math.max(a)); //NaN
+    console.log(Math.max(...a)); // 97
+
+    // 11. Math.PI : 원주율
+    console.log(Math.PI); // 3.141592653589793 -> 소수점 15자리
+
+  </script>
+</body>
+</html>

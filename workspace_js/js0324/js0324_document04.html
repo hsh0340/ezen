@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>document 객체 4</title>
+  <!-- 
+    퀴즈1) Next1 버튼을 클릭하였을 때 txt1의 내용을 "이제부터는 자바스크립트를 공부합니다!"
+    로 변경
+
+    퀴즈2) Next2 버튼을 클릭하였을 때 txt1 아래에 js.png 이미지를 200*200 으로 추가하고,
+    h3태그를 적용한 "즐공, 열공합시다."라는 텍스트를 추가하시오.
+
+
+    1. document.getElementById() : id 속성을 지정한 태그에 접근하는 메서드
+    2. innerHTML : 태그를 사용하면 태그를 인식하여 적용하는 프로퍼티
+      innerText : 태그를 사용해도 텍스트로만 적용하여 프로퍼티
+      - 값의 설정(쓰기), 값의 호출(읽기)의 두 가지 용도로 사용.
+   -->
+  <script>
+    // 퀴즈 1번
+    function changeContent1() {
+      let pTag = document.getElementById("txt1");
+      pTag.innerHTML = "<b>이제부터는 자바스크립트를 공부합니다!</b>"; // 값의 쓰기(설정, 저장)
+      //  pTag.innerText = "<b>이제부터는 자바스크립트를 공부합니다!</b>";
+
+      alert(pTag.innerHTML); // 값의 읽기
+    }
+
+    function changeContent2() {
+      let pTag = document.getElementById("txt1");
+      let txt = pTag.innerHTML;
+      txt += "<img src='images/js.png' width='200' height='200'>";
+      txt += "<h3>즐공, 열공 합시다!</h3>";
+      pTag.innerHTML = txt;
+      console.log(txt);
+    }
+  </script>
+</head>
+
+<body>
+  <h2>What Can Javascript Do?</h2>
+  <p id="txt1">지금까지는 HTML5와 CSS3를 공부하였습니다.</p>
+  <button onclick="changeContent1()">Next1</button>
+  <button onclick="changeContent2()">Next2</button>
+</body>
+
+</html>

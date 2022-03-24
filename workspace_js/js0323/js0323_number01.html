@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숫자 메서드 1</title>
+  <!-- 
+    < 자바스크립트의 용어 참고 >
+    - 메서드(method) : 클래스 안에 포함되어 정의된 함수
+    - 함수(function) : 클래스 외부에서 정의된 함수
+    - 프로퍼티(property) : 클래스 안에 포함되어 정의된 변수
+    - 변수(variable) : 클래스 외부에서 정의된 변수
+
+    < Number 객체의 메서드(method)와 프로퍼티(property) >
+    - 메서드
+    1. toString() : 숫자를 문자열로 변환
+    2. toFixed() : 소수점을 해당 자릿수까지 반올림하여 표현
+    3. toPrecision() : 전체자리수를 지정하고 반올림하여 표현
+    4. toExponential() : 지수형으로 지정한 수만큼을 소수점 이하로 표현
+    5. Number() : 문자열을 숫자로 변경
+    6. parseInt() : 문자열을 정수로 변경
+    7. parseFloat() : 문자열을 실수로 변경
+
+    - 프로퍼티
+    1. Number.MAX_VALUE
+    2  Number.MIN_VALUE
+    3. Number.POSITIVE_INFINITY
+    4. Number.NEGATIVE_INFINITY
+    5. Number.NAN
+
+   -->
+</head>
+<body>
+  <h3>숫자</h3>
+  <script>
+    let n1 = 123;
+    let s1 = n1.toString();
+
+    console.log(typeof n1); // number
+    console.log(typeof s1); // string
+
+    let n2 = 10.656;
+    let n3 = 34567;
+
+    console.log(n2.toFixed(0)); // 11
+    console.log(n2.toFixed(2)); // 10.66
+    console.log(n2.toFixed(4)); // 10.6560
+    console.log(n2.toFixed(-1)); // error -> 0 ~ 100 사이의 숫자만 가능
+    console.log("-----------");
+
+    console.log(n2.toPrecision()); // 10.656
+    console.log(n2.toPrecision(2)); // 11
+    console.log(n2.toPrecision(4)); // 10.66
+    console.log(n2.toPrecision(3)); // 10.7
+    console.log(n2.toPrecision(5)); // 10.656
+    console.log(n2.toPrecision(6)); // 10.6560
+    console.log(n3.toPrecision(4)); // 3.457e+4 -> 3.457의 10의 4승 -> 34570
+    console.log(n3.toPrecision(3)); // 3.46e+4 -> 3.46의 10의 4승 -> 34600
+    console.log("-----------");
+
+    console.log(n2.toExponential(0)); // 1e+1
+    console.log(n2.toExponential(1)); // 1.1e+1
+    console.log(n2.toExponential(2)); // 1.07e+1
+    console.log(n2.toExponential(3)); // 1.066e+1
+    console.log(n2.toExponential(4)); 
+    console.log(n2.toExponential(5));
+  </script>
+</body>
+</html>

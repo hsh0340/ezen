@@ -98,7 +98,7 @@
     let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     // 메서드 체이닝(chaining) : 메서드의 리턴값을 받아서 다시 사용하는 방법
-    let arr2 = arr.filter((value)) => value%2==0)
+    let arr2 = arr.filter(((value) => value%2==0))
     .map((value, index, array) => value * value)
     .forEach((value, index, array) => console.log(value));
   </script>
