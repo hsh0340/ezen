@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>document 객체 7</title>
+  <style>
+    #b1 {
+      width: 300px;
+      height: 100px;
+      border: 1px solid black;
+      text-align: center;
+      line-height: 100px;
+    }
+  
+  </style>
+  <script>
+    function changeStyle() {
+      let divEl = document.getElementById("b1");
+      divEl.innerText = "Javascript Programming"
+      divEl.style.fontSize = "20px";
+      divEl.style.color = "white";
+      divEl.style.backgroundColor = "skyblue";
+      divEl.style.width = "400px";
+      divEl.style.lineHeight = "150px";
+      divEl.style.height = "150px";
+      divEl.style.borderRadius = "30px";
+      divEl.style.boxShadow = "-5px -5px 3px gray";
+
+    }
+  </script>
+  <!-- 
+    문제1) 스타일 변경 버튼을 눌렀을 때, 박스의 내용을 "Javascript Programming"으로 변경하고, 
+    글자 크기를 20px, 글자 색상을 white, 박스의 배경색을 skyblue, 박스의 너비를 400px,
+    박스의 높이를 150px, 박서의 모서리를 30px만큼 둥글게, 그림자를 위쪽, 왼쪽, 5px, gray로, 변경하시오
+   -->
+</head>
+<body>
+  <h2>document 객체 7</h2>
+  <div id="b1">자바스크립트 연습</div><br>
+  <button onclick="changeStyle()">스타일 변경</button>
+</body>
+</html>

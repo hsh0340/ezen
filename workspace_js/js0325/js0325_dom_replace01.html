@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+  <script>
+    // 넷스케이프 삭제 - w2
+    function deleteBrowser() {
+      let deleteTag = document.getElementById("w2");
+
+      // 1번 방법 - 자신의 태그를 삭제
+      // deleteTag.remove();
+      // 2번 방법 - 부모의 자식을 삭제
+
+      deleteTag.parentNode.removeChild(deleteTag);
+    }
+    // 익스플로러 변경 - w1
+    function replaceBrowser() {
+      let oldTag = document.getElementById("w1");
+
+      let newTag = document.createElement("img");
+      newTag.setAttribute(src, "images/wb10.png");
+      newTag.setAttribute("width", "80px");
+      newTag.setAttribute("height", "80px");
+
+      oldTag.parentNode.replaceChild(newTag, oldTag)
+    }
+  </script>
+  <!-- 
+
+   -->
+</head>
+
+<body>
+<div class="container">
+  <h2>DOM - 요소의 변경과 삭제</h2>
+  <h3>다양한 웹 브라우저</h3>
+  <div class="imgs">
+    <img src="images/wb1.PNG" alt="" width="80" height="80" id="w1">
+    <img src="images/wb2.PNG" alt="" width="80" height="80" id="w2">
+    <img src="images/wb3.PNG" alt="" width="80" height="80" id="w3">
+    <img src="images/wb4.PNG" alt="" width="80" height="80" id="w4">
+    <img src="images/wb5.PNG" alt="" width="80" height="80" id="w5">
+    <img src="images/wb6.PNG" alt="" width="80" height="80" id="w6">
+  </div>
+</div>
+</body>
+
+</html>

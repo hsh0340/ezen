@@ -10,15 +10,24 @@
     퀴즈1번) 전구 점등 버튼을 클릭했을 때 light에 전구가 켜진 이미지를 보여주고, 
     전구 소등 버튼을 클릭했을 때 light에 전구가 꺼진 이미지를 보여주도록 설정하시오.
    -->
-  
+  <style>
+    #btnLight {
+      background-color: tomato;
+    }
+  </style>
 </head>
 
 <body>
   <h2>전등의 점등/소등</h2>
+  <img src="images/lightoff.png" id="light" width="200" height="200">
+  <hr>
   <button onclick="lightOn()">전구 점등</button>
   <button onclick="lightOff()">전구 소등</button>
   <hr>
-  <img src="images/lightoff.png" id="light" width="200" height="200">
+  <button onclick="changeLight(1)">전구 점등 2</button>
+  <button onclick="changeLight(0)">전구 소등 2</button>
+  <hr>
+  <button onclick="turnLight()" id="btnlight">점등</button>
   <script>
     let imgEl = document.getElementById("light");
     function lightOn() { 
@@ -33,6 +42,31 @@
       imgEl.src = "images/lightoff.png";
 
     }
+
+    // 2번 방법
+    function changeLight() {
+      let imgEl = document.getElementById("light");
+      if (imgEl.src == "images/lightoff.png") {
+        imgEl.src = "images/lighton.png";
+      } else {
+        imgEl.src == "images/lightoff.png"
+      }
+    }
+
+    // 3번 방법
+    function turnLight() {
+      let imgTag = document.getElementById("light");
+      let btnTag = document.getElementById("btnLight");
+
+      if (btnTag.innerHTML == "점등") {
+        imgTag.src = "images/lighton.png";
+        btnTag.innerHTML = "소등";
+      } else { // 소등
+        imgTag.src = "images/lightoff.png"
+        btnTag.innerHTML = "점등";
+        }
+      }
+    
   </script>
 </body>
 
