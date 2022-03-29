@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다양한 이벤트 - input</title>
+  <!-- 
+
+   -->
+  <script>
+    // 인라인 모델
+    function computeScore() {
+      // let form = document.scoreForm
+      // let sname = form.sname.value;
+      // let dept = form.dept.value
+      // let kor = form.kor.value;
+      // let eng = form.eng.value;
+      // let mat = form.mat.value;
+
+      // let form = document.forms[0];
+      // let sname = form.sname.value;
+      // let dept = form.dept.value;
+      // let kor = form.kor.value;
+      // let eng = form.eng.value;
+      // let mat = form.mat.value;
+
+      let sname = document.scoreForm["sname"].value
+      let dept = document.scoreForm["dept"].value
+      let kor = document.scoreForm["kor"].value
+      let mat = document.scoreForm["mat"].value
+      let eng = document.scoreForm["eng"].value
+
+      let sum = Number(kor) + Number(eng) + Number(mat)
+      let ave = sum / 3;
+      let grade = ""
+
+      switch (parseInt(ave / 10)) {
+        case 10:
+        case 9:
+          grade = "A"
+          break
+        case 8:
+          grade = "B"
+          break
+        case 7:
+          grade = "C"
+          break
+        case 6:
+          grade = "D"
+          break
+        default:
+          grade = "F"
+      }
+
+      let result = document.getElementById("result")
+      let txt = `이름 : ${sname}<br>전공 : ${dept}<br>국어 : ${kor}<br>영어 : ${eng}<br>수학 : ${mat}`
+      txt += `총점 : ${sum}<br>평균 : ${ave.toFixed(2)}<br>학점 : ${grade}`
+      result.innerHTML = txt
+    }
+
+    // 고전 이벤트 모델
+    // window.onload = function() {}
+    // window.onload = () => {}
+
+    // 표준 이벤트 모델
+    // document.addEventListener("", function() {})
+
+    // document.addEventListener("", () => {})
+    document.addEventListener("DOMContentLoaded", () => {
+      let btnInput = document.getElementById("bntInput")
+      btnInput.addEventListener("click", computeScore)
+    })
+  </script>
+</head>
+
+<body>
+  <h2>DOM - 입력 상자 1</h2>
+  <h3>이젠대학교 성적 확인</h3>
+  <form name="scoreForm">
+    이름 : <input type="text" name="sname"><br>
+    전공 : <input type="text" name="dept"><br>
+    국어점수 : <input type="text" name="kor"><br>
+    영어점수 : <input type="text" name="eng"><br>
+    수학점수 : <input type="text" name="mat"><br>
+    
+    <!-- <button onclick="computeScore()">처리 결과</button> : 인라인 이벤트-->
+    <input type="button" id="btnInput">처리결과 <!-- 표준 이벤트 -->
+  </form>
+  <div id="result"></div>
+</body>
+
+</html>

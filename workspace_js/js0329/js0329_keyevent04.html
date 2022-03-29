@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>key event 4</title>
+  <!-- 
+
+   -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let txt1 = document.querySelector("#txt1")
+      let txt2 = document.querySelector("#txt2")
+      let btnCalc = document.querySelector("#btnCalc")
+      let message = document.querySelector("#msg")
+
+      // 1번 - 버튼으로 처리
+      //  btnCalc.addEventListener('click', () => {
+      //    let inch = Number(txt1.value)
+
+      //    // 숫자가 아닌 문자열을 입력하면 NaN이 입력됨.
+      //   // 유효성 검사 - 숫자인지 판별
+      //   if (isNaN(inch)) {
+      //     alert("숫자를 입력하세요.")
+      //     txt.value = ""
+      //     txt.focus()
+      //     return
+      //   }
+
+      //   let cm = inch * 2.54
+      //   txt2.value = cm
+      //  })
+
+      // 2-1번 - 키 이벤트로 처리
+      txt1.addEventListener("keyup", (event) => {
+        let inch = Number(txt1.value)
+
+        if (isNaN(inch)) {
+          message.style.color = "red"
+          message.textContent = "숫자가 아닙니다."
+          txt1.value = ""
+          txt2.value = ""
+          txt1.focus()
+          return
+        }
+
+        message.textContent = ""
+        let cm = inch * 2.54
+        txt2.value = cm
+      })
+
+      // 2-2번 - 키 이벤트로 처리 
+      txt2.addEventListener("keyup", () => {
+        let cm = Number(txt2.value)
+
+        if (isNaN(cm)) {
+          message.style.color = "red"
+          message.textContent = "숫자가 아닙니다."
+          txt1.value = ""
+          txt2.value = ""
+          txt1.focus()
+          return
+        }
+
+        message.innerHTML = ""
+        let inch = cm / 2.54
+        txt1.value = inch.toFixed(2)
+      })
+
+      // 삭제 버튼
+      let btnClear = document.querySelector("#bntClear")
+      btnClear.addEventListener("click", () => {
+        txt1.value = ""
+        txt2.value = ""
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <h1>key event 4</h1>
+  <h3>단위 변환 프로그램 (cm <-> inch)</h3>
+  <input type="text" id="txt1">inch <-> <input type="text" id="txt2">cm<br>
+  <p id="msg"></p>
+  <button id="btnCalc">계산</button><br>
+  <button id="btnClear">초기화</button>
+</body>
+
+</html>

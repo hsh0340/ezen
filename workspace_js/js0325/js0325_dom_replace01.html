@@ -17,7 +17,7 @@
       // 1번 방법 - 자신의 태그를 삭제
       // deleteTag.remove();
       // 2번 방법 - 부모의 자식을 삭제
-
+      // 부모.removeChild(자식)
       deleteTag.parentNode.removeChild(deleteTag);
     }
     // 익스플로러 변경 - w1
@@ -29,7 +29,9 @@
       newTag.setAttribute("width", "80px");
       newTag.setAttribute("height", "80px");
 
-      oldTag.parentNode.replaceChild(newTag, oldTag)
+      // 옛 태그를 새 태그로 변경
+      // 옛 태그의 부모태그.replaceChild(새 태그, 옛날 태그) -> 부모태그에서 옛태그를 새 태그로 변경
+      oldTag.parentNode.replaceChild(newTag, oldTag);
     }
   </script>
   <!-- 
