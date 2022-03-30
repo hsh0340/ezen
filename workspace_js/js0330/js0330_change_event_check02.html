@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change event 5 - checkbox</title>
+  <!-- 
+    - checking the checkbox activates the timer, and unchecking the checkbox disables the timer
+
+   -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+          let t1 = document.querySelector("[name=t1]")
+          let t2 = document.querySelector("#t2")
+
+          // 체크박스 - changeㅇ 이벤트 사용
+          t1.addEventListener("change", (event) => {
+            // checked -> activate the timer
+            if (event.currentTarget.checked) { // 체크했을 때 -> 타이머 활성화
+              let timer = setInterval(() => {
+                t2.textContent = `${count++}초`
+              }, 1000)
+            } else { // 해제했을 때 -> 타이머 비활성화(멈춤)
+              clearInterval(timer)
+            }
+          })
+        })
+  </script>
+</head>
+
+<body>
+  <h1>change event 5 - checkbox</h1>
+  <h3>Measure time using timer function</h3>
+  <label><input type="checkbox" name="t1">Activating timer</label>
+  <h2 id="t2"></h2>
+</body>
+
+</html>

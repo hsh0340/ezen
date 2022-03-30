@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change event 4 - checkbox</title>
+  <!--  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // let ck = document.querySelector("[name=ck]") // one value in the array
+      let ck = document.getElementsByName("ck")[0] // array
+      // console.log(`ck : ${ck}`)
+      let flag = false
+
+      // checkbox - change event
+      ck.addEventListener("change", (event) => {
+        flag = event.currentTarget.checked
+        // console.log(`flag : ${flag}`)
+      })
+
+      let link = document.querySelector("#link")
+      // a tag - click event
+      link.addEventListener("click", (event) => {
+        if (!flag) {
+          // when not checked -> not linked
+          event.preventDefault()
+        }
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <h1>change event 4 - check</h1>
+  <h3>Activate the link when a checkbox is checked</h3>
+  <label><input type="checkbox" name="ck">link activation <a href="https://www.naver.com" target="_blank"
+      id="link">NAVER</a></label>
+</body>
+
+</html>

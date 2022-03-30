@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change event 2</title>
+  <style>
+    #tUnit {
+      background-color: #e9ecef;
+    }
+  </style>
+  <!--  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let meter = document.querySelector("#meter")
+      let tUnit = document.querySelector("#tUnit")
+      let sUnit = document.querySelector("#sUnit")
+      let memo = document.querySelector("#memo")
+      let [mValue, sValue] = [0, 0] // mValue : meter value, sValue : unit value
+
+      // unit conversion function
+      let calc = () => {
+        tUnit.value = mValue * sValue
+      }
+
+      // change event - occurs when selecting an option in select, single choice
+      sUnit.addEventListener("change", (event) => {
+        let options = event.currentTarget.options // array of options
+        let index = event.currentTarget.options.selectedIndex // index selected from options
+        sValue = Number(options[index].value) // value of the selected option
+        calc()
+      })
+
+      // keyup event - occurs when entering meters
+      meter.addEventListener("keyup", (event) => {
+        // validate when button is pressed
+        if (isNaN(mValue)) {
+          memo.style.color = "red"
+          memo.textContent = "please enter a number"
+          return
+        } else {
+          memo.textContent = ""
+        }
+        sValue = sUnit.options[sUnit.selectedIndex].value
+        mValue = Number(event.currentTarget.value)
+        calc()
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <h1>change event 2</h1>
+  <h3>unit conversion (convert inches to different units)</h3>
+  meter to mile / feet / yard : <input type="text" id="meter"> m -> <input type="text" id="tUnit" readonly>
+  <select id="sUnit">
+    <option value="0.000621371">mile</option>
+    <option value="3.28084">feet</option>
+    <option value="1.09361">yard</option>
+  </select>
+  <br>
+  <p id="memo"></p>
+</body>
+
+</html>

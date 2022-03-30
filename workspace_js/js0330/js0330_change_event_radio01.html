@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change evnet 3 (radio)</title>
+  <!--  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // let pets = document.querySelectorAll("[name=pets]")
+      // let memo = document.querySelector("#memo")
+
+      let pets = document.getElementsByName("pets")
+      let memo = document.getElementById("memo")
+
+      // 1. for-of statement
+      // for (let p of pets) {
+      //   p.addEventListener("change", (event) => {
+      //     if (event.currentTarget.checked) {
+      //       memo.textContent = `Your favorite pet is a ${event.currentTarget.value}.`
+      //     }
+      //   })
+      // }
+
+      // 2. forEach method
+      pets.forEach(value => {
+        value.addEventListener("change", (event) => {
+          if (event.currentTarget.checked) {
+            memo.textContent = `Your favorite pet is a ${event.currentTarget.value}.`
+          }
+        })
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <h1>change event 3 (radio)</h1>
+  <h3>Choose your favorite pet from the following(radio - single choice) :</h3>
+  <label><input type="radio" name="pets" value="puppy">puppy</label>
+  <label><input type="radio" name="pets" value="cat">cat</label>
+  <label><input type="radio" name="pets" value="hamster">hamster</label>
+  <label><input type="radio" name="pets" value="turtle">turtle</label>
+  <label><input type="radio" name="pets" value="pets">other</label>
+  <hr>
+  <p id="memo"></p>
+</body>
+
+</html>
