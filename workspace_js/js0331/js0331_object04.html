@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체 기본 4 - 인스턴스 객체</title>
+  <script>
+    /*
+    인스턴스 객체
+    - 객체 생성자 함수를 사용하여 객체를 생성하는 방법
+    - 
+    */
+
+    // 객체 생성 - 객체 생성자 함수 사용
+    function Doctor(name, major, age) {
+      // 프로퍼티 
+      this.name = name
+      this.major = major
+      this.age = age
+      // 메소드
+      this.showInfo = function () {
+        console.log(`이름 : ${this.name}, 전공 : ${this.major}, 나이 : ${this.age}`);
+      }
+    }
+
+    // 객체 인스턴스 생성
+    let doctors = [
+      new Doctor("이익준", "간담췌", 42),
+      new Doctor("김준완", "흉부외과", 41),
+      new Doctor("채송화", "신경외과", 39),
+      new Doctor("안정원", "소아외과", 38),
+      new Doctor("양석형", "산부인과", 43)
+    ]
+
+    // 1번 - 기본 for문
+    console.log("--(1)----------");
+    for (let i = 0; i < doctors.length; i++) {
+      doctors[i].showInfo()
+    }
+
+    // 2번 - for-in문
+    console.log("--(2)----------");
+    for (let i in doctors) {
+      doctors[i].showInfo()
+    }
+
+    // 3번 - for-of문
+    console.log("--(3)----------");
+    for (let i of doctors) {
+      i.showInfo()
+    }
+
+    // 4번 - forEach()
+    console.log("--(4)----------");
+    doctors.forEach((v) => {
+      v.showInfo()
+    })
+  </script>
+</head>
+
+<body>
+  <h1>객체 기본 4 - 인스턴스 객체</h1>
+</body>
+
+</html>

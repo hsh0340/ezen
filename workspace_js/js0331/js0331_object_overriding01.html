@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스 기본 5 - 오버라이딩</title>
+  <script>
+    /*
+    오버라이딩(overriding) - 부모 클래스의 메소드를 자식 클래스에서 재정의 하는 것
+    */
+   class Parent {
+     print() {
+      this.a()
+      this.b()
+      this.c()
+     }
+     a() {console.log(`부모 a() 메소드`);}
+     b() {console.log(`부모 b() 메소드`);}
+     c() {console.log(`부모 c() 메소드`);}
+   }
+
+   class Child extends Parent {
+     // 오버라이딩(Overriding)
+    a() {
+      super.a() // 부모 클래스의 메소드
+      console.log("자식 a() 메소드")
+    }
+   }
+
+   new Parent().print()
+   console.log("------------");
+   new Child().print()
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

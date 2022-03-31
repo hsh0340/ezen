@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>객체 기본 3</title>
+  <!-- 
+    JSON 표기법 (Javascript Object Notation) 
+    - 자바스크립트의 객체 표기법
+    - 프로퍼티와 값을 '프로퍼티: 값' 의 형식으로 표현하여 데이터를 전달하는 방법
+
+    JSON.stringify() : 객체의 프로퍼티를 JSON 표기법의 형태로 출력하는 메소드
+    - stringify(객체, 출력하고자 하는 프로퍼티명, 들여쓰기의 칸 수)
+
+    JSON.parse() : stringify()를 통해서 문자열 형태로 된 값을 다시 객체 형태로 전개하여 출력하는 메소드
+   -->
+  <script>
+    /*
+     퀴즈1) 골때기는 그녀들의 구척장신, 액셔니스타를 싱글톤 객체의 2가지 방법으로 생성하여 사용하시오
+     - 구척장신 : 1번 방법
+     - 액셔니스타 : 2번 방법
+
+     객체명 : player1(구척장신의 이현이), player2(액셔니스타의 최여진)
+     프로퍼티: no, name, position, job
+     메소드: printInfo
+     */
+
+    // 1-1번 방법 - 객체를 생성하면서 프로퍼티와 메소드를 포함하는 방법
+    // let player1 = {
+    //   no: 100,
+    //   name: "이현이",
+    //   position: "FW",
+    //   job: "model",
+    //   printInfo: function () {
+    //     console.log(`no : ${this.no}\nname : ${this.name}\npoisition : ${this.position}\njob : ${this.job}`);
+    //   }
+    // }
+
+    // 빈 배열 생성 : let arr = [], let arr = new Array()
+    // 1-2번 방법 - 빈 객체를 만들고 난 후에 프로퍼티와 메소드를 추가하는 방법
+    let player1 = {}; // 빈 객체 생성, let player1 = new Object();
+    player1.no = 100
+    player1.name = "이현이"
+    player1.position = "FW"
+    player1.job = "model"
+    player1.printInfo = function () {
+      console.log(`no : ${this.no}\nname : ${this.name}\npoisition : ${this.position}\njob : ${this.job}`);
+    }
+
+    player1.printInfo()
+    console.log("-----------");
+
+    // console.log(JSON.stringify(player1, ['name', 'job'], 2)); // player1 객체의 name, job 프로퍼티만 2칸 들여쓰기 해서 출력
+    // console.log(JSON.stringify(player1)); // player1 객체의 모든 프로퍼티를 들여쓰기 없이 출력
+    // console.log(JSON.stringify(player1, null, 2)); // player1 객체의 모든 프로퍼티를 2칸씩 들여쓰기 하여 출력
+
+    let json = JSON.stringify(player1)
+    console.log(json);
+    console.log(typeof json);
+    console.log("-----------");
+    console.log(JSON.parse(json));
+    console.log("-----------");
+    console.log(player1);
+    console.log("-----------");
+
+    // 2번 방법
+    // 빈 객체 생성
+    let player2 = new Object()
+
+    // 객체에 프로퍼티와 메소드를 추가
+    player2.no = 10
+    player2.name = "최여진"
+    player2.position = "FW"
+    player2.job = "actress"
+    player2.printInfo = function () {
+      console.log(`no : ${this.no}\nname : ${this.name}\npoisition : ${this.position}\njob : ${this.job}`);
+    }
+
+    player2.printInfo()
+    console.log("-----------");
+    console.log(JSON.stringify(player2, null, 3));
+
+    // 객체에서 프로퍼티와 메소드를 삭제
+    console.log(player2);
+    console.log("----------");
+    delete(player2.job)
+    delete(player2.printInfo)
+    console.log(player2);
+  </script>
+</head>
+
+<body>
+  <h1>객체 생성 연습 - 싱글톤 객체</h1>
+</body>
+
+</html>

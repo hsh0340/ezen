@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클래스 기본 1</title>
+  <script>
+    /*
+    < 클래스를 선언할 때 주의할 점 >
+    - 생성자는 constructor 라는 키워드로 생성
+    - 프로퍼티는 생성자 안에서 this 붙여서 생성
+    - 메소드를 생성할 때는 this를 붙이지 않음
+    - 프로퍼티와 메소드를 사용할 때는 this를 붙여서 사용
+    */
+   
+    // 클래스 선언
+    class Student {
+      // 생성자 constructor
+      constructor(name, kor, eng, mat) {
+        this.name = name
+        this.kor = kor
+        this.eng = eng
+        this.mat = mat
+      }
+
+      // 메소드 method
+      getSum() {
+        return this.kor + this.eng + this.mat
+      }
+
+      getAve() {
+        return this.getSum() / 3
+      }
+
+      getGrade() {
+        let grade
+        switch (parseInt(this.getAvg() / 10)) {
+          case 10:
+          case 9:
+            grade = "A"
+            break
+          case 8:
+            grade = "B"
+            break
+          case 7:
+            grade = "C"
+            break
+          case 6:
+            grade = "D"
+            break
+          default:
+            grade = "F"
+        }
+        return grade
+      }
+
+      showInfo() {
+        return `이름 : ${this.name}, 국어 : ${this.kor}, 영어 : ${this.eng}, 총점 : ${this.getSum()}, 평균 : ${this.getAvg().toFixed(2)}, 학점 : ${this.getGrade()}`
+      }
+    }
+
+    // 인스턴스 배열
+    let students = []
+    // Student[0] = new Student("이익준", 98, 97, 96)
+    // Student[1] = new Student("김준완", 95, 92, 87)
+    // Student[2] = new Student("채송화", 87, 82, 83)
+    // Student[3] = new Student("안정원", 78, 76, 68)
+    // Student[4] = new Student("양석형", 62, 68, 66)
+    students.push(new Student("이익준", 98, 97, 96))
+    students.push(new Student("김준완", 95, 92, 87))
+    students.push(new Student("채송화", 87, 82, 83))
+    students.push(new Student("안정원", 78, 76, 68))
+    students.push(new Student("양석형", 62, 68, 66))
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
