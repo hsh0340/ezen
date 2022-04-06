@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI 구현 테스트 2번(한승하)</title>
+  <style>
+    #container {
+      width: 300px;
+      margin: 20px auto;
+    }
+
+    li {
+      list-style: none;
+      color: blue;
+    }
+  </style>
+  <script>
+    function addSubject() {
+      let inputEl = document.getElementById("userInput"); // input 태그
+      let ulEl = document.getElementById("subjects"); // ul 태그
+
+      if (!inputEl.value) {
+        alert("교과내용을 입력하시오.");
+        tag1.focus();
+        return;
+      }
+
+      let newLi = document.createElement("li");
+      let newLiContent = document.createTextNode(inputEl.value);
+      newLi.appendChild(newLiContent);
+      ulEl.appendChild(newLi);
+
+      inputEl.value = "";
+      inputEl.focus();
+    }
+  </script>
+</head>
+
+<body>
+  <h2>
+    <img src="images/w3(1).PNG" alt="" width="50" height="50">
+    Web Programming!
+  </h2>
+  <hr>
+  <input type="text" id="userInput">
+  <button onclick="addSubject()">교과내용 추가</button>
+  <ul id="subjects">
+    <li style="color: black;">HTML5</li>
+    <li style="color: black;">CSS3</li>
+    <li style="color: black;">자바스크립트</li>
+  </ul>
+  <br>
+</body>
+
+</html>

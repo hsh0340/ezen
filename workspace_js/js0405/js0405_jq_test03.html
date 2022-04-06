@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Test 3</title>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+  <style></style>
+  <script>
+    /*
+    remove() : 선택자를 삭제하는 함수
+    clone() : 선택자를 복사하는 함수
+
+    < jQuerty의 선택자 사용 정리 >
+    $("p") -> js 에서는 document.querySelectorAll("p"), document.getElementsTagName("p")
+    $("#txt") -> js 에서는 document.query
+    < jQuery 속성 조작 함수 >
+    1. html() : 태그를 인식한 값의 리턴과 설정, ex) js에서 innerHTML
+    - $("요소").html() : 요소의 태그를 포함한 내용을 불러올 때
+    - $("요소").html("내용") : 요소의 내용을 태그를 인식하여 설정할 때
+
+    2. text() : 태그를 인식하지 않는 값의 리턴과 설정, ex) js에서 innerText
+    - $("요소").text() : 요소의 내용을 불러올 때
+    - $("요소").text("내용") : 요소의 내용을 태그를 인식하지 않고 설정할 때
+
+    3. val() : 입력상자(input 태그)의 값의 리턴과 설정, ex) js에서 value
+    - $("요소").val() : 입력상자의 값을 불러올 때
+    - $("요소").val("내용") : 입력상자의 값을 설정할 때
+    
+    4. attr(): 요소의 속성을 리턴과 설정, ex) setAttribute(), getAttribute(), 프로퍼티로 바로 설정
+    - $("요소").attr() : 요소의 속성을 불러올 때
+    - $("요소").attr("속성명", "값"): 요소의 속성에 대한 값을 설정 할 때
+    4-2. removeAttr(): 요소의 속성을 삭제
+    - $("요소").removeAttr("속성명"): 요소의 속성을 삭제할 때
+    5. css(): 요소의 스타일 속성의 리턴과 설정, ex) js에서 프로퍼티로 사용
+    - $("요소").css("속성명"): 요소의 스타일 속성의 값을 불러올 때
+    - $("요소").css("속성명", "값"): 요소의 스타일 속성에 대한 값을 설정할 때
+    6. addClass(), removeClass(), toggleClass(), hasClass(): class의 추가, 삭제, 토글, 존재여부
+    - $("요소").addClass("클래스명"): 요소에 클래스를 추가할 떄
+    - $("요소").removeClass("클래스명"): 요소에서 클래스를 삭제할 떄
+    - $("요소").toggleClass("클래스명"): 요소에 클래스가 없으면 클래스를 추가하고, 있으면 제거
+    - $("요소").hasClass("클래스명"): 요소에 클래스가 있는지의 여부를 판단, true 또는 false
+
+    
+    */
+    // 문제 1 ) 회전 버튼을 클릭할 때 마다 맨 앞의 이미지를 맨 뒤로 이동시키도록  
+    // 1번 - jQuery 로 해결
+    // $(document).ready(function () {
+    //   $("#btnRotate").click(function() {
+    //     $("#box").append($("#box img:first"));
+    //   })
+    // })
+    // document.addEventListener("DOMContentLoaded", function() {
+    // })
+
+    // 2번 - Javascript로 해결
+    document.addEventListener("DOMContentLoaded", function () {
+      let box = document.querySelector("#box");
+      let btnRotate = document.querySelector("#btnRotate");
+
+      btnRotate.addEventListener("click", function () {
+        let imgs = document.querySelectorAll("img"); // 배열
+        box.appendChild(imgs[0]);
+      })
+
+    })
+  </script>
+</head>
+
+<body>
+  <h3>김연아 선수의 회전 연속 동작</h3>
+  <div id="box">
+    <img src="images/f1.png" height="100">
+    <img src="images/f2.png" height="100">
+    <img src="images/f3.png" height="100">
+    <img src="images/f4.png" height="100">
+    <img src="images/f5.png" height="100">
+    <img src="images/f6.png" height="100">
+    <img src="images/f7.png" height="100">
+  </div>
+  <hr>
+  <button id="btnRotate">회전</button>
+</body>
+
+</html>

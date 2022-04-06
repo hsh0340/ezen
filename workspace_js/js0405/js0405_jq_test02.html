@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery test2</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+
+  </style>
+  <script>
+    /*
+    remove(): 선택자를 삭제하는 함수
+    clone(): 선택자를 복사하는 함수
+    */
+   
+   $(document).ready(function () {
+    // 삭제 버튼 클릭할 때 #p1 삭제
+    $("#btnDelete").click(function() {
+      $("#p2").remove();
+    })
+
+    // 추가 버튼을 클릭할 때 p태그를 생성하여 #p4 다음으로 추가
+    $("#btnInsert").click(function() {
+      $("#p4").after($("<p>").text("Oracle"));
+    })
+
+    // 복사 버튼을 클릭할 때 #p3 복사하여 #p1의 직전 형제요소를 추가
+    $("#btnCopy").click(function() {
+      $("#p3").clone().insertBefore($("#p1"));
+    })
+   })
+  </script>
+</head>
+<body>
+  <h3>jQuery Programming!</h3>
+  <p id="p1">HTML5</p>
+  <p id="p2">CSS3</p>
+  <p id="p3">Javascript</p>
+  <p id="p4">jQuery</p>
+  <hr>
+  <button id="btnDelete">삭제</button>
+  <button id="btnInsert">추가</button>
+  <button id="btnCopy">복사</button>
+</body>
+</html>

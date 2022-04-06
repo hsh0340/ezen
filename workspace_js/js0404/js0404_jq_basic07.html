@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 기본 7</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #box { width: 200px; height: 50px;background: lightgray;}
+    </style>
+    <script>
+        /*
+        4. css(): 스타일의 속성을 변경하는 함수
+        */
+
+        $(document).ready(function() {
+            // 1. 메소드 체이닝
+            /*
+            $("#box").css("width", "400px").css("height", "100px").css("background", "orange")
+            .css("color", "white").css("textAlign", "center").css("lineHeight", "100px")
+            */
+
+            // 2. JSON 기법 -> 추천
+            $("#box").css({
+                "width": "400px", 
+                "height": " 100px", 
+                "background": "orange",
+                "color": "white", 
+                "textAlign": "center", 
+                "lineHeight": "100px", 
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>jQuery 기본 7</h2>
+    <div id="box">
+        jQuery 공부 중...
+    </div>
+</body>
+</html>

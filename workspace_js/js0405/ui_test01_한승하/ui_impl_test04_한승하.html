@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI 구현 테스트 4번(한승하)</title>
+  <style>
+    #container {
+      width: 600px;
+      margin: 20px auto;
+    }
+  </style>
+  <script>
+    function imgChange(this) {
+      let imgEl = document.getElementById("carImage");
+      if (this.value == 'graduer') {
+        alert('그랜저');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <h1>코리아 모터스</h1>
+    <p>구매하실 차종을 선택하시오.</p>
+    <select id="carList" onchange="imgChange(this)">
+      <option value="granduer">2021 그랜져 하이브리드</option>
+      <option value="gv80">2021 제네시스 GV80</option>
+      <option value="palisade">2021 팰리세이드</option>
+      <option value="sonata">2021 소나타 하이브리드</option>
+      <option value="qm6">2021 QM6</option>
+      <option value="k7">2021 K7</option>
+    </select>
+    <img src="" alt="" id="carImage">
+  </div>
+</body>
+
+</html>
