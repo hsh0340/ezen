@@ -354,24 +354,151 @@ SAVE 파일명.sql - 바로 직전의 SQL문을 파일로 저장하는 명령
 SAVE 파일명.sql append - 파일의 바로 직전에 실행한 SQL문을 추가하는 명령
 
 < 4월 7일 과제 >
-과제1) 사원 테이블에서 사원명, 급여, 연봉, 연간총수입을 연간총수입이 높은 순으로 출력하시오.
+과제1) 사원 테이블에서 사원명, 연봉, 연간총수입을 연간총수입이 높은 순으로 출력하시오.
 연간 총수입은 연봉에 12를 곱하고 100을 더해서 계산하시오.
 별칭을 사용하여 출력하시오.
 
+SELECT ename 사원명, salary 연봉, salary*12+100 "연간 총 수입" FROM employee
+ORDER BY "연간 총 수입" DESC;
+
+사원명              연봉  연간 총 수입
+---------- ---------- ----------
+KING             5000      60100
+FORD             3000      36100
+SCOTT            3000      36100
+JONES            2975      35800
+BLAKE            2850      34300
+CLARK            2450      29500
+ALLEN            1600      19300
+TURNER           1500      18100
+MILLER           1300      15700
+WARD             1250      15100
+MARTIN           1250      15100
+ADAMS            1100      13300
+JAMES             950      11500
+SMITH             800       9700
+
 과제2) 연봉이 2000을 넘는 사원의 사원명과 연봉을 연봉이 많은 순으로 출력하시오.
 
-과제3) 연봉이 2000에서 3000 사이에 포함되지 않는 사원의 사원명과 급여를 연봉이 높은 순으로 출력하시오.
+SELECT ename, salary FROM employee WHERE salary > 2000 ORDER BY salary DESC;
+
+ENAME          SALARY
+---------- ----------
+KING             5000
+FORD             3000
+SCOTT            3000
+JONES            2975
+BLAKE            2850
+CLARK            2450
+
+과제3) 연봉이 2000에서 3000 사이에 포함되지 않는 사원의 사원명과 연봉을 연봉이 높은 순으로 출력하시오.
+
+SELECT ename, salary FROM employee WHERE salary NOT BETWEEN 2000 AND 3000
+ORDER BY salary DESC;
+
+ENAME          SALARY
+---------- ----------
+KING             5000
+ALLEN            1600
+TURNER           1500
+MILLER           1300
+WARD             1250
+MARTIN           1250
+ADAMS            1100
+JAMES             950
+SMITH             800
 
 과제4) 1981/02/20 부터 1981/05/01 사이에 입사한 사원의 사원명과 직무, 입사일을 출력하시오.
 
+SELECT ename, job, hiredate FROM employee
+WHERE hiredate BETWEEN '81/02/20' AND '81/05/01';
+
+ENAME      JOB       HIREDATE
+---------- --------- --------
+ALLEN      SALESMAN  81/02/20
+WARD       SALESMAN  81/02/22
+JONES      MANAGER   81/04/02
+BLAKE      MANAGER   81/05/01
+
 과제5) 부서번호가 20 또는 30인 사원의 사원명과 부서번호를 사원명을 기준으로 오름차순하여 출력하시오.
 
-과제6) 사원의 급여가 2000에서 3000사이에 포함되고, 부서번호가 20 또는 30인 사원의 사원명, 연봉, 부서번호를 사원명을 기준으로 오름차순으로 출력하시오.
+SELECT ename, dno FROM employee WHERE dno IN(20, 30) ORDER BY ename;
+
+ENAME             DNO
+---------- ----------
+ADAMS              20
+ALLEN              30
+BLAKE              30
+FORD               20
+JAMES              30
+JONES              20
+MARTIN             30
+SCOTT              20
+SMITH              20
+TURNER             30
+WARD               30
+
+과제6) 사원의 연봉이 2000에서 3000사이에 포함되고, 부서번호가 20 또는 30인 사원의 사원명, 연봉, 부서번호를 사원명을 기준으로 오름차순으로 출력하시오.
+
+SELECT ename, salary, dno FROM employee 
+WHERE salary BETWEEN 2000 AND 3000 AND dno IN(20, 30)
+ORDER BY ename;
+
+ENAME          SALARY        DNO
+---------- ---------- ----------
+BLAKE            2850         30
+FORD             3000         20
+JONES            2975         20
+SCOTT            3000         20
 
 과제7) 1981년에 입사한 사원의 사원명과 입사일을 like 연산자와 와일드카드를 사용하여 출력하시오.
 
+SELECT ename, hiredate FROM employee WHERE hiredate LIKE '81%'
+
+ENAME      HIREDATE
+---------- --------
+ALLEN      81/02/20
+WARD       81/02/22
+JONES      81/04/02
+MARTIN     81/09/28
+BLAKE      81/05/01
+CLARK      81/06/09
+KING       81/11/17
+TURNER     81/09/08
+JAMES      81/12/03
+FORD       81/12/03
+
+
 과제8) 사원명의 세번째 글자가 'R'인 사원의 사원의 정보를 출력하시오.
  
+SELECT * FROM employee WHERE ename LIKE '__R%';
+
+       ENO ENAME      JOB          MANAGER HIREDATE     SALARY COMMISSION        DNO
+---------- ---------- --------- ---------- -------- ---------- ---------- ----------
+      7521 WARD       SALESMAN        7698 81/02/22       1250        500         30
+      7654 MARTIN     SALESMAN        7698 81/09/28       1250       1400         30
+      7844 TURNER     SALESMAN        7698 81/09/08       1500          0         30
+      7902 FORD       ANALYST         7566 81/12/03       3000                    20
+
 과제9) 사원명에 'A'와 'E'를 모두 포함하는 사원의 정보를 출력하시오.
 
+SELECT * FROM employee WHERE ename LIKE '%A%E%' OR ename LIKE '%E%A%';
+
+       ENO ENAME      JOB          MANAGER HIREDATE     SALARY COMMISSION        DNO
+---------- ---------- --------- ---------- -------- ---------- ---------- ----------
+      7499 ALLEN      SALESMAN        7698 81/02/20       1600        300         30
+      7698 BLAKE      MANAGER         7839 81/05/01       2850                    30
+      7900 JAMES      CLERK           7698 81/12/03        950                    30
+
 과제10) 업무가 'CLERK'또는 'SALESMAN' 이면서, 연봉이 950또는 1300또는 1600이 아닌 사원의 사원명, 업무, 연봉을 출력하시오.
+
+SELECT ename, job, salary FROM employee 
+WHERE job IN('CLERK', 'SALESMAN') AND salary NOT IN(950, 1300, 1600);
+
+ENAME      JOB           SALARY
+---------- --------- ----------
+SMITH      CLERK            800
+WARD       SALESMAN        1250
+MARTIN     SALESMAN        1250
+TURNER     SALESMAN        1500
+ADAMS      CLERK           1100
