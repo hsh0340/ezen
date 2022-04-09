@@ -5,7 +5,7 @@
 
 릴레이션(relation) - 테이블(table)
 애트리뷰트(attribute) - 속성, 테이블을 구성하는 각각의 필드
-도메인(domain) - 애트리뷰트의 집합
+도메인(domain) - 애트리뷰트의 집합 ?????????????
 튜플(tuple) - 테이블에 들어있는 레코드 한개
 
 카디널리티(cardinality) - 튜플의 개수, 기수 ex) employee의 카디널리티 : 14
@@ -67,6 +67,7 @@ order by 정렬할 필드명
 문제8) 모든 사원의 사번, 사원명, 연봉, 성과급, 총연봉(연봉 + 성과급)을 확인하시오.
 : SELECT eno, ename, salary, commission, salary+commission FROM employee;
 -> commission이 null인 튜플에서 salary+commission이 null임.
+
 nvl(필드명, 대체할 값)함수 - null value, 필드명이 null일 때 대체할 값으로 바꾸어주는 함수
 nvl(commission, 0) -> commission의 값이 null일 때 0으로 바꾸어 사용.
 : SELECT eno, ename, salary, nvl(commission, 0), salary+nvl(commission, 0) FROM employee;
@@ -101,6 +102,19 @@ nvl(commission, 0) -> commission의 값이 null일 때 0으로 바꾸어 사용.
 : SELECT eno as "사번", ename as "사원명", salary as "연봉", nvl(commission, 0) as "성과급", salary+nvl(commission, 0) as "총연봉" FROM employee;
 
 dual 테이블 : 오라클에서 제공하는 가상 테이블
+oracle은 SELECT절과 FROM절 두개의 절을 SELECT 문장의 필수 절로 지정하였으므로
+사용자 테이블이 필요 없는 SQL 문장의 경우에도 필수적으로 DUAL이라는 테이블을 FROM절에 지정한다.
+DUAL 테이블 특성
+- 사용자 SYS가 소유하며 모든 사용자가 액세스 가능한 테이블이다.
+- SELECT ~ FROM ~ 의 형식을 갖추기 위한 일종의 DUMMY 테이블이다.
+- DUMMY 라는 문자열 유형의 칼럼에 'X' 라는 값이 들어있는 행을 1건 포함하고 있다.
+
+SELECT * FROM DUAL
+
+D
+-
+X
+
 select 3+4 from dual; 
        3+4
 ----------
@@ -154,6 +168,7 @@ SELECT * FROM employee WHERE commission is not null;
       7844 TURNER     SALESMAN        7698 81/09/08       1500          0         30
 
 null 값 확인 : where 필드 is null/not null
+- null 값인 경우
 
 문제14) 커미션을 받지 못하는 사원의 정보를 확인하시오.
 SELECT * FROM EMPLOYEE WHERE COMMISSION IS NULL;
@@ -168,12 +183,16 @@ SELECT * FROM EMPLOYEE WHERE MANAGER IS NULL;
 SELECT * FROM EMPLOYEE WHERE SALARY >= 1000 AND SALARY <= 1500;
 (SELECT * FROM EMPLOYEE WHERE SALARY BETWEEN 1000 AND 1500;) 권장
 
+- 연산자 BETWEEN a AND b : a와 b의 값 사이에 있으면 된다. (a와 b의 값 포함)
+
 문제18) 연봉이 1000미만이거나 1500초과인 사원의 정보를 확인하시오.
 SELECT * FROM EMPLOYEE WHERE SALARY < 1000 OR SALARY > 1500;
 
 문제19) 커미션이 300이거나 500이거나 1400인 사원의 정보를 확인하시오.
 SELECT * FROM EMPLOYEE WHERE COMMISSION = 300 OR COMMISSION = 500 OR COMMISSION = 1400;
 (SELECT * FROM EMPLOYEE WHERE COMMISSION IN (300, 500, 1400) 권장
+
+- 연산자 IN : 리스트에 있는 값 중에서 어느 하나라도 일치하면 된다.
 
 문제20) 입사일이 1981년인 사원의 정보를 확인하시오
 SELECT * FROM EMPLOYEE WHERE HIREDATE BETWEEN '81/01/01' AND '81/12/31';
@@ -186,6 +205,7 @@ SELECT * FROM EMPLOYEE WHERE JOB IN('CLERK', 'SALESMAN', 'ANALYST');
 
 < LIKE 연산자와 와일드 카드 >
 LIKE 연산자 - 문자열 중에서 일치하는 데이터의 정보를 찾을 때 사용 : ~를 포함하는
+비교 문자열과 형태가 일치하면 된다.
 와일드카드 - 특별한 의미를 가지는 문자
 % (percent) : 없거나, 하나 이상의 어떠한 문자가 와도 상관 없다.
 _ (underscore)
