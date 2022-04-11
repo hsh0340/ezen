@@ -1,5 +1,6 @@
 (5) 기타 다양한 함수
-- nvl(), nvl2(), nullif()
+- 널값을 처리하는 함수 4가지 : nvl(), nvl2(), nullif(), coalesce()
+- 조건을 처리하는 함수 2가지 : decode(), case()
 
 - coalesce() : null이 아닌 값을 반환하는 함수
 ex) coalesce(필드1, 필드2, 필드3, 0)
@@ -10,6 +11,27 @@ ex) coalesce(필드1, 필드2, 필드3, 0)
 
 문제1) 사원 테이블에서 성과급이 null이 아니면 성과급을 출력하고, 
 성과급이 null이고, 연봉이 null이 아니면 연봉을 출력하고, 만일 성과급과 연봉이 모두 null이면 0을 출력하시오.
+
+SELECT eno 사원번호, ename 사원명, commission 성과급, salary 연봉,
+COALESCE(commission, salary, 0) FROM employee; 
+-- 앞에서부터 null인지 검사해서 null이 아니면 바로 출력. 뒤에는 무시
+
+    사원번호 사원명            성과급         연봉 COALESCE(COMMISSION,SALARY,0)
+---------- ---------- ---------- ---------- -----------------------------
+      7369 SMITH                        800                           800
+      7499 ALLEN             300       1600                           300
+      7521 WARD              500       1250                           500
+      7566 JONES                       2975                          2975
+      7654 MARTIN           1400       1250                          1400
+      7698 BLAKE                       2850                          2850
+      7782 CLARK                       2450                          2450
+      7788 SCOTT                       3000                          3000
+      7839 KING                        5000                          5000
+      7844 TURNER              0       1500                             0
+      7876 ADAMS                       1100                          1100
+      7900 JAMES                        950                           950
+      7902 FORD                        3000                          3000
+      7934 MILLER                      1300                          1300
 
 - decode() : 프로그래밍 언어에서 사용하는 switch~case 문과 비슷
 ex) decode(필드(표현식), 
@@ -22,6 +44,27 @@ ex) decode(필드(표현식),
 부서번호가 10이면 'ACCOUNTING', 20이면 'RESEARCH', 30이면 'SALES', 40이면 'OPERATIONS'로 출력하시오.
 (DECODE 함수 사용)
 
+SELECT eno 사번, ename 사원명, job 업무, dno 부서번호,
+DECODE(dno, 10, 'ACCOUNTING', 20, 'RESEARCH', 30, 'SALES', 40, 'OPERATIONS') 
+FROM employee;
+
+       사번 사원명       업무           부서번호 DECODE(DNO
+---------- ---------- --------- ---------- ----------
+      7369 SMITH      CLERK             20 RESEARCH  
+      7499 ALLEN      SALESMAN          30 SALES     
+      7521 WARD       SALESMAN          30 SALES     
+      7566 JONES      MANAGER           20 RESEARCH  
+      7654 MARTIN     SALESMAN          30 SALES     
+      7698 BLAKE      MANAGER           30 SALES     
+      7782 CLARK      MANAGER           10 ACCOUNTING
+      7788 SCOTT      ANALYST           20 RESEARCH  
+      7839 KING       PRESIDENT         10 ACCOUNTING
+      7844 TURNER     SALESMAN          30 SALES     
+      7876 ADAMS      CLERK             20 RESEARCH  
+      7900 JAMES      CLERK             30 SALES     
+      7902 FORD       ANALYST           20 RESEARCH  
+      7934 MILLER     CLERK             10 ACCOUNTING
+
 - case() : 프로그래밍 언어에서 사용하는 if~else 문과 비슷
 ex) 
 CASE
@@ -30,6 +73,10 @@ WHEN 조건2 THEN 결과2
 ...
 ELSE 기본결과
 END
+
+문제3) 사원 테이블에서 사번, 사원명, 업무, 부서번호를 나타내고, 
+부서번호가 10이면 'ACCOUNTING', 20이면 'RESEARCH', 30이면 'SALES', 40이면 'OPERATIONS'로 출력하시오.
+(case 함수 사용)
 
 SELECT eno 사번, ename 사원명, job 업무, dno 부서번호, 
 CASE WHEN dno=10 THEN 'ACCOUNT'
@@ -56,14 +103,32 @@ END 부서명 FROM employee;
       7902 FORD       ANALYST           20 RESEARCH  
       7934 MILLER     CLERK             10 ACCOUNT   
 
-문제3) 사원 테이블에서 사번, 사원명, 업무, 부서번호를 나타내고, 
-부서번호가 10이면 'ACCOUNTING', 20이면 'RESEARCH', 30이면 'SALES', 40이면 'OPERATIONS'로 출력하시오.
-(case 함수 사용)
-
 문제4) 사원 테이블에서 업무에 따라 연봉을 인상하여 출력하시오.
 - 사번, 사원명, 업무, 연봉, 인상된 연봉을 alias를 사용하여 출력하시오.
-- 인상된 연봉의 기준 'ANALYST'는 연봉에 200 인상, 'SALESMAN'은 연봉에 180 인상
+- 인상된 연봉의 기준 'ANALYST'는 연봉에 200 인상, 'SALESMAN'은 연봉에 180 인상, 'MANAGER'는 연봉에 150 인상, 'CLERK'는 연봉에 100 인상
+
 - decode 함수
+
+SELECT eno 사번, ename 사원명, job 업무, salary 연봉,
+DECODE(job, 'ANALYST', salary+200, 'SALESMAN', salary+180, 'MANAGER', salary+150, 'CLERK', salary+100) "인상된 연봉" FROM employee;
+
+       사번 사원명       업무              연봉   인상된 연봉
+---------- ---------- --------- ---------- ----------
+      7369 SMITH      CLERK            800        900
+      7499 ALLEN      SALESMAN        1600       1780
+      7521 WARD       SALESMAN        1250       1430
+      7566 JONES      MANAGER         2975       3125
+      7654 MARTIN     SALESMAN        1250       1430
+      7698 BLAKE      MANAGER         2850       3000
+      7782 CLARK      MANAGER         2450       2600
+      7788 SCOTT      ANALYST         3000       3200
+      7839 KING       PRESIDENT       5000           
+      7844 TURNER     SALESMAN        1500       1680
+      7876 ADAMS      CLERK           1100       1200
+      7900 JAMES      CLERK            950       1050
+      7902 FORD       ANALYST         3000       3200
+      7934 MILLER     CLERK           1300       1400
+
 - case 함수
 
 ⭐️⭐️⭐️
@@ -76,17 +141,42 @@ END 부서명 FROM employee;
 
 문제5) 모든 사원의 연봉 총액, 연봉 평균, 최고 연봉, 최저 연봉을 구하시오.
 
+SELECT SUM(salary), AVG(salary), MAX(salary), MIN(salary) FROM employee;
+
+SUM(SALARY) AVG(SALARY) MAX(SALARY) MIN(SALARY)
+----------- ----------- ----------- -----------
+      29025  2073.21429        5000         800
+
 문제6) 가장 최근에 입사한 사원의 입사일과 가장 오래 근무한 사원의 입사일을 구하시오.
 
+SELECT MAX(hiredate), MIN(hiredate) FROM employee;
+
+MAX(HIRE MIN(HIRE
+-------- --------
+87/07/13 80/12/17
+
 문제7) 모든 사원의 성과급의 총액, 평균, 최고 성과급, 최저 성과급을 구하시오.
+
 SELECT SUM(commission), AVG(commission), MAX(commission), MIN(commission) FROM employee;
 
 SUM(COMMISSION) AVG(COMMISSION) MAX(COMMISSION) MIN(COMMISSION)
 --------------- --------------- --------------- ---------------
            2200             550            1400               0
 
-- 그룹함수에서의 널값 연산 -> 그룹 함수는 널값을 제외하고 계산함.
-- COUNT() : 
+
+문제8) 사원 테이블에서 사원 수를 구하시오.
+
+SELECT COUNT(ename) FROM employee;
+
+COUNT(ENAME)
+------------
+          14
+
+- COUNT(): 함수일 때도 널값을 제외하고 개수를 구함
+-> 기본적으로 개수는 널값을 포함하여 구하는 것이 보편적인 방법이므로 COUNT(*)로 사용함.
+-> 널값도 포함하여 개수를 구함
+
+문제9) 성과급을 받을 수 있는 사원 수를 구하시오.
 
 SELECT COUNT(commission) FROM employee;
 
@@ -94,15 +184,10 @@ COUNT(COMMISSION)
 -----------------
                 4
 
-
-문제8) 사원 테이블에서 사원 수를 구하시오.
-- COUNT(): 함수일 때도 널값을 제외하고 개수를 구함
--> 기본적으로 개수는 널값을 포함하여 구하는 것이 보편적인 방법이므로 COUNT(*)로 사용함.
--> 널값도 포함하여 개수를 구함
-
-문제9) 성과급을 받을 수 있는 사원 수를 구하시오.
-
 문제10) 사원 테이블에서 최고 연봉을 받는 사원의 사원명과 연봉을 구하시오.
+
+SELECT ename 사원명, MAX(salary) 최고연봉 FROM employee;
+
 -> 문제점) 에러 발생, not a single-group group function
 -> ename은 14개의 행, max(salary)는 1개의 행, 따라서 행의 개수가 일치하지 않아서 발생하는 문제
 -> 해결책) 서브쿼리로 해결
@@ -122,6 +207,17 @@ SELECT dno, AVG(salary) FROM employee GROUP BY dno;
 - 평균은 반올림하여 소수점 둘째자리까지 출력
 - 별칭을 사용
 - 평균 급여를 기준으로 내림차순으로 정렬
+
+SELECT job 업무, SUM(salary) 총연봉, ROUND(AVG(salary), 2) 평균연봉, MAX(salary) 최고연봉, MIN(salary) 최저연봉 FROM employee GROUP BY job ORDER BY 평균연봉 DESC;
+
+업무             총연봉     평균연봉     최고연봉      최저연봉
+--------- ---------- ---------- ---------- ----------
+PRESIDENT       5000       5000       5000       5000
+ANALYST         6000       3000       3000       3000
+MANAGER         8275    2758.33       2975       2450
+SALESMAN        5600       1400       1600       1250
+CLERK           4150     1037.5       1300        800
+
 
 문제13) 사원 테이블에서 연봉의 합계를 각 부서 안에서 업무별로 사원수와 함께 출력하시오.
 - 부서번호, 업무, 사원수, 총연봉을 별칭으로 출력
@@ -208,7 +304,7 @@ ENAME      DNAME
 ---------- --------------
 SCOTT      RESEARCH      
 
-1-2 번 방법 -> 해당 테이블에만 존재하는 필드는 테이블을 생략 할 수 있음
+1-2 번 방법 -> 해당 테이블에만 존재하는 필드는 테이블을 생략 할 수 있음.
 SELECT ename, dname 
 FROM employee, department
 WHERE employee.dno = department.dno -- 조인 조건
@@ -277,11 +373,12 @@ SELECT eno 사번, ename 사원명, dno 부서번호, dname 부서명
 FROM employee JOIN department USING(dno)
 WHERE eno = 7788;
 
-        사번 사원명              부서번호 부서명           
+       사번 사원명           부서번호 부서명           
 ---------- ---------- ---------- --------------
       7788 SCOTT              20 RESEARCH      
 
 4. join ~ on
+- inner join 이라고 부르기도 함.
 - equi join 에서 WHERE에 적던 조인조건을 on절에 적음.
 - 테이블명 사이에 join 키워드를 명시해서 사용
 - alias를 사용 
@@ -412,18 +509,66 @@ ORDER BY salary DESC;
 과제1) 업무별 최저 연봉을 출력하되, 관리자를 알수없는 사원은 제외하고, 최저 연봉이 2000 미만인 그룹은 제외하고,
 최저연봉에 대한 내림차순으로 출력하시오.
 
+SELECT job 업무, MIN(salary) 최저연봉 FROM employee GROUP BY job;
+
+업무           최저연봉
+--------- ----------
+CLERK            800
+SALESMAN        1250
+ANALYST         3000
+MANAGER         2450
+PRESIDENT       5000
+
 과제2) 각 부서에 대해 부서번호, 사원수, 평균 연봉을 출력하시오.
 평균 연봉은 소수점 둘째자기에서 반올림하고, 부서별로 오름차순으로 출력하시오.
 
-equi join answp
+SELECT dno 부서번호, COUNT(ename) 사원수, ROUND(AVG(salary), 2) 평균연봉 FROM employee 
+GROUP BY dno ORDER BY 평균연봉;
+
+    부서번호       사원수     평균연봉
+---------- ---------- ----------
+        30          6    1566.67
+        20          5       2175
+        10          3    2916.67
+
+equi join 문제
 과제3) 성과급을 받는 모든 사원의 사번, 사원명, 부서명, 지역명을 출력하시오.
+
+SELECT eno 사번, ename 사원명, dname 부서명, loc 지역명 FROM employee, department 
+WHERE employee.dno = department.dno AND commission IS NOT NULL;
+
+       사번 사원명       부서명           지역명          
+---------- ---------- -------------- -------------
+      7499 ALLEN      SALES          CHICAGO      
+      7844 TURNER     SALES          CHICAGO      
+      7654 MARTIN     SALES          CHICAGO      
+      7521 WARD       SALES          CHICAGO  
 
 과제4) 이름에 'A'가 포함된 사원의 사원명과, 부서명을 출력하시오.
 
+SELECT ename 사원명, dname 부서명 FROM employee, department 
+WHERE employee.dno = department.dno AND ename LIKE '%A%';
+
+사원명        부서명           
+---------- --------------
+CLARK      ACCOUNTING    
+ADAMS      RESEARCH      
+ALLEN      SALES         
+WARD       SALES         
+MARTIN     SALES         
+BLAKE      SALES         
+JAMES      SALES 
+
 과제5) 'NEW YORK'에서 근무하는 사원의 사번, 사원명, 업무, 부서번호, 부서명을 출력하시오.
 
+SELECT eno 사번, ename 사원명, job 업무, e.dno 부서번호, dname 부서명 FROM employee e, department d
+WHERE e.dno = d.dno AND loc = 'NEW YORK';
 
-
+       사번 사원명       업무           부서번호 부서명           
+---------- ---------- --------- ---------- --------------
+      7782 CLARK      MANAGER           10 ACCOUNTING    
+      7839 KING       PRESIDENT         10 ACCOUNTING    
+      7934 MILLER     CLERK             10 ACCOUNTING
 
 
 
