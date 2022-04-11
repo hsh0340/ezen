@@ -1,0 +1,433 @@
+(5) 기타 다양한 함수
+- nvl(), nvl2(), nullif()
+
+- coalesce() : null이 아닌 값을 반환하는 함수
+ex) coalesce(필드1, 필드2, 필드3, 0)
+-> 필드1의 값이 널이 아니면 필드1의 값을 출력하고,
+필드1의 값이 널이고, 필드2의 값이 널이 아니면 필드2의 값을 출력하고,
+필드2의 값이 널이고, 필드3의 값이 널이 아니면 필드3의 값을 출력하고,
+필드3의 값이 널이면 0을 출력하라.
+
+문제1) 사원 테이블에서 성과급이 null이 아니면 성과급을 출력하고, 
+성과급이 null이고, 연봉이 null이 아니면 연봉을 출력하고, 만일 성과급과 연봉이 모두 null이면 0을 출력하시오.
+
+- decode() : 프로그래밍 언어에서 사용하는 switch~case 문과 비슷
+ex) decode(필드(표현식), 
+조건1, 결과1, 
+조건2, 결과2, 
+조건3, 결과3, .., 
+기본결과)
+
+문제2) 사원 테이블에서 사번, 사원명, 업무, 부서번호를 나타내고, 
+부서번호가 10이면 'ACCOUNTING', 20이면 'RESEARCH', 30이면 'SALES', 40이면 'OPERATIONS'로 출력하시오.
+(DECODE 함수 사용)
+
+- case() : 프로그래밍 언어에서 사용하는 if~else 문과 비슷
+ex) 
+CASE
+WHEN 조건1 THEN 결과1
+WHEN 조건2 THEN 결과2
+...
+ELSE 기본결과
+END
+
+SELECT eno 사번, ename 사원명, job 업무, dno 부서번호, 
+CASE WHEN dno=10 THEN 'ACCOUNT'
+WHEN dno=20 THEN 'RESEARCH'
+WHEN dno=30 THEN 'SALES'
+WHEN dno=40 THEN 'OPERATIONS'
+ELSE 'DEFAULT'
+END 부서명 FROM employee;
+
+       사번 사원명      업무            부서번호 부서명       
+---------- ---------- --------- ---------- ----------
+      7369 SMITH      CLERK             20 RESEARCH  
+      7499 ALLEN      SALESMAN          30 SALES     
+      7521 WARD       SALESMAN          30 SALES     
+      7566 JONES      MANAGER           20 RESEARCH  
+      7654 MARTIN     SALESMAN          30 SALES     
+      7698 BLAKE      MANAGER           30 SALES     
+      7782 CLARK      MANAGER           10 ACCOUNT   
+      7788 SCOTT      ANALYST           20 RESEARCH  
+      7839 KING       PRESIDENT         10 ACCOUNT   
+      7844 TURNER     SALESMAN          30 SALES     
+      7876 ADAMS      CLERK             20 RESEARCH  
+      7900 JAMES      CLERK             30 SALES     
+      7902 FORD       ANALYST           20 RESEARCH  
+      7934 MILLER     CLERK             10 ACCOUNT   
+
+문제3) 사원 테이블에서 사번, 사원명, 업무, 부서번호를 나타내고, 
+부서번호가 10이면 'ACCOUNTING', 20이면 'RESEARCH', 30이면 'SALES', 40이면 'OPERATIONS'로 출력하시오.
+(case 함수 사용)
+
+문제4) 사원 테이블에서 업무에 따라 연봉을 인상하여 출력하시오.
+- 사번, 사원명, 업무, 연봉, 인상된 연봉을 alias를 사용하여 출력하시오.
+- 인상된 연봉의 기준 'ANALYST'는 연봉에 200 인상, 'SALESMAN'은 연봉에 180 인상
+- decode 함수
+- case 함수
+
+⭐️⭐️⭐️
+< 그룹 함수 >
+- 테이블의 통계적인 결과를 행의 집합에 적용하여 하나의 결과를 출력하는 함수
+- 하나 이상의 행을 그룹하여 사용하는 함수
+- 총 5가지 : sum, avg, count, max, min
+
+⭐️ 그룹함수에서의 널값 연산 : 그룹 함수는 널값을 제외하고 계산함.
+
+문제5) 모든 사원의 연봉 총액, 연봉 평균, 최고 연봉, 최저 연봉을 구하시오.
+
+문제6) 가장 최근에 입사한 사원의 입사일과 가장 오래 근무한 사원의 입사일을 구하시오.
+
+문제7) 모든 사원의 성과급의 총액, 평균, 최고 성과급, 최저 성과급을 구하시오.
+SELECT SUM(commission), AVG(commission), MAX(commission), MIN(commission) FROM employee;
+
+SUM(COMMISSION) AVG(COMMISSION) MAX(COMMISSION) MIN(COMMISSION)
+--------------- --------------- --------------- ---------------
+           2200             550            1400               0
+
+- 그룹함수에서의 널값 연산 -> 그룹 함수는 널값을 제외하고 계산함.
+- COUNT() : 
+
+SELECT COUNT(commission) FROM employee;
+
+COUNT(COMMISSION)
+-----------------
+                4
+
+
+문제8) 사원 테이블에서 사원 수를 구하시오.
+- COUNT(): 함수일 때도 널값을 제외하고 개수를 구함
+-> 기본적으로 개수는 널값을 포함하여 구하는 것이 보편적인 방법이므로 COUNT(*)로 사용함.
+-> 널값도 포함하여 개수를 구함
+
+문제9) 성과급을 받을 수 있는 사원 수를 구하시오.
+
+문제10) 사원 테이블에서 최고 연봉을 받는 사원의 사원명과 연봉을 구하시오.
+-> 문제점) 에러 발생, not a single-group group function
+-> ename은 14개의 행, max(salary)는 1개의 행, 따라서 행의 개수가 일치하지 않아서 발생하는 문제
+-> 해결책) 서브쿼리로 해결
+
+⭐️⭐️⭐️ 그룹함수의 목적 : 필드를 그룹하여 그룹별로 통계를 내기 위함.
+문제11) 사원 테이블에서 부서별 평균 급여를 구하시오.
+
+SELECT dno, AVG(salary) FROM employee GROUP BY dno;
+
+       DNO AVG(SALARY)
+---------- -----------
+        30  1566.66667
+        10  2916.66667
+        20        2175
+
+문제12) 사원 테이블에서 업무별 총연봉, 평균연봉, 최고연봉, 최저연봉을 구하시오.
+- 평균은 반올림하여 소수점 둘째자리까지 출력
+- 별칭을 사용
+- 평균 급여를 기준으로 내림차순으로 정렬
+
+문제13) 사원 테이블에서 연봉의 합계를 각 부서 안에서 업무별로 사원수와 함께 출력하시오.
+- 부서번호, 업무, 사원수, 총연봉을 별칭으로 출력
+- 부서번호, 업무 기준으로 정렬하여 출력
+
+SELECT dno 부서번호, job 업무, COUNT(*) 사원수, SUM(salary) 총연봉 
+FROM employee GROUP BY dno, job ORDER BY dno, job;
+
+    부서번호 업무             사원수       총연봉
+---------- --------- ---------- ----------
+        10 CLERK              1       1300
+        10 MANAGER            1       2450
+        10 PRESIDENT          1       5000
+        20 ANALYST            2       6000
+        20 CLERK              2       1900
+        20 MANAGER            1       2975
+        30 CLERK              1        950
+        30 MANAGER            1       2850
+        30 SALESMAN           4       5600
+
+⭐️ HAVING절 - 그룹에 대한 조건을 지정하여 그룹의 결과에 대한 제한을 함
+문제14) 부서별로 최고연봉이 3000 이상인 부서번호, 부서별 최고 연봉을 출력하시오.
+
+SELECT dno 부서, MAX(salary) 최고연봉 FROM employee
+GROUP BY dno HAVING  MAX(salary) >= 3000;
+
+        부서       최고연봉
+---------- ----------
+        10       5000
+        20       3000
+
+문제15) 부서별 연봉 총액이 10000 이상인 부서번호, 사원수, 연봉총액을 출력하시오.
+
+SELECT dno 부서번호, COUNT(*) 사원수, SUM(salary) 연봉총액 FROM employee
+GROUP BY dno HAVING SUM(salary) >= 10000;
+
+     부서번호        사원수       연봉총액
+---------- ---------- ----------
+        20          5      10875
+
+⭐️⭐️ SELECT문의 6개 절을 모두 사용하는 문제
+문제16) 연봉총액이 5000을 넘는 업무에 대해서 업무와 연봉 총액을 표시하되, 업무가 'MANAGER'인 사원은 제외하고, 연봉총액의 내림차순으로 출력하시오.
+
+SELECT job 업무, SUM(salary) 연봉총액 FROM employee
+WHERE job NOT IN 'MANAGER' GROUP BY job HAVING SUM(salary) > 5000
+ORDER BY 연봉총액 DESC;
+
+업무           연봉총액
+--------- ----------
+ANALYST         6000
+SALESMAN        5600
+
+문제17) 입사년별로 사원수와 급여평균을 구하시오.
+
+SELECT TO_CHAR(hiredate, 'YYYY') 입사년도, COUNT(*) 사원수, AVG(salary) 급여평균
+FROM employee GROUP BY TO_CHAR(hiredate, 'YYYY');
+
+입사년도     사원수     급여평균
+---- ---------- ----------
+1981         10     2282.5
+1987          2       2050
+1980          1        800
+1982          1       1300
+
+⭐️⭐️⭐️
+조인(join) - 여러개의 테이블에 저장된 데이터를 한번에 조회하여 결과를 얻고자 할 때 사용하는 쿼리문
+
+Q1) 사번이 7778인 사원의 사원명과 부서명을 출력하시오.
+SELECT ename, dno FROM employee WHERE eno = 7788; -> 사원 테이블에서 사원 명과, 부서번호를
+SELECT dname FROM department WHERE dno = 20; -> 부서 테이블에서 부서명을 알아냄.
+-> 개선방법 : 하나의 쿼리문을 사용하여 원하는 결과를 얻고자 함.
+
+1. 이퀴 조인(Equi Join)
+- 여러 테이블을 사용하는 조건을 WHERE 절에서 =(equal)을 사용하여 조인하는 방법
+- WHERE 절에는 반드시 조인의 조건을 적용
+
+1-1 번 방법
+SELECT employee.ename, department.dname 
+FROM employee, department
+WHERE employee.dno = department.dno -- 조인 조건
+and employee.eno = 7788;
+
+ENAME      DNAME         
+---------- --------------
+SCOTT      RESEARCH      
+
+1-2 번 방법 -> 해당 테이블에만 존재하는 필드는 테이블을 생략 할 수 있음
+SELECT ename, dname 
+FROM employee, department
+WHERE employee.dno = department.dno -- 조인 조건
+and employee.eno = 7788;
+
+ENAME      DNAME         
+---------- --------------
+SCOTT      RESEARCH      
+
+1-3 번 방법 -> 테이블에 대한 alias를 사용하여 표현
+
+SELECT e.ename, d.dname
+FROM employee e, department d
+WHERE e.dno = d.dno -- 조인 조건
+and e.eno = 7788;
+
+ENAME      DNAME         
+---------- --------------
+SCOTT      RESEARCH   
+
+1-4 번 방법 -> 해당 테이블에만 존재하는 필드는 alias를 사용하여 표현
+
+SELECT ename, dname
+FROM employee e, department d
+WHERE e.dno = d.dno -- 조인 조건
+and eno = 7788;   
+
+ENAME      DNAME         
+---------- --------------
+SCOTT      RESEARCH     
+
+Q2) 사번이 7788인 사원의 사번, 사원명, 부서번호, 부서명을 출력하시오. 
+
+SELECT eno 사번, ename 사원명, d.dno 부서번호, dname 부서명
+FROM employee e, department d
+WHERE e.dno = d.dno AND eno = 7788;
+
+        사번 사원명              부서번호 부서명           
+---------- ---------- ---------- --------------
+      7788 SCOTT              20 RESEARCH  
+
+2. Natural Join
+- 두개의 테이블에서 조인이 되는 필드명이 일치할 때, where 절에 적었던 조인조건을 사용하지 않는 조인방법
+- equi join 에서 alias를 사용하지 않았을 때 발생하는 에러를 해결하기 위해 만듦
+- from 절의 테이블 사이에 natural join 이라고 씀
+
+Q2) 사번이 7778인 사원의 사원명과 부서명을 출력하시오.
+- naturla join : alias 사용하지 않는 방법 
+-> Equi Join에서 alias를 사용하지 않았을 때 발생하는 에러를 해결하기 위해 만듦
+- from 절의 테이블 사이에 natural join이라고 씀
+- 전제) 두 개의 테이블에서 조인이 되는 필드는 필드명이 같아야 한다.
+- 두개의 테이블에서 필드명이 일치한다면 alias생략
+
+SELECT eno 사번, ename 사원명, dno 부서번호, dname 부서명 
+FROM employee NATURAL JOIN department
+WHERE eno = 7788;
+
+3. join - using
+- natural join 에서는 두개의 테이블에서 조인하는 필드가 일치한다는 전제로 조인조건을 생략함
+-> natural join에서는 어떤 필드를 기준으로 조인하고 있는지 바로 확인하기 어려움
+- FROM절과 WHERE절 사이에 USING을 사용해서 조인이 되는 필드명을 확실하게 기술함.
+
+Q3) 사번이 7778인 사원의 사원명, 부서번호, 부서명을 출력하시오.
+
+SELECT eno 사번, ename 사원명, dno 부서번호, dname 부서명 
+FROM employee JOIN department USING(dno)
+WHERE eno = 7788;
+
+        사번 사원명              부서번호 부서명           
+---------- ---------- ---------- --------------
+      7788 SCOTT              20 RESEARCH      
+
+4. join ~ on
+- equi join 에서 WHERE에 적던 조인조건을 on절에 적음.
+- 테이블명 사이에 join 키워드를 명시해서 사용
+- alias를 사용 
+
+Q4) 사번이 7778인 사원의 사원명, 부서번호, 부서명을 출력하시오.
+
+SELECT eno 사번, ename 사원명, e.dno 부서번호, dname 부서명 
+FROM employee e JOIN department d ON e.dno = d.dno
+WHERE eno = 7788;
+
+        사번 사원명          부서번호 부서명           
+---------- ---------- ---------- --------------
+      7788 SCOTT              20 RESEARCH     
+
+SELECT eno 사번, ename 사원명, e.dno 부서번호, dname 부서명 
+FROM employee e INNER JOIN department d
+ON e.dno = d.dno
+WHERE eno = 7788;
+
+--------
+
+문제18) 'SCOTT' 사원의 사원명, 부서번호, 부서명을 출력하시오.
+equi join의 4가지 방법으로 해결
+
+1.1 
+SELECT employee.ename, employee.dno, department.dname
+FROM employee, department
+WHERE employee.dno = department.dno
+AND employee.ename = 'SCOTT';
+
+1.2 -> 해당 테이블만 존재하는 필드는 생략 가능
+SELECT ename, employee.dno, dname
+FROM employee, department
+WHERE employee.dno = department.dno
+AND ename = 'SCOTT';
+
+1.3 -> 테이블에 대한 alias 사용
+SELECT e.ename, e.dno, d.dname
+FROM employee e, department d
+WHERE e.dno = d.dno
+AND e.ename = 'SCOTT';
+
+1.4 -> 해당 테이블에만 존재하는 필드는 alias를 사용하여 표현
+SELECT ename, d.dno, dname
+FROM employee e, department d
+WHERE e.dno = d.dno
+AND ename = 'SCOTT';
+
+문제19) 사원명, 부서명, 지역명을 출력하시오.
+equi join의 4가지 방법으로 해결
+
+1.1
+SELECT employee.ename, department.dname, department.loc
+FROM employee, department
+WHERE employee.dno = department.dno;
+
+1.2
+SELECT ename, department.dname, loc
+FROM employee, department
+WHERE employee.dno = department.dno;
+
+1.3
+SELECT e.ename, d.dname, d.loc
+FROM employee e, department d
+WHERE e.dno = d.dno;
+
+1.4
+SELECT ename, d.dname, d.loc
+FROM employee e, department d
+WHERE e.dno = d.dno;
+
+
+문제20) 10 번 부서에 속하는 모든 담당업무와 부서의 지역명을 출력하시오.
+equi join의 4가지 방법으로 해결
+
+------------
+2. 넌이퀴 조인(non-equi join)
+- 조인 조건이 =(equal) 이 아닌 연산자를 사용하는 조인
+- 조인 조건이 특정 범위 내에 있는지를 조사하기 위해 사용
+
+문제21) 사원의 급여에 해당하는 급여 등급을 출력 하시오.
+- 사번, 사원명, 급여, 급여 등급
+
+SELECT eno 사번, ename 사원명, job 업무, salary 연봉, grade 연봉등급
+FROM employee, salgrade
+WHERE salary BETWEEN losal AND hisal;
+
+       사번 사원명       업무              연봉     연봉등급
+---------- ---------- --------- ---------- ----------
+      7369 SMITH      CLERK            800          1
+      7900 JAMES      CLERK            950          1
+      7876 ADAMS      CLERK           1100          1
+      7521 WARD       SALESMAN        1250          2
+      7654 MARTIN     SALESMAN        1250          2
+      7934 MILLER     CLERK           1300          2
+      7844 TURNER     SALESMAN        1500          3
+      7499 ALLEN      SALESMAN        1600          3
+      7782 CLARK      MANAGER         2450          4
+      7698 BLAKE      MANAGER         2850          4
+      7566 JONES      MANAGER         2975          4
+      7788 SCOTT      ANALYST         3000          4
+      7902 FORD       ANALYST         3000          4
+      7839 KING       PRESIDENT       5000          5
+
+SELECT eno 사번, ename 사원명, job 업무, salary 연봉, grade 연봉등급
+FROM employee INNER JOIN salgrade
+ON salary BETWEEN losal AND hisal
+ORDER BY salary DESC;
+
+       사번 사원명       업무              연봉     연봉등급
+---------- ---------- --------- ---------- ----------
+      7839 KING       PRESIDENT       5000          5
+      7902 FORD       ANALYST         3000          4
+      7788 SCOTT      ANALYST         3000          4
+      7566 JONES      MANAGER         2975          4
+      7698 BLAKE      MANAGER         2850          4
+      7782 CLARK      MANAGER         2450          4
+      7499 ALLEN      SALESMAN        1600          3
+      7844 TURNER     SALESMAN        1500          3
+      7934 MILLER     CLERK           1300          2
+      7654 MARTIN     SALESMAN        1250          2
+      7521 WARD       SALESMAN        1250          2
+      7876 ADAMS      CLERK           1100          1
+      7900 JAMES      CLERK            950          1
+      7369 SMITH      CLERK            800          1
+
+< 4월 11일 과제 >
+과제1) 업무별 최저 연봉을 출력하되, 관리자를 알수없는 사원은 제외하고, 최저 연봉이 2000 미만인 그룹은 제외하고,
+최저연봉에 대한 내림차순으로 출력하시오.
+
+과제2) 각 부서에 대해 부서번호, 사원수, 평균 연봉을 출력하시오.
+평균 연봉은 소수점 둘째자기에서 반올림하고, 부서별로 오름차순으로 출력하시오.
+
+equi join answp
+과제3) 성과급을 받는 모든 사원의 사번, 사원명, 부서명, 지역명을 출력하시오.
+
+과제4) 이름에 'A'가 포함된 사원의 사원명과, 부서명을 출력하시오.
+
+과제5) 'NEW YORK'에서 근무하는 사원의 사번, 사원명, 업무, 부서번호, 부서명을 출력하시오.
+
+
+
+
+
+
+
+
+
+
