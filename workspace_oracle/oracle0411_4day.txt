@@ -509,7 +509,8 @@ ORDER BY salary DESC;
 과제1) 업무별 최저 연봉을 출력하되, 관리자를 알수없는 사원은 제외하고, 최저 연봉이 2000 미만인 그룹은 제외하고,
 최저연봉에 대한 내림차순으로 출력하시오.
 
-SELECT job 업무, MIN(salary) 최저연봉 FROM employee GROUP BY job;
+SELECT job 업무, MIN(salary) 최저연봉 FROM employee WHERE manager IS NOT NULL 
+GROUP BY job HAVING NOT MIN(salary)<2000 ORDER BY MIN(salary) DESC;
 
 업무           최저연봉
 --------- ----------
@@ -523,13 +524,13 @@ PRESIDENT       5000
 평균 연봉은 소수점 둘째자기에서 반올림하고, 부서별로 오름차순으로 출력하시오.
 
 SELECT dno 부서번호, COUNT(ename) 사원수, ROUND(AVG(salary), 2) 평균연봉 FROM employee 
-GROUP BY dno ORDER BY 평균연봉;
+GROUP BY dno ORDER BY dno;
 
     부서번호       사원수     평균연봉
 ---------- ---------- ----------
-        30          6    1566.67
-        20          5       2175
         10          3    2916.67
+        20          5       2175
+        30          6    1566.67
 
 equi join 문제
 과제3) 성과급을 받는 모든 사원의 사번, 사원명, 부서명, 지역명을 출력하시오.
@@ -549,6 +550,9 @@ WHERE employee.dno = department.dno AND commission IS NOT NULL;
 SELECT ename 사원명, dname 부서명 FROM employee, department 
 WHERE employee.dno = department.dno AND ename LIKE '%A%';
 
+(SELECT ename, dname FROM employee e JOIN department d
+ON e.dno = d.dno WHERE ename LIKE '%A%';)
+
 사원명        부서명           
 ---------- --------------
 CLARK      ACCOUNTING    
@@ -563,6 +567,13 @@ JAMES      SALES
 
 SELECT eno 사번, ename 사원명, job 업무, e.dno 부서번호, dname 부서명 FROM employee e, department d
 WHERE e.dno = d.dno AND loc = 'NEW YORK';
+
+(SELECT eno, ename, job, dno, dname FROM employee
+NATURAL JOIN department WHERE loc = 'NEW YORK';)
+
+(SELECT eno, ename, job, dno, dname FROM employee
+JOIN department USING(dno) WHERE loc = 'NEW YORK';)
+
 
        사번 사원명       업무           부서번호 부서명           
 ---------- ---------- --------- ---------- --------------
