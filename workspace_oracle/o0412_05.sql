@@ -189,3 +189,88 @@ AND job <> 'SALESMAN';
 과제8) 급여가 평균급여보다 많은 사원의 사번, 사원명, 급여를 출력하시오.
 */
 
+-- 과제1) 10번 부서에 속하는 사원의 부서번호, 업무, 지역명을 출력하시오.
+-- EQUI JOIN 1-1
+SELECT employee.dno 부서번호, employee.job 업무, department.loc 지역명
+FROM employee, department
+WHERE employee.dno = 10 -- JOIN
+AND employee.dno = department.dno;
+
+-- EQUI JOIN 1-2 : 해당 테이블에만 존재하는 필드는 생략 가능
+SELECT employee.dno 부서번호, job 업무, loc 지역명
+FROM employee, department
+WHERE employee.dno = 10
+AND employee.dno = department.dno;
+
+-- EQUI JOIN 1-3 : 테이블에 대한 alias를 사용하여 표현
+SELECT e.dno 부서번호, e.job 업무, d.loc 지역명
+FROM employee e, department d
+WHERE e.dno = 10
+AND e.dno = d.dno;
+
+-- EQUI JOIN 1-4 : 해당 테이블에만 존재하는 필드는 alias를 사용하여 표현
+SELECT e.dno 부서번호, job 업무, loc 지역명
+FROM employee e, department d
+WHERE e.dno = 10
+AND e.dno = d.dno;
+
+-- natural join 
+SELECT 
+
+-- 과제2) 업무가 'ANALYST'인 사원의 사번, 사원명, 업무, 부서번호, 부서명, 지역명을 출력하시오.
+-- EQUI JOIN 1-1
+SELECT employee.eno 사번, employee.ename 사원명, employee.job 업무, employee.dno 부서번호, department.dname 부서명, department.loc 지역명
+FROM employee, department
+WHERE job = 'ANALYST'
+AND employee.dno = department.dno;
+
+-- EQUI JOIN 1-2
+SELECT eno 사번, ename 사원명, job 업무, employee.dno 부서번호, dname 부서명, loc 지역명
+FROM employee, department
+WHERE job = 'ANALYST'
+AND employee.dno = department.dno;
+
+-- EQUI JOIN 1-3
+SELECT e.eno 사번, e.ename 사원명, e.job 업무, e.dno 부서번호, d.dname 부서명, d.loc 지역명
+FROM employee e, department d
+WHERE job = 'ANALYST'
+AND e.dno = d.dno;
+
+-- EQUI JOIN 1-4
+SELECT eno 사번, ename 사원명, job 업무, e.dno 부서번호, dname 부서명, loc 지역명
+FROM employee e, department d
+WHERE job = 'ANALYST'
+AND e.dno = d.dno;
+
+-- natural join
+SELECT eno 사번, ename 사원명, job 업무, dno 부서번호, dname 부서명, loc 지역명
+FROM employee NATURAL JOIN department
+WHERE job = 'ANALYST';
+
+-- join ~ using
+SELECT eno 사번, ename 사원명, job 업무, dno 부서번호, dname 부서명, loc 지역명
+FROM employee JOIN department USING(dno)
+WHERE job = 'ANALYST';
+
+-- join ~ on
+SELECT eno 사번, ename 사원명, job 업무, e.dno 부서번호, dname 부서명, loc 지역명
+FROM employee e JOIN department d ON e.dno = d.dno
+WHERE job = 'ANALYST';
+
+
+-- 과제3) 'SCOTT'과 동일한 부서에서 근무하는 사원의 사원명, 부서번호, 부서명을 'SCOTT'을 제외하고 출력하시오.
+-- EQUI JOIN 1-1
+SELECT employee.ename 사원명, employee.dno(SELECT dno FROM employee WHERE dno`  부서번호, department.dname 부서명
+FROM employee, department
+WHERE ename NOT IN 'SCOTT'
+AND employee.dno = department.dno;
+
+
+
+
+
+
+
+
+SELECT * FROM employee;
+
