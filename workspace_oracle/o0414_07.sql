@@ -412,3 +412,29 @@ SELECT * FROM user_constraint WHERE table_name = 'EMP02';
 -- 부모의 pk와 자식의 fk를 함께 제거하는 명령 
 ALTER TABLE dept02 DROP PRIMARY KEY CASCADE;
 
+
+------------------
+
+SELECT * FROM user_constraints WHERE table_name IN('EMP02', 'DEPT02');
+SELECT * FROM user_constraints WHERE table_name IN('EMP01', 'DEPT01');
+
+-- 4. 제약조건의 활성화/비활성화 (enable, disable)
+-- emp02 테이블의 eno컬럼의 primary key 제약조건 
+ALTER TABLE emp02 DISABLE CONSTRAINT emp_eno_pk;
+SELECT * FROM user_constraints WHERE table_name = 'EMP02';
+
+SELECT * FROM emp02;
+DESC emp02;
+
+-- eno 컬럼의 PK 제약조건 비활성한 후 eno 컬럼에 이미 존재하는 데이터 삽입 확인
+--> PK 제약조건을 비활성화 하였으므로 삽입 가능 
+INSERT INTO emp02(eno) VALUES(9000); -- 성공 
+SELECT * FROM emp02;
+COMMIT;
+
+INSERT INTO emp02(eno) VALUES(NULL); -- 성공
+SELECT * FROM emp02;
+COMMIT;
+
+-- 4-2. emp02 테이블의 eno 컬럼을 disable(비활성화)에서 enable(활성화)로 변경
+ALTER TABLE emp02 ENABLE CONSTRAINT emp02_eno_pk;
