@@ -14,16 +14,17 @@
     document.addEventListener("DOMContentLoaded", () => {
           let t1 = document.querySelector("[name=t1]")
           let t2 = document.querySelector("#t2")
+          let cnt = 0, timer = 0;
 
-          // 체크박스 - changeㅇ 이벤트 사용
+          // 체크박스 - change 이벤트 사용
           t1.addEventListener("change", (event) => {
             // checked -> activate the timer
             if (event.currentTarget.checked) { // 체크했을 때 -> 타이머 활성화
-              let timer = setInterval(() => {
-                t2.textContent = `${count++}초`
+              timer = setInterval(() => {
+                t2.textContent = `${cnt++}초`
               }, 1000)
             } else { // 해제했을 때 -> 타이머 비활성화(멈춤)
-              clearInterval(timer)
+              clearInterval(timer);
             }
           })
         })

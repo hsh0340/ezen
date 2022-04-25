@@ -9,23 +9,22 @@
   <!--  -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // let ck = document.querySelector("[name=ck]") // one value in the array
-      let ck = document.getElementsByName("ck")[0] // array
-      // console.log(`ck : ${ck}`)
-      let flag = false
+      // let ck = document.querySelector("[name=ck]"); // 배열중에서 1개의 값
+      let ck = document.getElementsByName("ck")[0]; // 배열
 
-      // checkbox - change event
+      // console.log(`ck : ${ck}`);
+      let flag = false;
+
+      // checkbox - change 이벤트
       ck.addEventListener("change", (event) => {
-        flag = event.currentTarget.checked
-        // console.log(`flag : ${flag}`)
+        flag = event.currentTarget.checked;
+        console.log(`flag : ${flag}`);
       })
 
-      let link = document.querySelector("#link")
-      // a tag - click event
+      let link = document.querySelector("#link");
       link.addEventListener("click", (event) => {
-        if (!flag) {
-          // when not checked -> not linked
-          event.preventDefault()
+        if (!flag) { // 체크하지 않았을 때 -> 링크로 이동 x
+          event.preventDefault;
         }
       })
     })
@@ -33,10 +32,10 @@
 </head>
 
 <body>
-  <h1>change event 4 - check</h1>
-  <h3>Activate the link when a checkbox is checked</h3>
-  <label><input type="checkbox" name="ck">link activation <a href="https://www.naver.com" target="_blank"
-      id="link">NAVER</a></label>
+  <h1>change event 4번 - check</h1>
+  <h3>체크를 했을 때 링크를 활성화 하기</h3>
+  <label><input type="checkbox" name="ck">링크 활성화</label> <a href="https://www.naver.com" target="_blank"
+      id="link">NAVER</a>
 </body>
 
 </html>

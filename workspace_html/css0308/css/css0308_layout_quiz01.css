@@ -6,15 +6,16 @@ body {
   width: 1000px;
   margin: 0 auto;
   border: 1px solid #e7e7e7;
+
 }
 
 header {
   height: 280px;
-  background: url("/css0308/images/bg.png") no-repeat;
-  background-size: contain;
-  /* 자식인 h1과 h2를 absolute 를 사용하기 위해서
-     부모인 header는 relative를 설정해야 한다  */
+  background: url("../images/bg.png") no-repeat;
+  background-size: 100% 100%;
+
   position: relative;
+
 }
 
 header h1 {
@@ -22,8 +23,9 @@ header h1 {
   right: 20px;
   top: 50px;
   font-size: 3em;
-  color: rgb(253, 252, 210);
+  color: #ffff00;
   text-shadow: 2px 2px 2px lightgray;
+
 }
 
 header h2 {
@@ -31,27 +33,30 @@ header h2 {
   right: 20px;
   top: 130px;
   font-size: 1.8em;
-  color: yellow;
+  text-shadow: 1px 1px 1px #ccc;
+
 }
 
 /* 상단 - 메뉴 */
-nav {}
+nav {
+  /* margin-top: 0; */
+}
 
 nav ul {
   list-style: none;
   height: 40px;
   margin: 0;
-  background-color: #271717;
+  background: #271717;
+  line-height: 0;
 
 }
 
 nav ul li {
   display: inline-block;
-  width: 100px;
-
   padding: 10px 20px;
   margin: 10px 20px;
   text-align: center;
+
 }
 
 nav ul li a {
@@ -60,33 +65,51 @@ nav ul li a {
 }
 
 nav ul li:hover a {
-  color: blue;
+  color: red;
   font-weight: bold;
 }
 
-/* 본문, 사이드바 */
+/* 중단 - 본문, 사이드바 */
 section {
   width: 68%;
   float: left;
+  padding: 1%;
+}
+
+.content1 img {
+  width: 95%;
 }
 
 aside {
   width: 28%;
   float: right;
   padding: 1%;
-  background-color: #ddffdd;
+  background: #ddffdd;
+
 }
 
 aside .imgs {
   text-align: center;
+
+
 }
 
 aside img {
   margin-bottom: 10px;
   opacity: 0.5;
-  transition: 1s;
 }
 
 aside img:hover {
   opacity: 1;
+
+}
+
+/* 하단 - 푸터 */
+footer {
+  clear: both;
+  height: 150px;
+  background-color: #003300;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
 }

@@ -38,7 +38,7 @@ sqlplus system/1234
 
 6. 사용자 계정(account) 생성과 권한 부여
 계정 생성 : create user ezen01 identified by 1234;
-권한 부여 : grant connect, resources, dba to ezen01;
+권한 부여 : grant connect, resource, dba to ezen01;
 
 7. 사용자 접속
 sqlplus ezen01/1234
@@ -65,7 +65,7 @@ drop user ezen02;
 ---------------
 
 10. 테이블의 정보를 확인하는 명령문
-desc(ride) employee; -- 테이블의 구조를 확인하는 명령
+desc(ribe) employee; -- 테이블의 구조를 확인하는 명령
 select * from employee; -- 테이블의 데이터를 확인하는 명령
 
 11. 자신의 계정에서 생성된 테이블을 확인하는 명령문

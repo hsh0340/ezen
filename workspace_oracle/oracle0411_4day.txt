@@ -290,9 +290,23 @@ SELECT ename, dno FROM employee WHERE eno = 7788; -> 사원 테이블에서 사�
 SELECT dname FROM department WHERE dno = 20; -> 부서 테이블에서 부서명을 알아냄.
 -> 개선방법 : 하나의 쿼리문을 사용하여 원하는 결과를 얻고자 함.
 
-1. 이퀴 조인(Equi Join)
-- 여러 테이블을 사용하는 조건을 WHERE 절에서 =(equal)을 사용하여 조인하는 방법
-- WHERE 절에는 반드시 조인의 조건을 적용
+1. EQUI(등가) JOIN
+- 두 개의 테이블 간에 칼럼 값들이 서로 정확하게 일치하는 경우에 사용되는 방법
+- JOIN의 조건은 WHERE 절에 기술하게 되는데 '=' 연산자를 사용해서 표현
+
+EQUI JOIN의 형태
+SELECT 테이블1.컬럼명, 테이블2.컬럼명, ...
+FROM 테이블1, 테이블2
+WHERE 테이블2.컬럼명 = 테이블1.컬럼명 -- WHERE 절에 JOIN 조건 기술
+;
+
+ANSI/ISO SQL 표준 방식(JOIN ~ ON)
+SELECT 테이블1.컬럼명, 테이블2.컬럼명, ...
+FROM 테이블1 INNER JOIN 테이블2
+ON 테이블2.컬럼명 = 테이블1.컬럼명 -- ON 절에 JOIN 조건 기술
+
+- 테이블명 대신 주로 ALIAS를 사용
+- 유일한 컬럼명에서는 테이블명을 생략해도 되지만, 향후 오류가 발생할 수 있으므로 컬럼명 앞에 테이블명 또는 ALIAS 붙이는게 좋다.
 
 1-1 번 방법
 SELECT employee.ename, department.dname 

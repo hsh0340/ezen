@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>화면설계 문제1번 (한승하)</title>
+  <style>
+
+    body {
+      width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* 상단 이미지 */
+    header img {
+      width: 1000px;
+      height: 200%;
+    }
+
+    /* 상단 메뉴 */
+    nav {
+      width: 100%;
+      height: 50px;
+      margin-top: -5px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      background: red;
+      line-height: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 20px;
+      text-align: center;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover {
+      color: red;
+      background: white;
+    }
+
+    /* SECTION */
+    article {
+      display: inline-block;
+      width: 100%;
+    }
+
+    section {
+      width: 100%;
+      margin: auto;
+    }
+
+    /* 메인 이미지 영역 */
+    #shop {
+      width: 40%;
+    }
+
+    #shop img {
+      width: 100%;
+      float: left;
+    }
+
+    /* 본문 영역 */
+    #intro {
+      width: 50%;
+      float: left;
+      top: 50px;
+      padding: 30px;
+    }
+
+    #intro h2 {
+      color: purple;
+    }
+
+    #intro p {
+      color: red;
+    }
+
+    /* 고객 상담 안내 영역 */
+    #consulting {
+      width: 30%;
+      height: 100%;
+      display: inline-block;
+      float: left;
+    }
+
+    #customer {
+      background-color: red;
+      padding: 3%;
+    }
+
+    /* 제품소개 이미지 영역 */
+    #sub {
+      position: relative;
+    }
+
+
+    #sub img {
+      float: right;
+      width: 15%;
+      margin: 10px;
+      border: 1px solid gray;
+      border-radius: 5px;
+    }
+
+    #context-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: black;
+      right: 20;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 10px;
+    }
+
+    footer ul {
+      text-align: center;
+      list-style: none;
+      height: 40px;
+      margin: 0;
+      line-height: 0;
+    }
+
+    footer ul li {
+      text-align: center;
+      display: inline-block;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="images/title.png" alt="메인이미지">
+  </header>
+
+  <!-- NAVIGATOR -->
+  <nav>
+    <ul>
+      <li><a href="#">꽃다발</a></li>
+      <li><a href="#">꽃바구니</a></li>
+      <li><a href="#">웨딩부케</a></li>
+      <li><a href="#">화분</a></li>
+    </ul>
+  </nav>
+
+  <!-- SECTION -->
+  <section>
+
+    <!-- 첫번째 article -->
+    <article>
+
+      <!-- 가게 이미지 영역 -->
+      <div id="shop">
+        <img src="images/flower-shop.png" alt="">
+      </div>
+
+      <!-- 가게 소개 영역 -->
+      <div id="intro">
+        <h2>향기나는 꽃집입니다</h2>
+        <p>향기나는 꽃집은 식물과 함께하는 건강한 삶, 꽃으로 전하는 사랑이야기, 그리고 꽃으로 힐링하는 치유의 삶의 메신저가 되겠습니다.</p>
+      </div>
+    </article>
+
+    <!-- 두번째 article -->
+    <article>
+
+      <!-- 고객 상담 안내 영역 -->
+      <div id="consulting">
+        <div id="customer">
+          <h3>고객 상담 안내</h3>
+        </div>
+
+        <!-- 고객 상담 안내 하단 영역 -->
+        <div id="contact">
+          <ul>
+            <li><b>전화</b> 031-858-5277</li>
+            <li><b>팩스</b> 031-858-5270</li>
+            <li><b>운영시간</b> 오전9~오후6시 점심:12~1시</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 제품 소개 이미지 영역 -->
+      <div class="choices">
+        <div id="sub" class="choice1">
+          <img src="images/flower01.PNG" alt="">
+          <h3 id="context-text">꽃다발</h3>
+        </div>
+        <div id="sub" class="choice2">
+          <img src="images/flower02.PNG" alt="">
+          <h3 id="context-text">꽃바구니</h3>
+        </div>
+        <div id="sub" class="choice3">
+          <img src="images/flower03.PNG" alt="">
+          <h3 id="context-text">웨딩부케</h3>
+        </div>
+        <div id="sub" class="choice4">
+          <img src="images/flower04.PNG" alt="">
+          <h3 id="context-text">꽃리스</h3>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <ul>
+      <li>홈</li>
+      <li>회사소개</li>
+      <li>이용약관</li>
+      <li>개인정보취급방침</li>
+    </ul>
+    <p>Copyright 이젠아카데미</p>
+  </footer>
+
+</body>
+
+</html>
