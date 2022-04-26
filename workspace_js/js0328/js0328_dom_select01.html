@@ -14,8 +14,8 @@
             let dept = document.querySelector("#dept");
             let output1 = dept.options[dept.selectedIndex].value; // 1번 방법
             /* 2번 방법
-            for(let i=0; i<dept.length; i++) {
-                if(dept[i].selected) {
+            for (let i = 0; i < dept.length; i++) {
+                if (dept[i].selected) {
                     output1 = dept[i].value;
                     break;
                 }
@@ -29,8 +29,8 @@
             let subjects = document.querySelector("#subject"); // object -> 배열
             //console.log(`${typeof(subjects)} : ${subjects}`);
             let output2 = "";
-            for(let i=0; i<subjects.length; i++) {
-                if(subjects[i].selected) { // subjects[i].selected == true
+            for (let i = 0; i < subjects.length; i++) {
+                if (subjects[i].selected) { // subjects[i].selected == true
                     output2 += subjects[i].value + " ";
                 }
             }

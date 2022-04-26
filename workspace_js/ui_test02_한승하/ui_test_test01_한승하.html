@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ui_test_test01_한승하</title>
+  <style>
+    .container {
+      width: 500px;
+      margin: 30px auto;
+      padding: 30px;
+      border: 1px solid black;
+    }
+  </style>
+
+  <script>
+    function inputComplete() {
+      let name = document.getElementById("name"); // 인풋으로 받은 이름
+      let dept = document.getElementById("dept"); // select로 받은 학과
+      let subjects = document.getElementsByName("subject"); // 라디오로 받은 과목
+      let news = document.getElementsByName("news"); // 체크박스로 받은 뉴스
+
+      // console.log(dept.value); // 학과 
+      if (!name.value) {
+        alert("이름을 입력하세요.");
+        name.focus();
+        return;
+      }
+
+      if (!dept.value) {
+        alert("학과를 선택하세요.");
+        dept.focus();
+        return;
+      }
+
+      // if (!subjects.value) {
+      //   alert("과목을 선택하세요.");
+      //   subjects.focus();
+      //   return;
+      // }
+
+      // if (!news.value) {
+      //   alert("뉴스 주제를 선택하세요.");
+      //   news.focus();
+      //   return;
+      // }
+
+      // 라디오 왜안돼 ㅠ
+      let txt1 = "";
+      for (let i = 0; i < subjects; i++) {
+        if (subjects[i].checked) { 
+          txt1 = subject[i].value;
+          break;
+        }
+      }
+
+      // console.log(txt1);
+
+      // 체크박스
+      let txt2 = "";
+      news.forEach((v, i) => {
+        if (v.checked) txt2 += v.value + " "
+      });
+      
+      // console.log(txt2);
+      alert(`당신의 학과는 ${dept.value} 입니다. \n 당신이 신청한 과목은 ${txt1}입니다. \n 당신이 메일로 받고싶은 뉴스 주제는 ${txt2}입니다.`)
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>수강신청</h2>
+    <form name="searchForm">
+      <fieldset>
+        <legend>신청인</legend>
+        이름 <input type="text" id="name"><br>
+        학과
+        <select id="dept">
+          <option value="컴퓨터공학과">컴퓨터공학과</option>
+          <option value="전자공학과">전자공학과</option>
+          <option value="기계공학과">기계공학과</option>
+          <option value="건축공학과">건축공학과</option>
+          <option value="화학공학과">화학공학과</option>
+          <option value="산업공학과">산업공학과</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>신청 과목</legend>
+        <h3>이달에 신청할 과목을 선택하세요.</h3>
+        <input type="radio" name="subject" value="영어 회화">영어 회화
+        <input type="radio" name="subject" value="영어 문법">영어 문법
+        <input type="radio" name="subject" value="영어 작문">영어 작문
+      </fieldset>
+
+      <fieldset>
+        <legend>메일링</legend>
+        <h3>메일로 받고 싶은 뉴스 주제를 선택해 주세요.</h3>
+        <input type="checkbox" name="news" value="해외뉴스">해외뉴스
+        <input type="checkbox" name="news" value="5분회화">5분회화
+        <input type="checkbox" name="news" value="모닝팝스">모닝팝스
+      </fieldset>
+      <input type="reset" value="취소">
+      <input type="button" value="확인" onclick="inputComplete()">
+    </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ui_test_test02_한승하</title>
+  <style>
+    #container {
+      width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid gray;
+    }
+  
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let form = document.querySelector("#form"); // 폼태그
+
+      let id = document.querySelector("#id"); // id 입력창
+      let pwd = document.querySelector("#pwd"); // pwd 입력창
+      let pwdCheck = document.querySelector("#pwdCheck"); // pwdCheck 입력창
+
+      let idMessage = document.querySelector("#idMessage"); // id 경고태그
+      let pwdMesssage = document.querySelector("#pwdMessage"); // pwd 경고태그
+      let pwdCheckMessage = document.querySelector("#pwdCheckMessage"); //pwdCheck 경고태그
+
+      let submit = document.querySelector("#submit"); // submit
+      
+      // submit 버튼 안눌리게
+      function onSubmitClick(e) {
+        e.preventDefault();
+      }
+
+      // 아이디 유효성 검사
+      let isId = (value) => {
+        return id.value.length >= 4 && id.value.length <= 15;
+      }
+
+      id.addEventListener("keyup", (e) => {
+        let value = event.currentTarget.value;
+        if (isId(value)) {
+          idMessage.innerHTML = "아이디 형식입니다."  
+        } else {
+          idMessage.innerHTML = "아이디 형식이 아닙니다."   
+        }
+        // 내용 지우고, 포커스 잡고, 페이지 이동 막기
+        submit.addEventListener("click", function(e) {
+          if (!isId(value)) {
+            form.addEventListener("submit", onSubmitClick(e));
+            id.value = "";
+            id.focus();
+          }
+        })
+      })
+
+      // 비밀번호 유효성 검사
+      let isPwd = (value) => {
+        return pwd.value.length >= 8;
+      }
+      
+      pwd.addEventListener("keyup", () => {
+        let value = event.currentTarget.value;        
+        if (isPwd(value)) {
+          pwdMessage.innerHTML = "비밀번호 형식입니다."
+        } else {
+          pwdMessage.innerHTML = "비밀번호는 8자리 이상이어야 합니다."
+        }
+        // 내용 지우고, 포커스 잡고, 페이지 이동 막기
+        submit.addEventListener("click", function(e) {
+          if (!isPwd(value)) {
+            form.addEventListener("submit", onSubmitClick(e));
+            pwd.value = "";
+            pwd.focus();
+          }
+        })
+      })
+
+      // 비밀번호 같은지 검사
+      pwdCheck.addEventListener("keyup", () => {
+        if (pwd.value == pwdCheck.value) {
+          pwdCheckMessage.innerHTML = "암호가 같습니다.";
+        } else {
+          pwdCheckMessage.innerHTML = "암호가 다릅니다.";
+        }
+        // 내용 지우고, 포커스 잡고, 페이지 이동 막기
+        submit.addEventListener("click", function(e) {
+          if (pwd.value != pwdCheck.value) {
+            form.addEventListener("submit", onSubmitClick(e));
+            pwdCheck.value = "";
+            pwdCheck.focus();
+          }
+        })
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <h2>회원 가입</h2>
+    <form action="register.jsp" id="form">
+      <ul>
+        <li>아이디 <input type="text" id="id"></li>
+        <p id="idMessage"></p>
+        <li>비밀번호 <input type="password" id="pwd"></li>
+        <p id="pwdMessage"></p>
+        <li>비밀번호 확인 <input type="password" id="pwdCheck"></li>
+        <p id="pwdCheckMessage"></p>
+        <li>이메일 <input type="text"></li><br>
+        <li>메일링 수신
+          <input type="radio" name="mail" value="1">예
+          <input type="radio" name="mail" value="0">아니오<br>
+        </li>
+      </ul>
+      <input type="submit" value="가입하기" id="submit">
+      <input type="reset" value="취소">
+    </form>
+  </div>
+</body>
+
+</html>
