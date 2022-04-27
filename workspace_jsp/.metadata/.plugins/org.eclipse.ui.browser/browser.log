@@ -1,0 +1,15 @@
+
+4월 25, 2022 11:55:14.76 NEW SESSION
+4월 25, 2022 11:55:14.76 [14384:15780:0425/115514.036:ERROR:device_event_log_impl.cc(214)] [11:55:14.036] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 12:46:10.715 [18840:13004:0425/124610.715:ERROR:device_event_log_impl.cc(214)] [12:46:10.714] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 12:48:20.333 [12744:8860:0425/124820.333:ERROR:device_event_log_impl.cc(214)] [12:48:20.332] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 13:08:22.726 [12796:16404:0425/130822.726:ERROR:device_event_log_impl.cc(214)] [13:08:22.726] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 14:26:29.522 [12796:16404:0425/142629.522:ERROR:device_event_log_impl.cc(214)] [14:26:29.522] USB: usb_service_win.cc:260 Failed to get device driver name: 요소가 없습니다. (0x490)
+4월 25, 2022 15:49:50.508 [5116:12440:0425/154950.508:ERROR:device_event_log_impl.cc(214)] [15:49:50.507] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 15:56:39.242 [17764:12568:0425/155639.242:ERROR:device_event_log_impl.cc(214)] [15:56:39.241] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 15:57:43.687 [18092:22700:0425/155743.687:ERROR:device_event_log_impl.cc(214)] [15:57:43.687] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 17:37:07.666 [18092:22700:0425/173707.666:ERROR:device_event_log_impl.cc(214)] [17:37:07.665] USB: usb_service_win.cc:260 Failed to get device driver name: 요소가 없습니다. (0x490)
+4월 25, 2022 18:02:39.42 [12164:7540:0425/180239.042:ERROR:device_event_log_impl.cc(214)] [18:02:39.042] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 19:19:46.244 [12164:7540:0425/191946.243:ERROR:device_event_log_impl.cc(214)] [19:19:46.243] USB: usb_service_win.cc:260 Failed to get device driver name: 요소가 없습니다. (0x490)
+4월 25, 2022 19:33:33.612 [23068:2564:0425/193333.612:ERROR:device_event_log_impl.cc(214)] [19:33:33.613] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
+4월 25, 2022 19:34:10.170 [8036:23688:0425/193410.169:ERROR:device_event_log_impl.cc(214)] [19:34:10.169] Bluetooth: bluetooth_adapter_winrt.cc:1075 Getting Default Adapter failed.
