@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>dbConnectionTest01</title>
 </head>
+
 <%--
 < JDBC 연동 프로그래밍 >
 1. JDBC(Java DataBase Connectivity)
@@ -22,7 +23,9 @@ R(Read) : select
 U(Update) : update
 D(Delete) : delete
  --%>
+ 
 <body>
+	
 	<h2>JDBC 드라이버 연결 테스트</h2>
 	
 	<%
@@ -35,12 +38,11 @@ D(Delete) : delete
 		Class.forName("com.mysql.jdbc.Driver"); // 드라이버명
 		conn = DriverManager.getConnection(url, dbId, dbPwd); // DB의 사용자 계정에 접속하여 커넥션 획득
 		out.print("JDBC 드라이버가 연결되었습니다.");
-		
 	} catch(Exception e) {
 		e.printStackTrace();
 		out.print("JDBC 드라이버가 연결되지 않았습니다.");
 	}
-	
 	%>
+	
 </body>
 </html>
