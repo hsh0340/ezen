@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="board.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글 등록 처리</title>
+</head>
+<body>
+<%
+	request.setCharacterEncoding("utf-8");
+
+	String writer = (String)session.getAttribute("memberId");
+	String subject = request.getParameter("subject"); // 제목
+	String content = request.getParameter("content"); // 내용
+
+	BoardDTO board = new BoardDTO(); // BoardDTO 인스턴스 생성
+	board.setWriter(writer); // 인스턴스에 값 넣음
+	board.setSubject(subject);
+	board.setContent(content);
+	// 댓글 처리
+	board.setRef(0); 
+	board.setRe_step(0);
+	board.setRe_level(0);
+	
+	BoardDAO boardDAO = BoardDAO.getInstance();
+	boardDAO.insertBoard(board);
+	
+	response.sendRedirect("boardList.jsp");
+%>
+
+
+</body>
+</html>

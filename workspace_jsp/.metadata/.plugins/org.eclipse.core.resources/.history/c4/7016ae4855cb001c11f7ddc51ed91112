@@ -1,0 +1,18 @@
+package board;
+
+import java.sql.Timestamp;
+
+// DTO, VO, DataBean - jsp 페이지에서 board 데이터의 이동을 담당
+
+public class BoardDTO {
+	// 프로퍼티(property)
+	private int num;
+	private String writer;
+	private String subject;
+	private String content;
+	private Timestamp regDate;
+	private int readcount;
+	private int ref;
+	private int re_step;
+	private int re_level;
+}

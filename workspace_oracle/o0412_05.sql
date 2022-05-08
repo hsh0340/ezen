@@ -265,12 +265,5 @@ FROM employee, department
 WHERE ename NOT IN 'SCOTT'
 AND employee.dno = department.dno;
 
-
-
-
-
-
-
-
 SELECT * FROM employee;
 

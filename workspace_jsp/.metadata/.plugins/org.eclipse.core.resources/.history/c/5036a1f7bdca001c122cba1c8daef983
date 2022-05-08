@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>log out</title>
+</head>
+<body>
+	<%
+	// 세션이 null이 아니면 null로 바꿔줌 ???
+	String memberId = (String)session.getAttribute("memberId");
+	if (memberId != null) {
+		memberId = null; %>
+	<script>
+	location = '../logon/memberLoginForm.jsp';
+	alert('로그아웃 되었습니다.');
+	</script>	
+	<% }%>
+	
+</body>
+</html>

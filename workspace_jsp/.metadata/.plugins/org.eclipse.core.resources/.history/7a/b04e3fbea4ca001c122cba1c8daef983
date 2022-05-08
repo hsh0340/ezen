@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원정보 확인</title>
+</head>
+<body>
+
+	<div id="container">
+		<div class="m_title">
+			<a href="#">EZEN MALL</a>
+		</div>
+		<div class="s_title">회원 정보 확인</div>
+
+		<form action="memberJoinPro.jsp" method="post" name="infoForm">
+			<table>
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" name="id" size="15"> 
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" name="pwd" size="15"><br>
+						<span id="chk_pwd"></span></td>
+				</tr>
+				<tr>
+					<th>비밀번호 확인</th>
+					<td><input type="password" name="pwd2"><br> 
+					<span id="chk_pwd2"></span></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><input type="text" name="name" size="15"></td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td><input type="text" name="email" size="30"><br>
+						<span id=chk_email></span>
+					</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td><input type="text" name="tel" size="20"></td>
+				</tr>
+				<tr class="addr_row">
+					<th>주소</th>
+					<td><input type="button" value="주소찾기" id="btn_address"><br>
+						<input type="text" name="address" size="49" readonly class="address"><br> 
+						<input type="text" name="address2" size="49"></td>
+				</tr>
+			</table>
+			<div class="btns">
+				<input type="button" value="회원정보수정" id="btn_update">&emsp;&emsp;
+				<input type="button" value="회원탈퇴" id="btn_delete">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

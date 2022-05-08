@@ -148,6 +148,7 @@ public class MemberDAO {
 				member.setEmail(rs.getString("email"));
 				member.setTel(rs.getString("tel"));
 				member.setAddress(rs.getString("address"));
+				member.setRegDate(rs.getTimestamp("regDate"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -182,17 +183,40 @@ public class MemberDAO {
 		return cnt;
 	}
 
-	// 회원 삭제(탈퇴)
+	// 회원 삭제(탈퇴)메소드 -> 해당 회원이 남긴 게시판의 글도 모두 삭제되도록 변경
+	// 트랜잭션 처리
 	public int deleteMember(String id, String pwd) {
-		String sql = "delete from member where id = ? and pwd = ?";
+		String sql1 = "DELETE FROM member WHERE id = ? AND pwd = ?";
+		String sql2 = "DELETE FROM board WHERE writer = ?";
 		int cnt = 0;
 		
 		try {
+			
 			conn = JDBCUtil.getConnection();
-			pstmt = conn.prepareStatement(sql);
+			
+			// 트랜잭션(transaction) 처리 - DML(INSERT, UPDATE, DELETE)작업이 2개 이상 함께 처리되어야 할 때, 
+			// 모두 처리되던지, 모두 처리되지 않게 하도록 하는 방법
+			// All or Nothing
+			
+			// 트랜잭션 1단계 - auto commit 기능 끔
+			conn.setAutoCommit(false);
+			
+			// 1작업: 회원 삭제(탈퇴) 작업
+			pstmt = conn.prepareStatement(sql1);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
 			cnt = pstmt.executeUpdate(); // 0보다 크면 delete 성공
+			
+			// 2작업: 해당 회원이 남긴 게시판 글을 모두 삭제
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setNString(1, id);
+			pstmt.executeUpdate();
+			
+			// 트랜잭션 2단계  - 모든 작업이 완료 되었을 때 커밋을 함.
+			conn.commit();
+			
+			// 트랜잭션 3단계 - auto commit 기능을 다시 설정해놓아야함.
+			conn.setAutoCommit(true);
 			
 		} catch(Exception e) {
 			e.printStackTrace();

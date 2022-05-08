@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원정보 수정 처리</title>
+</head>
+<body>
+	<%request.setCharacterEncoding("utf-8"); %>
+	
+	<jsp:useBean id="member" class="member.MemberDTO"></jsp:useBean>
+	<jsp:setProperty property="*" name="member"/>
+
+	<%
+	String address2 = request.getParameter("address2");
+	String address = member.getAddress() + " " + address2;
+	
+	
+	%>
+
+
+
+</body>
+</html>
